@@ -2,40 +2,10 @@
 import { getCollection } from "astro:content";
 import LatestCard from "../components/LatestCard.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-const [posts, books, stories, projects] = await Promise.all([
-    getCollection("posts", ({ data }) => !data.draft),
-    getCollection("books", ({ data }) => !data.draft),
-    getCollection("stories", ({ data }) => !data.draft),
-    getCollection("projects", ({ data }) => !data.draft),
-]);
-const latest = [
-    ...books.map((entry) => ({
-        entry,
-        kind: "books" as const,
-        date: entry.data.published,
-    })),
-    ...stories.map((entry) => ({
-        entry,
-        kind: "stories" as const,
-        date: entry.data.published,
-    })),
-    ...projects.map((entry) => ({
-        entry,
-        kind: "projects" as const,
-        date: entry.data.firstReleased,
-    })),
-    ...posts.map((entry) => ({
-        entry,
-        kind: "posts" as const,
-        date: entry.data.published,
-    })),
-]
-    .sort(
-        (a, b) =>
-            Date.parse(`${b.date}T00:00:00Z`) -
-            Date.parse(`${a.date}T00:00:00Z`),
-    )
-    .slice(0, 10);
+
+const latest = (await getCollection("posts", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.published.localeCompare(a.data.published))
+    .slice(0, 12);
 ---
 
 <SiteLayout
@@ -44,10 +14,10 @@ const latest = [
 >
     <div class="home-content">
         <h1 class="lead-heading">Latest Posts</h1>
-        <section class="latest-group" aria-label="Latest posts and projects">
+        <section class="latest-group" aria-label="Latest blog posts">
             <ul class="latest-grid">
-                {latest.map(({ entry, kind }) => (
-                    <LatestCard entry={entry} kind={kind} />
+                {latest.map((entry) => (
+                    <LatestCard entry={entry} />
                 ))}
             </ul>
         </section>

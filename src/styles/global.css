@@ -568,6 +568,8 @@ ul {
     }
 }
 .home-content {
+    width: 100%;
+    max-width: none;
     padding: 2rem 1rem;
 }
 .lead-heading {
@@ -576,11 +578,20 @@ ul {
     margin: 0;
     font-size: 2.25rem;
     line-height: 2.5rem;
-    font-weight: 400;
-    background: linear-gradient(to right, hsl(213 48% 10%), hsl(33 61% 56%));
+    font-weight: 700;
+    background-image: linear-gradient(
+        to right,
+        hsl(213 48% 10%) 40%,
+        hsl(33 61% 56%)
+    );
+    background-position: left;
+    background-size: 300%;
     background-clip: text;
     color: transparent;
-    width: fit-content;
+    transition: background-position 500ms ease;
+}
+.lead-heading:hover {
+    background-position: right;
 }
 .latest-group {
     position: relative;
@@ -596,6 +607,10 @@ ul {
 .latest-card-item {
     min-width: 0;
 }
+.latest-card-link {
+    display: block;
+    height: 100%;
+}
 .latest-card {
     display: grid;
     position: relative;
@@ -606,14 +621,13 @@ ul {
     border: 1px solid var(--border);
     border-radius: 0.4rem;
     background-color: var(--page-bg);
-    box-shadow: 2px 6px 0 hsl(213 70% 15%);
+    overflow: visible;
+    box-shadow: 2px 6px 0 0 hsl(213 70% 15%);
     transition: box-shadow 300ms ease;
 }
-.latest-card:hover {
-    box-shadow: 2px 16px 0 hsl(213 70% 15%);
-}
-.latest-card-top {
-    display: contents;
+.latest-card:hover,
+.latest-card-link:focus-visible .latest-card {
+    box-shadow: 2px 16px 0 0 hsl(213 70% 15%);
 }
 .latest-category {
     grid-column: 1 / 2;
@@ -632,7 +646,13 @@ ul {
     gap: 0.4rem;
     min-width: max-content;
     max-width: 100%;
-    height: 2.25rem;
+    height: 2rem;
+}
+.latest-desktop-tags {
+    display: contents;
+}
+.tag-pill.latest-mobile-tags {
+    display: none;
 }
 .tag-pill {
     display: flex;
@@ -659,20 +679,15 @@ ul {
 }
 .latest-excerpt {
     grid-column: span 2;
-    display: -webkit-box;
     margin: 0;
-    overflow: hidden;
     font-size: 1.125rem;
     line-height: 1.75rem;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 4;
 }
 .latest-card-dates {
     grid-column: span 2;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 0.8rem;
+    gap: 0.4rem;
     align-self: end;
     font-size: 1rem;
     line-height: 1.5rem;
@@ -688,29 +703,7 @@ ul {
     width: 1.5rem;
     height: 1.5rem;
 }
-.latest-card-hit {
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    border-radius: inherit;
-}
-.latest-card
-    :is(
-        h2,
-        p,
-        .latest-category,
-        .latest-tags,
-        .latest-card-dates,
-        .project-host,
-        .project-techs
-    ) {
-    position: relative;
-    z-index: 1;
-    pointer-events: none;
-}
-.latest-card :is(h2 a, .project-host) {
-    pointer-events: auto;
-}
+
 .latest-card-arrow {
     position: absolute;
     bottom: -12px;
@@ -724,7 +717,8 @@ ul {
         clip-path 300ms ease 100ms,
         opacity 100ms ease;
 }
-.latest-card:hover .latest-card-arrow {
+.latest-card:hover > [data-arrow],
+.latest-card-link:focus-visible [data-arrow] {
     opacity: 1;
     clip-path: polygon(
         0% 35%,
@@ -736,40 +730,7 @@ ul {
         0% 65%
     );
 }
-.project-name {
-    grid-column: 1 / 2;
-    align-self: center;
-    margin: 0;
-    font: 700 1.25rem/1.75rem var(--font-ui);
-}
-.project-host {
-    grid-column: 2 / 3;
-    justify-self: end;
-    align-self: center;
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--text);
-    border-radius: 2rem;
-    font: 0.875rem var(--font-ui);
-    white-space: nowrap;
-}
-.project-techs {
-    grid-column: span 2;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.4rem;
-}
-.tech-pill {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--text);
-    border-radius: 2rem;
-    font: 0.875rem var(--font-ui);
-}
-.other-title {
-    grid-column: span 2;
-    margin: 0;
-    font-size: 1.25rem;
-}
-@media (max-width: 600px) {
+@media (max-width: 576px) {
     .home-content {
         padding: 2rem 0.5rem;
     }
@@ -788,10 +749,11 @@ ul {
     .tag-pill {
         padding: 0.4rem;
     }
-    .latest-card-dates {
-        grid-template-columns: 1fr;
-        flex-direction: column;
-        align-items: flex-start;
+    .latest-desktop-tags {
+        display: none;
+    }
+    .tag-pill.latest-mobile-tags {
+        display: flex;
     }
 }
 @media (prefers-reduced-motion: reduce) {
