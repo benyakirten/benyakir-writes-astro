@@ -1,0 +1,140 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { parseHTML } from "linkedom";
+import { contentPath } from "../config";
+
+interface Props {
+    entry: CollectionEntry<"projects">;
+}
+
+const { entry } = Astro.props;
+const { data } = entry;
+const technologies: Record<string, string> = {
+    html: "HTML", css: "CSS", sass: "Sass", js: "JavaScript",
+    ts: "TypeScript", py: "Python", php: "PHP", wp: "WordPress",
+    ng: "Angular", swift: "Swift", react: "React", vue: "Vue",
+    cs: "C#", unity: "Unity", ml: "Machine Learning", svelte: "Svelte",
+    gql: "GraphQL", tw: "Tailwind", go: "Golang", ex: "Elixir",
+    wip: "Work In Progress", ws: "WebSockets", rs: "Rust",
+};
+const icons = data.technologies.map((technology) => {
+    const code = technology.toLowerCase();
+    return { code, name: technologies[code] ?? technology };
+});
+// Flatten rendered Markdown before truncating: card links must not contain links.
+const body = entry.rendered?.html
+    ? parseHTML(`<div>${entry.rendered.html}</div>`).document.firstElementChild?.textContent ?? ""
+    : (entry.body ?? "")
+        .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/^#{1,6}\s+|^\s*>\s?/gm, "")
+        .replace(/[*_`]/g, "");
+const summary = (data.excerpt || data.description || body).replace(/\s+/g, " ").trim();
+const excerpt = summary.length > 300
+    ? summary.substring(0, 300).replace(/\s\S*$/, "...")
+    : summary;
+const formatDate = (date: string) => new Date(`${date}T12:00:00Z`).toLocaleDateString(
+    "en-US", { year: "numeric", month: "long", day: "2-digit", timeZone: "UTC" },
+);
+---
+
+<li class="latest-card-item">
+    <a class="latest-card-link" href={contentPath("projects", data.slug)}>
+        <article class="latest-card project-card">
+            <span class="latest-card-arrow" data-arrow aria-hidden="true"></span>
+            <h3 class="project-title" class:list={{ "without-host": !data.hostedOn }}>{data.title}</h3>
+            {data.hostedOn && (
+                <div class="project-host">
+                    <span class="tech-pill">
+                        <svg class="tech-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                        </svg>
+                        <span>{data.hostedOn}</span>
+                    </span>
+                </div>
+            )}
+            <div class="project-summary">{excerpt}</div>
+            <div class="project-technologies" aria-label="Technologies">
+                {icons.map(({ code, name }) => (
+                    <span class="tech-pill">
+                        {technologies[code] && (
+                            <img class="tech-icon" src={`/images/tech/${code}.svg`} alt="" width="16" height="16" loading="lazy" decoding="async" />
+                        )}
+                        <span>{name}</span>
+                    </span>
+                ))}
+            </div>
+            {data.image && (
+                <div class="project-image">
+                    <img src={data.image} alt={data.imageAlt ?? data.title} loading="lazy" decoding="async" />
+                </div>
+            )}
+            <div class="project-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <time datetime={data.firstReleased}>Published: {formatDate(data.firstReleased)}</time>
+            </div>
+            {data.latestUpdate && (
+                <div class="project-date">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992V4.356m-1.1 3.1a9 9 0 0 0-15.57-1.58M7.977 14.652H2.985v4.992m1.1-3.1a9 9 0 0 0 15.57 1.58" />
+                    </svg>
+                    <time datetime={data.latestUpdate}>Latest Update: {formatDate(data.latestUpdate)}</time>
+                </div>
+            )}
+        </article>
+    </a>
+</li>
+
+<style>
+    .project-card {
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+        grid-template-rows: auto 1fr auto auto;
+        color: var(--text);
+    }
+    .project-title {
+        min-width: 0;
+        height: 1.75rem;
+        margin: 0;
+        overflow: hidden;
+        font: 700 1.25rem/1.75rem var(--font-ui);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .project-title.without-host { grid-column: 1 / -1; }
+    .project-host {
+        grid-column: 2 / 3;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.4rem;
+        min-width: 0;
+        min-height: 2rem;
+    }
+    .project-summary, .project-technologies, .project-image { grid-column: 1 / -1; }
+    .project-summary { font-size: 1.125rem; line-height: 1.75rem; overflow-wrap: anywhere; }
+    .tech-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        width: fit-content;
+        height: min-content;
+        padding: 0.4rem 0.8rem;
+        border: 1px solid var(--text);
+        border-radius: 1.6rem;
+        background: var(--page-bg);
+        font: 0.875rem var(--font-ui);
+    }
+    .project-technologies > .tech-pill { margin: 2px; }
+    .tech-icon { flex: 0 0 0.96rem; width: 0.96rem; height: 0.96rem; }
+    .project-image { margin: 0.4rem 0; }
+    .project-image img { display: block; width: 100%; height: auto; }
+    .project-date { display: flex; align-items: center; align-self: end; gap: 0.4rem; font-size: 1rem; line-height: 1.5rem; }
+    .project-date svg { flex: 0 0 1.5rem; width: 1.5rem; height: 1.5rem; }
+    @media (max-width: 576px) {
+        .project-host { gap: 2px; }
+        .project-date { grid-column: 1 / -1; }
+    }
+</style>

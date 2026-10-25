@@ -1,0 +1,88 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { parseHTML } from "linkedom";
+import { contentPath } from "../config";
+
+type Props =
+    | { kind: "books"; entry: CollectionEntry<"books"> }
+    | { kind: "stories"; entry: CollectionEntry<"stories"> };
+
+const props = Astro.props;
+const { entry } = props;
+const { data } = entry;
+const relatedBook = props.kind === "stories" && props.entry.data.relatedBook
+    ? (await getCollection("books")).find(
+        (book) => book.data.slug === props.entry.data.relatedBook?.slug,
+    )
+    : undefined;
+const relationship = props.kind === "stories" ? props.entry.data.relatedBook?.relationship : undefined;
+const storyType = relatedBook
+    ? `${relationship || "Related story"} to ${relatedBook.data.title}`
+    : props.kind === "stories" ? "Short Story" : undefined;
+const cover = props.kind === "books" ? props.entry.data.cover : relatedBook?.data.cover;
+const coverAlt = props.kind === "books"
+    ? props.entry.data.coverAlt ?? props.entry.data.title
+    : relatedBook?.data.coverAlt ?? relatedBook?.data.title ?? data.title;
+// Use the body as a summary, not the entire book blurb or story manuscript.
+const body = entry.rendered?.html
+    ? parseHTML(`<div>${entry.rendered.html}</div>`).document.firstElementChild?.textContent ?? ""
+    : (entry.body ?? "")
+        .replace(/!\[([^\]]*)\]\([^)]*\)/g, "$1")
+        .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+        .replace(/^#{1,6}\s+|^\s*>\s?/gm, "")
+        .replace(/[*_`]/g, "");
+const summary = (data.excerpt || data.description || body).replace(/\s+/g, " ").trim();
+const excerpt = summary.length > 300
+    ? summary.substring(0, 300).replace(/\s\S*$/, "...")
+    : summary;
+const published = new Date(`${data.published}T12:00:00Z`).toLocaleDateString(
+    "en-US", { year: "numeric", month: "long", day: "2-digit", timeZone: "UTC" },
+);
+---
+
+<li class="latest-card-item">
+    <a class="latest-card-link" href={contentPath(props.kind, data.slug)}>
+        <article class:list={["latest-card", "author-card", { "has-cover": !!cover, "is-story": props.kind === "stories" }]}>
+            <span class="latest-card-arrow" data-arrow aria-hidden="true"></span>
+            {storyType && <p class="story-type">{storyType}</p>}
+            {cover && (
+                <div class="author-cover">
+                    <img src={cover} alt={coverAlt} width="67" loading="lazy" decoding="async" />
+                </div>
+            )}
+            <h3 class="author-title">{data.title}</h3>
+            <p class="author-summary">{excerpt}</p>
+            <div class="author-date">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                <time datetime={data.published}>Published: {published}</time>
+            </div>
+        </article>
+    </a>
+</li>
+
+<style>
+    .author-card {
+        grid-template-columns: minmax(0, 1fr);
+        grid-template-rows: auto 1fr auto;
+        color: var(--text);
+    }
+    .author-card.has-cover { grid-template-columns: minmax(0, 1fr) 67px; }
+    .author-card.is-story { grid-template-rows: auto auto 1fr auto; }
+    .author-cover { grid-column: 2 / 3; grid-row: 1 / 4; }
+    .author-cover img { display: block; width: 67px; max-width: 100%; height: auto; }
+    .author-title {
+        display: grid;
+        grid-column: 1 / 2;
+        align-content: center;
+        min-width: 0;
+        margin: 0;
+        font: 700 1.25rem/1.75rem var(--font-ui);
+        overflow-wrap: anywhere;
+    }
+    .author-summary { grid-column: 1 / 2; margin: 0; font-size: 1.125rem; line-height: 1.75rem; overflow-wrap: anywhere; }
+    .story-type { grid-column: 1 / 2; align-self: center; margin: 0; font-size: 1rem; line-height: 1.5rem; font-weight: 700; }
+    .author-date { grid-column: 1 / -1; display: flex; align-items: center; align-self: end; gap: 0.4rem; font-size: 1rem; line-height: 1.5rem; }
+    .author-date svg { flex: 0 0 1.5rem; width: 1.5rem; height: 1.5rem; }
+</style>

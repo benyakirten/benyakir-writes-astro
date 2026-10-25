@@ -10,10 +10,9 @@ const canonical = new URL(Astro.url.pathname, SITE.origin).toString();
 const path = Astro.url.pathname;
 const navLinks = [
     { name: "Portfolio", href: "/portfolio/" },
-    { name: "Blog", href: "/blog/" },
+    { name: "Blog", href: "/" },
     { name: "Author", href: "/author/" },
     { name: "Projects", href: "/projects/" },
-    { name: "Home", href: "/" },
 ];
 ---
 
@@ -63,7 +62,12 @@ const navLinks = [
                         />
                     </svg>
                 </button>
-                <div class="sidebar-content" data-sidebar-content>
+                <div
+                    class="sidebar-content"
+                    data-sidebar-content
+                    inert
+                    aria-hidden="true"
+                >
                     <div class="sidebar-links">
                         <div class="sidebar-nav-group">
                             {navLinks.map(({ name, href }) => {
@@ -122,7 +126,9 @@ const navLinks = [
                 </a>
             </nav>
             <main class="site-main">
-                <slot />
+                <div class="page-content">
+                    <slot />
+                </div>
             </main>
         </div>
 
@@ -172,7 +178,22 @@ const navLinks = [
             const backdrop = document.querySelector<HTMLElement>(
                 "[data-sidebar-backdrop]",
             );
+            const sidebarContent = document.querySelector<HTMLElement>(
+                "[data-sidebar-content]",
+            );
+            let wheelAngle = 0;
             const setSidebar = (open: boolean) => {
+                if (sidebar && sidebar.classList.contains("open") !== open) {
+                    wheelAngle -= 90;
+                    sidebar.style.setProperty(
+                        "--wheel-angle",
+                        `${wheelAngle}deg`,
+                    );
+                }
+                if (sidebarContent) {
+                    sidebarContent.inert = !open;
+                    sidebarContent.setAttribute("aria-hidden", String(!open));
+                }
                 sidebar?.classList.toggle("open", open);
                 backdrop?.classList.toggle("visible", open);
                 toggle?.setAttribute("aria-expanded", String(open));

@@ -7,16 +7,11 @@ const root = path.resolve("src/content");
 const pages = [
   {
     title: "Blog",
-    slug: "/blog/",
+    slug: "/",
     description:
       "Browse a list of all my blog posts ordered by most recent publication to least recent. Users can filter the blog results by publication date, category and tags.",
   },
-  {
-    title: "Home",
-    slug: "/",
-    description:
-      "Get an overview of my latest creations. As a fluent speaker of Italian, former writer, editor and current fullstack dev, I have a lot to share.",
-  },
+
   {
     title: "Portfolio",
     slug: "/portfolio/",

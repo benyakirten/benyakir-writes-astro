@@ -11,7 +11,7 @@ The owner wants an agent to be able to execute this document without the precedi
 ### 0.1 Confirmed owner requirements
 
 1. Replace the entire Gatsby site: posts, books, short stories, projects, portfolio, home, navigation, global search, listing search/filtering, pagination, and associated content relationships.
-2. Remove the elaborate theme-customization system. Retain recognizable branding and typography, with a simplified light/dark/system preference control.
+2. Port the existing visual design without redesigning navigation, cards, typography, or spacing. Remove all visitor theme controls, including light/dark/system selectors and the old theme editor; use the original Day palette.
 3. Preserve search/filter functionality, especially the existing trie autocomplete and Levenshtein alternatives. Do not silently substitute different matching or ranking.
 4. Use database titles/slugs as the content identity source. Exact old slug/URL preservation is not required; deriving new slugs from database titles is acceptable. Keep the four detail-route prefixes by default. The owner controls both `benyakir-writes.com` and `benyakiredits.com`, and intends to move them to Cloudflare.
 5. The supplied database contains 140 published posts, 16 projects, 3 books, and 2 short stories (161 main items); the owner confirmed these counts. Theme/MU code and matching uploads are available; see §1.3.
@@ -32,7 +32,7 @@ The owner wants an agent to be able to execute this document without the precedi
 - React islands for existing complex interactive UI; Astro components for content/layout where possible.
 - Preserve search compatibility quirks initially. Correcting them is a separate approved change, not an incidental migration refactor.
 - Prefer stored `post_name` slugs to minimize work, but title-derived slugs and necessary collision fixes are approved. Persist the chosen slug explicitly and rewrite internal links/references. Canonical directory-style content paths end in `/`; accept slashless requests through tested platform normalization.
-- Use Astro's built-in Shiki with `github-light` and `github-dark`, connected to the site preference.
+- Use Astro's built-in Shiki with `github-light` for the fixed Day palette. Do not add a visitor theme preference.
 - Preserve Faustina/Mulish typography using locally served font assets.
 - Keep all runtime-public media within Pages asset limits. Do not add R2 or another usage-billed service as an automatic workaround.
 - Owner confirmation is needed only for genuinely missing source artifacts, real content ambiguities, platform/account actions, or deliberate departures from parity.
@@ -48,6 +48,14 @@ No new recommendation engine, semantic/vector search, hosted search, browser CMS
 The owner confirmed the database counts, accepted database/title-derived slugs without exact historical URL preservation, and explicitly waived historical excerpt fidelity. These decisions override any older wording suggesting byte-exact old summaries or exhaustive old-URL reconstruction is mandatory.
 
 Preserve **search algorithms, filter controls, parameter behavior, weighting rules and tie-breaking for identical inputs**. Regenerated excerpts legitimately change the input corpus, so some actual search matches, vocabulary frequencies and suggestions can change. New slugs legitimately change result URLs. Do not treat either approved change as an algorithm regression, and do not weaken algorithm tests to conceal unrelated differences. Compare old/new engines using the **same regenerated input dataset**, map identities by source type/database ID when slugs differ, and separately record expected corpus/URL changes. Original deployed search JSON is helpful but optional, not a release prerequisite.
+
+### 0.5 Subsequent UI and route decisions (override older route/UI defaults)
+
+- `/` is the sole blog listing and displays the 12 newest published blog posts, not a mixed feed of projects/books/stories. Remove `src/pages/blog.astro`; redirect `/blog` and `/blog/` to `/` for compatibility. The navigation's Blog link, post breadcrumbs, and searchable Blog page all point to `/`; avoid duplicate Home/Blog search entries.
+- Large desktop viewports show three cards across, capped at three on ultrawide screens. Preserve a two-column intermediate layout and one-column phone layout. All listings use the source card variants, full-card links, metadata badges/covers, shadows, and animated arrows—not generic title-only cards.
+- Share page margins through the layout so project, author, portfolio, and detail routes cannot accidentally render edge-to-edge. The portfolio retains its source-specific tabs and layout.
+- The collapsed navigation rail is wider (4rem) and must contain the complete wheel. Center the wheel in the exposed rail and rotate it on both opening and closing. Respect reduced-motion preferences.
+- Oxfmt and Oxlint replace Biome. No visitor can select a theme; do not restore the former top-right dropdown, sidebar theme toggle, or theme preference storage.
 
 ## 1. Reference inventory and verified implementation facts
 
@@ -239,7 +247,7 @@ benyakir-writes-astro/
     generated/route-manifest.json    # ignored, recreated each build
     styles/{tokens,global,article,islands}.css
     pages/index.astro
-    pages/blog.astro
+
     pages/author.astro
     pages/projects.astro
     pages/portfolio.astro
@@ -895,7 +903,7 @@ These are migration compatibility decisions, not endorsements of the bugs. Offer
 
 - `SiteLayout.astro` owns document/head, global styles, header/footer/main landmarks, theme initialization and the persistent interactive site chrome.
 - `SiteChrome.tsx` owns sidebar, global search dialog, shortcut dialog and their shared state. Hydrate with `client:load` so keyboard search is available immediately.
-- Listing islands are separate React roots mounted only on `/blog`, `/author`, `/projects`; share pure modules, not mutable Redux state across roots.
+- Listing islands are separate React roots mounted only on `/`, `/author`, `/projects`; share pure modules, not mutable Redux state across roots. `/blog/` redirects to `/` and is not a separate listing implementation.
 - Portfolio interaction is isolated to `/portfolio`.
 - Detail body rendering is Astro Markdown/MDX, not a giant React island. Code highlighting has zero client highlighter JavaScript.
 - Do not pass React render functions/components through serialized Astro props. Pass plain data or supported serialized values, reconstruct dates deliberately on the client.
@@ -932,7 +940,7 @@ If the chosen Astro release cannot support reliable shell persistence, record th
 | Portfolio  | Existing biography/work history, social/resume links, project screenshots, tabs and URL state                     |
 | Navigation | Existing main destinations except Theme; responsive sidebar and keyboard/modal behavior                           |
 | 404        | Genuine 404 response, helpful navigation/search entrypoint                                                        |
-| Theme      | Light/dark/system only; no old theme editor/storage UI; `/theme` redirects home                                   |
+| Theme      | Fixed original Day palette; no visitor theme controls or preference storage; `/theme` redirects home              |
 
 ### 10.4 Portfolio details that must not be accidentally lost
 

@@ -1,54 +1,23 @@
 ---
 import type { CollectionEntry } from "astro:content";
-import { contentPath, type ContentKind } from "../config";
+import type { ContentKind } from "../config";
 import LatestCard from "./LatestCard.astro";
+import ProjectCard from "./ProjectCard.astro";
+import AuthorCard from "./AuthorCard.astro";
 
-type SummaryEntry = {
-    id: string;
-    data: {
-        title: string;
-        slug: string;
-        published: string;
-        excerpt?: string;
-        description?: string;
-    };
-};
-type Props =
-    | { kind: "posts"; items: CollectionEntry<"posts">[] }
-    | { kind: Exclude<ContentKind, "posts">; items: SummaryEntry[] };
+type Props = {
+    [Kind in ContentKind]: { kind: Kind; items: CollectionEntry<Kind>[] };
+}[ContentKind];
 const props = Astro.props as Props;
 ---
 
-{props.kind === "posts" ? (
-    <ul class="latest-grid">
-        {props.items.map((entry) => (
-            <LatestCard entry={entry} />
-        ))}
-    </ul>
-) : (
-    <div class="card-grid">
-        {props.items.map(({ data }) => (
-            <article class="content-card">
-                <h2>
-                    <a href={contentPath(props.kind, data.slug)}>
-                        {data.title}
-                    </a>
-                </h2>
-                <time datetime={data.published}>
-                    {new Date(`${data.published}T12:00:00Z`).toLocaleDateString(
-                        "en-US",
-                        {
-                            year: "numeric",
-                            month: "long",
-                            day: "2-digit",
-                            timeZone: "UTC",
-                        },
-                    )}
-                </time>
-                {(data.excerpt || data.description) && (
-                    <p>{data.excerpt || data.description}</p>
-                )}
-            </article>
-        ))}
-    </div>
-)}
+<ul class="latest-grid">
+    {props.kind === "posts" &&
+        props.items.map((entry) => <LatestCard entry={entry} />)}
+    {props.kind === "projects" &&
+        props.items.map((entry) => <ProjectCard entry={entry} />)}
+    {props.kind === "books" &&
+        props.items.map((entry) => <AuthorCard entry={entry} kind="books" />)}
+    {props.kind === "stories" &&
+        props.items.map((entry) => <AuthorCard entry={entry} kind="stories" />)}
+</ul>
