@@ -4,7 +4,7 @@
 
 This is an implementation handoff, not a proposal to replace the search experience with a different product. Implement the migration in `benyakir-writes-astro`, using `benyakir-writes` as the read-only reference implementation. Do not modify the Gatsby repository as part of normal implementation. Do not cancel services, change DNS, publish production content, or purchase services without the owner's approval.
 
-Prepared: 2026-10-24. Source code was inspected, but the WordPress database, uploads, plugins, and production content were not supplied or inspected. No builds or tests were run during preparation. References to existing behavior below are source-based; timing-sensitive behavior must be characterized before declaring parity.
+Prepared and updated: 2026-10-24. Gatsby source, the supplied WordPress SQL dump, downloaded image inventory, and custom theme/MU plugin were inspected. The SQL was parsed for inspection only, not executed or restored. Attachment paths and image signatures were checked; full image decoding/visual inspection and application builds/tests have not been performed. Search behavior remains source-based until characterized. See §1.3 for verified source artifacts and §0.4 for later owner decisions.
 
 The owner wants an agent to be able to execute this document without the preceding conversation. All product decisions made in that conversation are recorded here. Environment-specific facts that cannot be known yet are explicitly gated; do not invent credentials, SQL table names, database field names, custom post-type identifiers, repository URLs, or export contents.
 
@@ -13,8 +13,8 @@ The owner wants an agent to be able to execute this document without the precedi
 1. Replace the entire Gatsby site: posts, books, short stories, projects, portfolio, home, navigation, global search, listing search/filtering, pagination, and associated content relationships.
 2. Remove the elaborate theme-customization system. Retain recognizable branding and typography, with a simplified light/dark/system preference control.
 3. Preserve search/filter functionality, especially the existing trie autocomplete and Levenshtein alternatives. Do not silently substitute different matching or ranking.
-4. Keep existing public content paths. The owner controls both `benyakir-writes.com` and `benyakiredits.com`, and intends to move them to Cloudflare.
-5. The owner has access to the WordPress database and personally authored plugins/theme. Approximately 200 content items total, including books and stories; relatively few photographs.
+4. Use database titles/slugs as the content identity source. Exact old slug/URL preservation is not required; deriving new slugs from database titles is acceptable. Keep the four detail-route prefixes by default. The owner controls both `benyakir-writes.com` and `benyakiredits.com`, and intends to move them to Cloudflare.
+5. The supplied database contains 140 published posts, 16 projects, 3 books, and 2 short stories (161 main items); the owner confirmed these counts. Theme/MU code and matching uploads are available; see §1.3.
 6. Ignore drafts, private/unpublished content, revisions, comments, and other non-public WordPress history for publication. Keep backups private, not in the deployed site.
 7. Convert legacy code blocks to ordinary Markdown fenced code blocks, using Astro's built-in syntax highlighting. Drop ALL code-block extras: no theme picker, copy button, line-number UI, filename toolbar, or client-side highlighter.
 8. Future widgets are unspecified; interactive article demos are the likely use case. Support Markdown and opt-in MDX/component islands, without building speculative widgets or a backend now.
@@ -22,6 +22,7 @@ The owner wants an agent to be able to execute this document without the precedi
 10. Avoid traffic-based hosting overage charges. This is a static website, not an SSR application.
 11. Remove PostHog and session replay. Use free Cloudflare Web Analytics for aggregate visits/performance.
 12. Future articles are authored in version-controlled Markdown/MDX, without WordPress or a replacement CMS.
+13. Historical excerpts need not be reproduced. Generate summaries when cards, search or feeds need them; absence of a WordPress-generated excerpt must not block migration.
 
 ### 0.2 Defaults adopted by this plan
 
@@ -30,7 +31,7 @@ The owner wants an agent to be able to execute this document without the precedi
 - Astro static output, no Cloudflare adapter, no Pages Functions, no Workers, no database, no runtime image service.
 - React islands for existing complex interactive UI; Astro components for content/layout where possible.
 - Preserve search compatibility quirks initially. Correcting them is a separate approved change, not an incidental migration refactor.
-- Preserve exact pathname spelling/case and WordPress slugs. Canonical directory-style content paths end in `/`; accept old slashless requests through tested platform normalization.
+- Prefer stored `post_name` slugs to minimize work, but title-derived slugs and necessary collision fixes are approved. Persist the chosen slug explicitly and rewrite internal links/references. Canonical directory-style content paths end in `/`; accept slashless requests through tested platform normalization.
 - Use Astro's built-in Shiki with `github-light` and `github-dark`, connected to the site preference.
 - Preserve Faustina/Mulish typography using locally served font assets.
 - Keep all runtime-public media within Pages asset limits. Do not add R2 or another usage-billed service as an automatic workaround.
@@ -41,6 +42,12 @@ The owner wants an agent to be able to execute this document without the precedi
 No new recommendation engine, semantic/vector search, hosted search, browser CMS, comments system, newsletter backend, authentication, session replay, arbitrary theme editor, or new content taxonomy routes merely because the data exists. Do not migrate WordPress/PHP into production. Do not scrape or query the live WordPress endpoint without permission: the old README explicitly discourages querying it.
 
 ---
+
+### 0.4 Later owner clarifications: precedence and scope of parity
+
+The owner confirmed the database counts, accepted database/title-derived slugs without exact historical URL preservation, and explicitly waived historical excerpt fidelity. These decisions override any older wording suggesting byte-exact old summaries or exhaustive old-URL reconstruction is mandatory.
+
+Preserve **search algorithms, filter controls, parameter behavior, weighting rules and tie-breaking for identical inputs**. Regenerated excerpts legitimately change the input corpus, so some actual search matches, vocabulary frequencies and suggestions can change. New slugs legitimately change result URLs. Do not treat either approved change as an algorithm regression, and do not weaken algorithm tests to conceal unrelated differences. Compare old/new engines using the **same regenerated input dataset**, map identities by source type/database ID when slugs differ, and separately record expected corpus/URL changes. Original deployed search JSON is helpful but optional, not a release prerequisite.
 
 ## 1. Reference inventory and verified implementation facts
 
@@ -87,7 +94,31 @@ Category JSON files are generated by Gatsby, but no current category route creat
 - Gatsby templates inject WordPress HTML; the Markdown migration must preserve content, not copy that HTML-injection architecture wholesale.
 - The Post template preprocesses custom code blocks; the other templates directly render HTML. Inventory code blocks in all content types anyway.
 - The TypeScript types describe Gatsby's consumer assumptions, not the authoritative database or ACF registration schema.
-- WordPress database access does not imply possession of media binaries. The uploads backup is mandatory before shutdown.
+- The image backup is now available and matches the database inventory (§1.3). Verify staged copies and actual decodability during implementation; inventory checks alone do not complete media migration.
+
+### 1.3 Verified supplied artifacts and import-specific findings
+
+**Database:** `benyakir-writes-astro/data/benyakir_WPSTA.sql` (latest inspected location; originally supplied at repository root). Approximately 4.4 MB; phpMyAdmin dump, source MySQL `5.7.44-48`, actual table prefix `_STA_`. Core tables include posts, postmeta, options, terms, term taxonomy and relationships. SQL ends with `COMMIT;`; inspection decoded it without replacement characters. This is not yet proof of a successful database restore.
+
+- Published main content: 140 `post`, 16 `project`, 3 `book`, 2 `shortstory`; all 161 have nonempty bodies. Owner verified these counts.
+- Also 9 published WordPress pages. Inventory their content against existing Gatsby static pages before deciding whether any additional prose/assets need carrying over; do not automatically publish every WP system/configuration post type.
+- 51 attachment records; 22 ACF field definitions and 3 ACF field groups are stored in the database.
+- Main custom metadata keys include `published_on`, `purchase_links`, `purchase_links_names`, `related_stories`, `related_project`, `related_project_desc`, `cover`, `cover_designer`, `cover_designer_bio`, `cover_designer_links`, `cover_designer_links_names`, `related_book`, `relationship_to_book`, `alternate_links`, `first_released`, `latest_update`, `technologies`, `hosted_on`, `main_link`, `repo_link`. Inspect their serialized values and ACF definitions rather than guessing GraphQL-to-SQL mappings.
+- Only one published post has a manually stored excerpt. This is normal; use the approved generated-summary policy (§5.6), not a requirement to recover historical WordPress summaries.
+- Site/home origin is `https://benyakiredits.com`; permalink structure is `/%category%/%postname%/`; stored `gmt_offset` is `0` and `timezone_string` is empty. Preserve actual date values and verify semantics when normalizing.
+- Known custom-highlighter markup was found in one published article, slug `triumph-and-failure-the-long-road-of-this-blogs-redesign`. Scan all body formats during conversion; marker presence is not a guarantee that all block payloads have been validated.
+- The dump also includes sensitive users/usermeta/options/plugin data. Keep `data/*.sql` ignored/private and out of `public/`, build output and CI artifacts. Verify ignore rules before any commit; do not assume merely placing SQL under `data/` makes it safe.
+
+**Theme/MU registration:** sibling project `benyakiredits/`, including `benyakiredits/MUCopy.php`. The MU copy registers `project`, `book`, `shortstory`, their public/REST/GraphQL flags and original rewrite behavior. `functions.php` loads the theme's search/assets/navigation/routing/utilities. This is not evidence that every historical plugin is present: request additional code only if a real shortcode/block/field cannot be interpreted from the supplied sources. Do not demand a full plugin archive merely to recreate waived excerpts.
+
+**Images:** `/Users/benyakirhorowitz/projects/blog-photo-transfers` (outside the current project roots; readable through terminal inspection). 316 actual image files plus 6 `.DS_Store` files, approximately 71 MiB total. All image headers matched JPEG (101) or PNG (215); no empty image files.
+
+- All 51 original attachment filenames were found. Using database metadata paths, derivative filenames and `original_image` fields, all 316 expected image paths resolve either directly or through the unambiguous 2019 remap below.
+- All 29 distinct upload paths extracted from published body HTML URL/srcset attributes were found. This check does not exhaust every URL in inline CSS, JSON or custom fields; the importer must still run the full inventory.
+- Downloaded `2019/2019/` corresponds to database `2019/12/`. Seven original attachments and their variants need that directory remap when staging. Do not alter the immutable download or require a redownload.
+- Multiple books use filenames such as `cover.jpg` and `cover-scaled.jpg` in different date directories. Resolve by full expected relative path first; never flatten the library or globally match by basename. Basename fallback is allowed only when unique and recorded.
+- `2023/08/TNM_bookcover.jpg` is 27,006,176 bytes (25.76 MiB), above Pages' 25 MiB per-asset limit. Preserve it privately; publish a verified optimized image below the limit. `TNM_bookcover_small.jpg` (~5.94 MiB) is an available candidate, subject to dimension/quality checks. Record any replacement and rewrite references; do not copy the oversize file blindly into public output.
+- Exclude `.DS_Store` from staged public assets. Full image decoding, visual review and checksums remain implementation tasks.
 
 ---
 
@@ -278,14 +309,14 @@ Migration flags must accept real user-supplied paths; refuse placeholder paths o
 
 ### 4.1 What the owner must provide, and when
 
-No export is required to understand the target architecture. Real artifacts ARE required to implement/verify the importer and to release the migrated content:
+The SQL, matching images and theme/MU code have now been supplied (§1.3). Use those artifacts first; this checklist describes source coverage, not a request for the owner to download everything again. Additional artifacts are required only when a specific unresolved rendering/data issue needs them:
 
 1. Full database backup, with version/encoding noted. Keep the original immutable.
 2. Complete public media backup, usually `wp-content/uploads`, including originals and referenced derivatives/downloads. Obtain this separately from SQL.
 3. Custom plugin/theme source and ACF field definitions/registration code. If values are stored using ACF or PHP serialization, use WordPress-aware APIs during extraction.
 4. Enough local WordPress installation/environment information to load the backup offline: WordPress/PHP/database versions and relevant plugins. Do not copy production secrets into Git.
 5. Optional WXR XML export as a cross-check, not the only authority for custom fields/media.
-6. If available, last successful Gatsby build's generated search JSON, route/page-data manifests, sitemap, or a sanitized snapshot of the GraphQL results used in `gatsby-node.js`. These improve exact baseline ordering and text fidelity.
+6. Optional: last successful Gatsby build's generated search JSON, route/page-data manifests, sitemap, or a sanitized GraphQL snapshot. Useful for comparison, but not required to recreate waived historical excerpts or old URLs.
 7. A few owner-selected representative articles, especially code-heavy and relationship-heavy entries, for visual signoff.
 
 Database + custom code is sufficient to design the structured extraction, but not sufficient to restore missing binary files. Do not say media is migrated until those files actually exist locally.
@@ -310,7 +341,7 @@ Version the normalized export schema. Emit UTF-8 JSON/JSONL and a manifest, neve
 - `schemaVersion`, actual source post type, database ID, GraphQL/global ID if available, status.
 - Original slug, title as returned to Gatsby and separately decoded display title, original permalink/URI, all known legacy paths.
 - `post_date`, `post_date_gmt`, modification values, WordPress timezone option/offset settings. Preserve original strings.
-- Raw body, rendered body, raw and rendered excerpt, including WordPress-generated excerpt if Gatsby used it.
+- Raw body, rendered body, any manually stored excerpt, and the deterministic newly generated summary used by the new site. Historical WordPress-generated excerpts are optional archival data, not an extraction prerequisite.
 - Taxonomy names/slugs/IDs and their original API order.
 - All relevant custom field raw values and normalized values; raw relationship IDs plus resolved type/slug/title.
 - Attachment records: ID, original URL, relative upload path, MIME, file size, checksum, dimensions, alt, caption, description, derivative metadata.
@@ -324,15 +355,15 @@ Do not assume the field name `shortStory` is a SQL column or ACF key: it is a Gr
 
 Before conversion:
 
-1. Save a sanitized public-only source snapshot with original rendered HTML/excerpts and ordering.
+1. Save a sanitized public-only source snapshot with original bodies, any stored excerpts, generated summaries and deterministic source ordering.
 2. Capture the active Gatsby search datasets if available: books, stories, posts, projects, project miscellany and lookup counts. Do not substitute unused `searchData.json`.
-3. If they are unavailable, run the original pure transformations against the sanitized local export; record that this baseline is reconstructed. Compare against any deployed artifacts or the owner-approved old site where accessible.
+3. If old datasets are unavailable, run original pure transformations/search algorithms against the sanitized export with the newly generated summaries. Record that this is a reconstructed, intentionally updated corpus. Historical deployed results need not match excerpt-dependent changes.
 4. Copy old pure algorithms/tests into `tests/reference/` with imports isolated. Adapt IO only, not matching semantics. Tests must not import production WordPress or Gatsby.
 5. Freeze expected ordered IDs/slugs and suggestions for selected query fixtures before writing the new implementation.
 6. Capture representative visual references and UI interaction behavior from a running local Gatsby build when feasible. If Gatsby cannot build due to old dependencies, record the limitation, use exported datasets/pure tests, and require owner signoff for unverified UI behavior. Do not claim runtime parity from source inspection alone.
-7. Record original source order and timezone in a committed sanitized manifest. Tie behavior cannot be guaranteed from database IDs guessed after the fact.
+7. Record available original source order and timezone in a committed sanitized manifest. If original array ordering cannot be recovered, choose a documented deterministic per-type order (e.g. numeric source ID ascending), feed that same order to both reference and ported engines, and record that historical equal-weight/equal-date ties may differ. Do not block on unavailable deployed artifacts.
 
-Exit gate: public-only counts by type, required artifacts, timezones, custom-field mapping, media inventory, actual paths, and baseline provenance are documented. No production cutover before unresolved content/source-order questions are addressed or explicitly accepted.
+Exit gate: public-only counts by type, required artifacts, timezones, custom-field mapping, media inventory, chosen paths, and same-input search baseline provenance are documented. No production cutover with unresolved content loss or unsafe data; missing historical excerpts, optional old redirects and unavailable old array ordering are not blockers under the documented policies.
 
 ---
 
@@ -340,22 +371,22 @@ Exit gate: public-only counts by type, required artifacts, timezones, custom-fie
 
 ### 5.1 Content Collections
 
-Define four collections in `src/content.config.ts` with a shared base schema and type-specific extensions. Use an explicit frontmatter `slug`, not a title-to-slug derivation. Normalize collection references through one route helper.
+Define four collections in `src/content.config.ts` with a shared base schema and type-specific extensions. At import, prefer the stored `post_name`; otherwise derive a stable slug from the decoded database title (Unicode normalization, lowercase, whitespace-to-hyphens, removal of unsafe URL/path characters). Validate case-fold/encoded collisions and use a stable source-ID suffix where needed. Persist the final slug explicitly in frontmatter so later title edits do not move URLs automatically. Record source type/ID → final slug and rewrite all internal links and relationships through that map.
 
 Base fields:
 
-| Field                   | Type / rule                                                                                             |
-| ----------------------- | ------------------------------------------------------------------------------------------------------- |
-| `title`                 | Nonempty Unicode string, decoded once for display                                                       |
-| `slug`                  | Exact source slug/path; no leading/trailing slash, `..`, query/hash, or unsafe path traversal           |
-| `published`             | Quoted `YYYY-MM-DD` calendar date, validated strictly; no implicit YAML date casting                    |
-| `publishedAt`           | Optional explicit-offset/RFC3339 timestamp for actual instants; use when known, never invent a timezone |
-| `updated` / `updatedAt` | Optional date/timestamp with equivalent validation                                                      |
-| `description`           | Plain-text SEO description, not raw HTML                                                                |
-| `excerpt`               | Optional author-controlled readable summary; imported excerpt is preserved semantically                 |
-| `legacy`                | Optional object: `wpId`, actual `postType`, `paths: string[]`, `sourceOrder`, `searchProfileId`         |
-| `cover`                 | Optional local absolute URL plus alt/width/height metadata, where relevant                              |
-| `draft`                 | Optional, default false; future drafts must be excluded from all public indexes/routes/feed/sitemap     |
+| Field                   | Type / rule                                                                                                    |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `title`                 | Nonempty Unicode string, decoded once for display                                                              |
+| `slug`                  | Chosen stable source/title-derived slug; no leading/trailing slash, `..`, query/hash, or unsafe path traversal |
+| `published`             | Quoted `YYYY-MM-DD` calendar date, validated strictly; no implicit YAML date casting                           |
+| `publishedAt`           | Optional explicit-offset/RFC3339 timestamp for actual instants; use when known, never invent a timezone        |
+| `updated` / `updatedAt` | Optional date/timestamp with equivalent validation                                                             |
+| `description`           | Plain-text SEO description, not raw HTML                                                                       |
+| `excerpt`               | Optional author summary; otherwise generated by §5.6; no historical excerpt fidelity required                  |
+| `legacy`                | Optional object: `wpId`, actual `postType`, `paths: string[]`, `sourceOrder`, `searchProfileId`                |
+| `cover`                 | Optional local absolute URL plus alt/width/height metadata, where relevant                                     |
+| `draft`                 | Optional, default false; future drafts must be excluded from all public indexes/routes/feed/sitemap            |
 
 Use separate legacy search fields in the compatibility source, not raw legacy HTML in human-facing frontmatter. Keep Markdown as the article source of truth.
 
@@ -448,6 +479,19 @@ Write ordinary code using fenced blocks with a language, such as `ts`, `js`, `ts
 
 ---
 
+### 5.6 Generated summaries: approved replacement for historical excerpts
+
+Use one deterministic summary helper for imported and future content wherever a card, post search record, RSS item or fallback description needs a summary:
+
+1. Prefer a nonempty explicit Markdown frontmatter `excerpt`. An existing manually stored WP excerpt may be imported as that override after converting it to plain text; preserving it is optional.
+2. Otherwise extract prose from the Markdown/MDX AST in document order. Exclude code blocks/inline executable expressions, scripts/styles, component implementation, image URLs and markup; keep readable inline text and link labels. Do not execute MDX widgets to obtain summaries.
+3. Collapse prose whitespace and use up to 300 Unicode code points, cutting at the last word boundary within the limit and appending `…` only when shortened. If no boundary exists, cut at the code-point limit. Never split a surrogate pair.
+4. If there is no prose, fall back to a nonempty description, then the title. Do not fail because a WordPress excerpt is empty.
+5. Feed this resulting plain summary into the unchanged legacy post-search transformation where an excerpt is expected. Do not add full-body blog search as an incidental change.
+6. Test generation independently and freeze the resulting launch input dataset. The generated text need not reproduce WordPress's word count, HTML wrapper, ellipsis or previous summary bytes.
+
+Do not restore WordPress, install WPGraphQL, request a historical build or contact the live site **solely to reproduce excerpts**. A local WordPress restore may still be appropriate for real block/shortcode/body/custom-field extraction issues. Expected summary-driven changes to actual matches and vocabulary weights are approved; matching and suggestion algorithms remain unchanged (§0.4).
+
 ## 6. Phase C: robust HTML → Markdown conversion
 
 ### 6.1 Pipeline order
@@ -455,7 +499,7 @@ Write ordinary code using fenced blocks with a language, such as `ts`, `js`, `ts
 Implement a deterministic staged pipeline with per-entry provenance:
 
 1. Read schema-validated normalized export; restrict to approved public types/statuses.
-2. Capture the legacy search projection BEFORE changing HTML, excerpts, links, whitespace, or entities.
+2. Capture source search fields/order before changing HTML/links/entities; generate post summaries from converted content using §5.6, then freeze the final shared search-input projection. Do not require historical WordPress excerpts.
 3. Parse rendered HTML with a real HTML parser, retaining original source locations/raw text where code payload extraction needs them.
 4. Identify/extract custom code blocks recursively, even when nested inside Gutenberg wrappers.
 5. Identify normal `<pre><code>` blocks before generic HTML conversion; protect their exact code payloads.
@@ -542,21 +586,21 @@ Preserve the original public upload path under `public/wp-content/uploads/` for 
 7. Copy old `src/files/images/` assets into a documented new structure: logo/icon, fallback covers, technology/social icons and project screenshots.
 8. Build-time optimized derivatives may be used for cards/covers, but original compatibility URLs must still resolve. Limit formats/widths so file count remains reasonable.
 9. Add width/height where known, responsive styles, and lazy loading below the fold. Do not lazy-load the main above-the-fold image by default.
-10. Fail if a required asset is missing or >25 MiB. Owner must choose compression/splitting/exclusion/another explicitly approved approach before deployment; no automatic billed storage.
+10. Fail if a required asset is missing or deployed output exceeds 25 MiB per asset. For the already identified `2023/08/TNM_bookcover.jpg`, retain the original privately and prepare a quality-checked optimized version (or verify the supplied smaller candidate); record the path mapping. Do not publish the oversize original or add billed storage. Report any additional oversize assets for review.
 
 The portfolio currently links to an external `utfs.io` resume. Preserve that existing link initially, document it as an external dependency, and offer localization only if the owner supplies the file and authorizes the change. Do not silently delete it or assume it belongs to the WordPress uploads backup.
 
 ### 7.2 Route manifest
 
-Generate a versioned manifest with each source ID/type, old public pathname(s), canonical new pathname, canonical URL, known anchors, and relevant legacy WordPress paths. Sources include Gatsby route generation, WP permalink export, any sitemap/build manifest, and owner-provided high-value links.
+Generate a versioned manifest keyed by source type/database ID with chosen slug, canonical new pathname/URL, internal link/anchor mappings, and readily available old paths. Prefer stored slugs; title-derived slugs are acceptable. Exhaustive historical URL reconstruction is optional and must not block launch. Keep source identity independent from the final slug so references and tests remain stable.
 
 - Main content prefixes remain `/post/`, `/book/`, `/story/`, `/project/`.
 - Same-path redirects should rely on tested slash normalization, not unnecessary redirect chains.
-- Map WordPress permalinks that differ from Gatsby paths explicitly. Do not assume every WordPress path is `/post/{slug}`.
+- Add straightforward known old-path redirects where practical, but treat exhaustive WordPress permalink preservation as best-effort. The database uses `/%category%/%postname%/`; do not assume every old path is `/post/{slug}`. Rewriting internal content links and references to the chosen new routes is mandatory.
 - Map legacy attachment links to local assets where known.
 - Do not proxy or forward `/wp-admin`, `/wp-login.php`, `/graphql`, or WordPress APIs to a vanished backend. They should not expose backup data; unknown retired endpoints may return 404.
 - Do not configure an SPA catch-all that converts unknown routes to homepage 200s.
-- Query-based WordPress links such as `?p=123` require separate handling: Pages path redirects do not provide arbitrary query-to-post lookup. Inventory actual use and use supported free Cloudflare redirect rules/Bulk Redirect capabilities only after checking query support and quotas. If no zero-cost supported mapping fits, record the limitation and obtain owner approval; do not introduce a Worker merely to hide it.
+- Query-based WordPress links such as `?p=123` are optional historical compatibility. Rewrite internal occurrences using source IDs. If external redirect preservation is impractical within free supported rules, document it and move on; do not block launch or introduce a Worker for it.
 
 ### 7.3 Domains, TLS, redirects and canonicalization
 
@@ -586,7 +630,7 @@ Create committed `content/search-compat.json` containing only sanitized, previou
 For each imported entry store:
 
 - Stable key and original per-type source order.
-- Exact old search-facing title and content/excerpt projection (which may contain short raw HTML for books/projects).
+- Source search-facing title/content projection (which may contain short raw HTML for books/projects), with the newly generated post summary from §5.6 replacing historical excerpts. Store final route identity separately if the slug changes.
 - Exact legacy date-information object serialized as ISO instant plus original year/month/full/short values.
 - Ordered metadata-input token stream **after the old per-type field selection and truthy filtering, before `generateLookup()`**, coercing purchase-link objects to their legacy string representation deliberately.
 - Categories/tags, technology/host fields and named relationships needed by the active search/card adapters.
@@ -597,14 +641,14 @@ This compact profile permits deterministic regeneration of metadata booleans and
 Rules:
 
 1. The importer captures these projections from the original source/transforms, before Markdown conversion.
-2. Imported entries use their captured projections at launch. Content schemas/references/rendering still use Markdown, not the compatibility file.
+2. Imported entries use the captured source projections plus approved regenerated summaries at launch. Content schemas/references/rendering still use Markdown, not the compatibility file. Do not store obsolete excerpts as mandatory search inputs.
 3. Every non-draft entry must have either a valid imported profile or the current native-content profile; no unindexed orphan entries.
 4. For future Markdown entries, generate the same per-type metadata shape from a deterministic plain-content AST projection: exclude executable MDX expressions/scripts, resolve text deliberately, no runtime rendering of widgets to index them.
 5. Preserve existing per-type scope: posts use title, excerpt, categories/tags/date, **not full article bodies**; stories contribute full text to metadata; books/projects use the legacy 300-character projection.
-6. Require/derive a deterministic excerpt for native posts. Document derivation (first prose paragraph, legacy cleanup/truncation) and permit explicit frontmatter override.
-7. Order new native entries deterministically after imported source-order entries within each type (explicit migration order then stable slug order is acceptable). Final displayed sorting remains date descending. New vocabulary necessarily changes aggregate suggestions; exact parity claims apply to the frozen launch corpus.
+6. Generate summaries for imported and native posts through §5.6, with optional frontmatter override. Use identical resulting input in reference and ported search tests.
+7. Order new native entries deterministically after imported source-order entries within each type (explicit migration order then stable slug order is acceptable). Final displayed sorting remains date descending. Exact parity claims apply to both engines receiving the same frozen launch inputs, not to historical deployed suggestions based on different excerpts.
 8. Detect relevant imported entry edits using fingerprints. Provide a documented refresh command to update its profile from new authoring content; require a diff of search fixtures. Do not silently retain stale search data after substantive edits or attempt to recreate the old PHP rendering forever.
-9. Test profile generation against original active datasets, not a new implementation's own output.
+9. Test profile generation against isolated copies of the original transformations using the same generated-summary/source-input fixtures. Where old active datasets exist, compare them separately and explain approved summary/slug/order changes; do not make their availability a prerequisite.
 
 ### 8.2 Global result matching contract
 
@@ -748,7 +792,7 @@ wip→Work In Progress; ws→WebSockets; rs→Rust.
 
 Compare ordered identifiers, metadata booleans, vocabulary counts AND ordering, prefix results AND ordering, Levenshtein results AND ordering. Matching only result counts is insufficient.
 
-Any unexplained difference blocks release. Allowed differences are explicit: removed Theme page/navigation, approved rendering/design changes, updated canonical host and normalized links. Conversion should not otherwise alter search behavior.
+Any unexplained same-input algorithm difference blocks release. Approved differences from the historical deployed site include removed Theme page/navigation, regenerated excerpts and their downstream matches/lookup weights/suggestions, chosen database/title-derived slugs, documented unavailable-original-order fallback, rendering/design changes and canonical/link normalization. Compare source IDs when slugs differ. These exceptions do not permit changes to trie/Levenshtein/matching/filter semantics.
 
 ---
 
@@ -1003,7 +1047,7 @@ Use small committed synthetic/public fixtures, not real private backups.
 - Global vocabulary counts and enumeration order, empty tokens, repeated terms, numeric-looking year keys, source type/order effects.
 - HTML cleanup punctuation/entity quirks, 300-char boundaries, truncate-before-clean versus clean-before-truncate.
 - Missing post full bodies, absent story alternate-link-name inputs, legacy purchase-link `object` token, repo markers and technology labels.
-- All launch-corpus diffs reviewed; Theme removal explicitly excluded from parity comparisons where appropriate.
+- All launch-corpus diffs reviewed; classify Theme removal, generated-summary effects, approved slug changes and documented ordering fallback separately. Require exact results from old/new algorithms on identical regenerated input fixtures; do not assert historical deployed-corpus equality.
 
 ### 13.3 Filter/URL/pagination tests
 
@@ -1111,7 +1155,7 @@ Preview tests must not succeed only because WordPress is still serving missing i
 - [ ] Importer output counts match public source counts by type.
 - [ ] All required uploads/covers/downloads copied and verified.
 - [ ] All code blocks converted and verified, no leftover JSON wrappers or placeholder tokens outside deliberate code examples.
-- [ ] Search golden/differential tests pass, with approved Theme removal documented.
+- [ ] Search golden/differential tests pass on shared inputs; approved Theme removal, generated-summary effects and slug/order changes documented.
 - [ ] All filter/URL/pagination browser checks pass or explicitly accepted source quirks are documented.
 - [ ] Full-site link/anchor validation passes; manual article/relationship review completed.
 - [ ] Pages preview works with WordPress blocked/offline.
@@ -1147,7 +1191,7 @@ Cancel WordPress hosting only after:
 
 - New site works without WP network access or credentials.
 - All media/downloads and custom field relationships are verified.
-- Required old URLs resolve/redirect as approved.
+- Chosen canonical routes and all internal links work; practical legacy redirects are tested. Exhaustive historical external URL preservation is not required.
 - Backup can be restored locally and public source content is in Git.
 - Future authoring workflow has been exercised with a real test article/PR/merge.
 - Owner explicitly approves cancellation.
@@ -1190,7 +1234,7 @@ Potential parallel delegation: one agent owns importer/media; another owns pure 
 
 ### 16.2 Definition of done
 
-The migration is complete when every intended public content item is represented in reviewed Markdown/MDX, all owned required media is local, existing search/filter behavior is covered by differential and browser tests, the entire site is static on Pages, GitHub PR/merge deploys work, domain/legacy URLs and canonical metadata behave correctly, no WordPress or PostHog runtime dependency remains, and the owner can publish future Markdown without operating a CMS. Hosting retirement is complete only after the separate owner-approved observation/cancellation gate.
+The migration is complete when every intended public content item is represented in reviewed Markdown/MDX, all owned required media is local, existing search/filter behavior is covered by differential and browser tests, the entire site is static on Pages, GitHub PR/merge deploys work, chosen canonical routes, internal links, configured best-effort legacy redirects and canonical metadata behave correctly, no WordPress or PostHog runtime dependency remains, and the owner can publish future Markdown without operating a CMS. Hosting retirement is complete only after the separate owner-approved observation/cancellation gate.
 
 ---
 
