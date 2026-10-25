@@ -1,8 +1,7 @@
 ---
 import { getCollection } from "astro:content";
-
+import LatestCard from "../components/LatestCard.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
-import { contentPath } from "../config";
 const [posts, books, stories, projects] = await Promise.all([
     getCollection("posts", ({ data }) => !data.draft),
     getCollection("books", ({ data }) => !data.draft),
@@ -43,29 +42,14 @@ const latest = [
     title="Home"
     description="Get an overview of my latest creations. As a fluent speaker of Italian, former writer, editor and current fullstack dev, I have a lot to share."
 >
-    <h1 class="page-title">Latest Posts</h1>
-    {latest.length ? (
-        <div class="card-grid">
-            {latest.map(({ entry, kind }) => (
-                <article class="content-card">
-                    <h2>
-                        <a href={contentPath(kind, entry.data.slug)}>
-                            {entry.data.title}
-                        </a>
-                    </h2>
-                    <time datetime={entry.data.published}>
-                        {entry.data.published}
-                    </time>
-                    {(entry.data.excerpt || entry.data.description) && (
-                        <p>{entry.data.excerpt || entry.data.description}</p>
-                    )}
-                </article>
-            ))}
-        </div>
-    ) : (
-        <p>
-            Content is being prepared for migration. Once Markdown entries are
-            added to <code>src/content/</code>, the latest posts appear here.
-        </p>
-    )}
+    <div class="home-content">
+        <h1 class="lead-heading">Latest Posts</h1>
+        <section class="latest-group" aria-label="Latest posts and projects">
+            <ul class="latest-grid">
+                {latest.map(({ entry, kind }) => (
+                    <LatestCard entry={entry} kind={kind} />
+                ))}
+            </ul>
+        </section>
+    </div>
 </SiteLayout>

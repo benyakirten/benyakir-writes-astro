@@ -1,0 +1,148 @@
+---
+import { contentPath, type ContentKind } from "../config";
+const { entry, kind } = Astro.props as { entry: any; kind: ContentKind };
+const data = entry.data;
+const isPost = kind === "posts";
+const isProject = kind === "projects";
+const date = isProject ? data.firstReleased : data.published;
+const category = (data.categories ?? []).filter(
+    (value: string) => value.toLowerCase() !== "uncategorized",
+);
+const activeCategory =
+    category.length > 1
+        ? (category.find((value: string) => value !== "Ben's Blogs") ??
+          category[0])
+        : (category[0] ?? "Unknown");
+const tags = (data.tags ?? []).map((tag: string) =>
+    tag.replace(/\b\w/g, (letter: string) => letter.toUpperCase()),
+);
+const text = String(entry.body ?? "")
+    .replace(/^---[\s\S]*?---\s*/, "")
+    .replace(/^#{1,6}\s+/gm, "")
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/[*_`>#]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+const excerpt = (data.excerpt || data.description || text).slice(0, 290);
+const projectTechNames: Record<string, string> = {
+    js: "JavaScript",
+    ts: "TypeScript",
+    rs: "Rust",
+    py: "Python",
+    go: "Go",
+    cs: "C#",
+    php: "PHP",
+    gql: "GraphQL",
+    html: "HTML",
+    css: "CSS",
+};
+const techs = (data.technologies ?? []).map(
+    (technology: string) =>
+        projectTechNames[technology.toLowerCase()] ?? technology,
+);
+const itemHref = contentPath(kind, data.slug);
+---
+
+<li class="latest-card-item">
+    <article class:list={["latest-card", { "project-card": isProject }]}>
+        {isPost && (
+            <div class="latest-card-top">
+                <p class="latest-category">{activeCategory}</p>
+                <div class="latest-tags">
+                    {tags.slice(0, 2).map((tag: string) => (
+                        <span class="tag-pill">{tag}</span>
+                    ))}
+                    {tags.length > 2 && (
+                        <span class="tag-pill">{tags.length - 2} Others</span>
+                    )}
+                </div>
+            </div>
+        )}
+        {isProject && (
+            <div class="latest-card-top">
+                <h2 class="project-name">
+                    <a href={itemHref}>{data.title}</a>
+                </h2>
+                {data.hostedOn && data.mainLink && (
+                    <a
+                        class="project-host"
+                        href={data.mainLink}
+                        target="_blank"
+                        rel="noreferrer"
+                    >
+                        ◎ {data.hostedOn}
+                    </a>
+                )}
+            </div>
+        )}
+        {!isPost && !isProject && (
+            <h2 class="other-title">
+                <a href={itemHref}>{data.title}</a>
+            </h2>
+        )}
+        {isPost && (
+            <h2 class="latest-title">
+                <a href={itemHref}>{data.title}</a>
+            </h2>
+        )}
+        <p class="latest-excerpt">
+            {excerpt}
+            {text.length > excerpt.length ? "…" : ""}
+        </p>
+        {isProject && techs.length > 0 && (
+            <div class="project-techs">
+                {techs.map((technology: string) => (
+                    <span class="tech-pill">{technology}</span>
+                ))}
+            </div>
+        )}
+        <div class="latest-card-dates">
+            <span class="date-item">
+                <svg
+                    class="date-icon"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke-width="1.5"
+                    stroke="currentColor"
+                    aria-hidden="true"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                    />
+                </svg>
+                Published:{" "}
+                {new Date(`${date}T12:00:00Z`).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "2-digit",
+                    timeZone: "UTC",
+                })}
+            </span>
+            {isProject && data.latestUpdate && (
+                <span class="date-item">
+                    <span aria-hidden="true" class="date-icon update-icon">
+                        ⟳
+                    </span>
+                    Latest Update:{" "}
+                    {new Date(
+                        `${data.latestUpdate}T12:00:00Z`,
+                    ).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "2-digit",
+                        timeZone: "UTC",
+                    })}
+                </span>
+            )}
+        </div>
+        <a
+            class="latest-card-hit"
+            href={itemHref}
+            aria-label={`Read ${data.title}`}
+        ></a>
+        <span class="latest-card-arrow" aria-hidden="true"></span>
+    </article>
+</li>
