@@ -7,6 +7,14 @@ const {
     description = "Writing, development projects, and books by Benyakir Horowitz.",
 } = Astro.props;
 const canonical = new URL(Astro.url.pathname, SITE.origin).toString();
+const path = Astro.url.pathname;
+const navLinks = [
+    { name: "Portfolio", href: "/portfolio/" },
+    { name: "Blog", href: "/blog/" },
+    { name: "Author", href: "/author/" },
+    { name: "Projects", href: "/projects/" },
+    { name: "Home", href: "/" },
+];
 ---
 
 <!doctype html>
@@ -28,74 +36,182 @@ const canonical = new URL(Astro.url.pathname, SITE.origin).toString();
         <meta property="og:description" content={description} />
         <meta property="og:url" content={canonical} />
         <title>{SITE.name} - {title}</title>
-        <script is:inline>
-            try {
-                const preference =
-                    localStorage.getItem("benyakir-theme-preference") ||
-                    "system";
-                if (preference !== "system")
-                    document.documentElement.dataset.theme = preference;
-            } catch {}
-        </script>
     </head>
     <body>
-        <header class="site-header">
-            <a class="site-brand" href="/">
-                {SITE.name}
-            </a>
-            <nav class="site-nav" aria-label="Main navigation">
-                <a href="/blog/">Blog</a>
-                <a href="/author/">Books &amp; Stories</a>
-                <a href="/projects/">Projects</a>
-                <a href="/portfolio/">Portfolio</a>
-                <a href="/search/" data-search-link>
-                    Search
+        <div class="site-shell">
+            <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+            <nav class="sidebar" aria-label="Main navigation" data-sidebar>
+                <button
+                    class="sidebar-arrow"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                    data-sidebar-toggle
+                >
+                    ›
+                </button>
+                <div class="sidebar-content" data-sidebar-content>
+                    <div class="sidebar-links">
+                        <div class="sidebar-nav-group">
+                            {navLinks.map(({ name, href }) => {
+                                const active =
+                                    href === "/"
+                                        ? path === "/"
+                                        : path.startsWith(href);
+                                return (
+                                    <a
+                                        class:list={[
+                                            "sidebar-link",
+                                            { active },
+                                        ]}
+                                        href={href}
+                                        tabindex="-1"
+                                    >
+                                        {name}
+                                    </a>
+                                );
+                            })}
+                        </div>
+                        <div class="sidebar-actions">
+                            <button
+                                type="button"
+                                class="sidebar-action"
+                                data-search-open
+                            >
+                                <span class="sidebar-icon" aria-hidden="true">
+                                    ⌕
+                                </span>
+                                Search
+                            </button>
+                            <button
+                                type="button"
+                                class="sidebar-action"
+                                data-shortcuts-open
+                            >
+                                <span class="sidebar-icon" aria-hidden="true">
+                                    ⌨
+                                </span>
+                                Shortcuts
+                            </button>
+                        </div>
+                        <div class="sidebar-legal">
+                            <span>© 2021-2024 by Benyakir Horowitz</span>
+                            <span>All Rights Reserved</span>
+                        </div>
+                    </div>
+                </div>
+                <a
+                    class="sidebar-logo"
+                    href="/"
+                    aria-label="Benyakir Writes home"
+                >
+                    <img src="/images/logo.svg" alt="Benyakir Writes Logo" />
                 </a>
-                <label class="theme-control">
-                    Theme{" "}
-                    <select aria-label="Color theme" data-theme-select>
-                        <option value="system">System</option>
-                        <option value="light">Light</option>
-                        <option value="dark">Dark</option>
-                    </select>
-                </label>
             </nav>
-        </header>
-        <main>
-            <slot />
-        </main>
+            <main class="site-main">
+                <slot />
+            </main>
+        </div>
         <footer class="site-footer">
             © {new Date().getFullYear()} {SITE.author} ·{" "}
             <a href="/rss.xml">RSS</a>
         </footer>
+        <dialog class="shortcuts-dialog" data-shortcuts-dialog>
+            <button
+                type="button"
+                class="shortcut-close"
+                aria-label="Close shortcuts"
+                data-shortcuts-close
+            >
+                ×
+            </button>
+            <h1>Keyboard Shortcuts</h1>
+            <h2>General</h2>
+            <div class="shortcut-list">
+                <span>Open/Close Shortcuts Menu</span>
+                <kbd>?</kbd>
+                <span>Open Search Menu</span>
+                <kbd>⌘/ctrl + /</kbd>
+                <span>Close Navigation Menu</span>
+                <kbd>&lt;</kbd>
+                <span>Open Navigation Menu</span>
+                <kbd>&gt;</kbd>
+                <span>Close Menu</span>
+                <kbd>esc</kbd>
+            </div>
+            <h2>Filter-only</h2>
+            <div class="shortcut-list">
+                <span>Focus New Filter Button</span>
+                <kbd>F/f</kbd>
+                <span>Focus Page Button</span>
+                <kbd>P/p</kbd>
+                <span>Next Page</span>
+                <kbd>+/=</kbd>
+                <span>Previous Page</span>
+                <kbd>-/_</kbd>
+            </div>
+        </dialog>
         <script>
-            const select = document.querySelector<HTMLSelectElement>(
-                "[data-theme-select]",
+            const sidebar =
+                document.querySelector<HTMLElement>("[data-sidebar]");
+            const toggle = document.querySelector<HTMLButtonElement>(
+                "[data-sidebar-toggle]",
             );
-            if (select) {
-                try {
-                    select.value =
-                        localStorage.getItem("benyakir-theme-preference") ||
-                        "system";
-                } catch {}
-                select.addEventListener("change", () => {
-                    const value = select.value;
-                    document.documentElement.dataset.theme =
-                        value === "system" ? "" : value;
-                    try {
-                        localStorage.setItem(
-                            "benyakir-theme-preference",
-                            value,
-                        );
-                    } catch {}
-                });
-            }
+            const links =
+                document.querySelectorAll<HTMLAnchorElement>(".sidebar-link");
+            const backdrop = document.querySelector<HTMLElement>(
+                "[data-sidebar-backdrop]",
+            );
+            const setSidebar = (open: boolean) => {
+                sidebar?.classList.toggle("open", open);
+                backdrop?.classList.toggle("visible", open);
+                toggle?.setAttribute("aria-expanded", String(open));
+                toggle?.setAttribute(
+                    "aria-label",
+                    open ? "Close navigation" : "Open navigation",
+                );
+                links.forEach((link) => (link.tabIndex = open ? 0 : -1));
+            };
+            toggle?.addEventListener("click", () =>
+                setSidebar(!sidebar?.classList.contains("open")),
+            );
+            backdrop?.addEventListener("click", () => setSidebar(false));
+            const searchOpen = () =>
+                document.dispatchEvent(new Event("open-site-search"));
             document
-                .querySelector("[data-search-link]")
-                ?.addEventListener("click", (event) => {
-                    event.preventDefault();
-                    document.dispatchEvent(new Event("open-site-search"));
-                });
+                .querySelectorAll("[data-search-open]")
+                .forEach((button) =>
+                    button.addEventListener("click", searchOpen),
+                );
+            const shortcuts = document.querySelector<HTMLDialogElement>(
+                "[data-shortcuts-dialog]",
+            );
+            document
+                .querySelector("[data-shortcuts-open]")
+                ?.addEventListener("click", () => shortcuts?.showModal());
+            document
+                .querySelector("[data-shortcuts-close]")
+                ?.addEventListener("click", () => shortcuts?.close());
+            shortcuts?.addEventListener("click", (event) => {
+                if (event.target === shortcuts) shortcuts.close();
+            });
+            document.addEventListener("keydown", (event) => {
+                const target = event.target;
+                const typing =
+                    target instanceof HTMLElement &&
+                    (target.isContentEditable ||
+                        ["INPUT", "TEXTAREA", "SELECT"].includes(
+                            target.tagName,
+                        ));
+                if (event.key === "Escape") setSidebar(false);
+                if (typing) return;
+                if (event.shiftKey && event.key === "<") setSidebar(false);
+                if (event.shiftKey && event.key === ">") setSidebar(true);
+                if (event.shiftKey && event.key === "?") {
+                    if (shortcuts?.open) shortcuts.close();
+                    else shortcuts?.showModal();
+                }
+            });
         </script>
         <SearchIsland client:load />
     </body>
