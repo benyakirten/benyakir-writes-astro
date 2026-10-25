@@ -34,10 +34,8 @@ const items = [
 describe("listing filters", () => {
   it("supports any/all matching and composes independent filters with AND", () => {
     expect(
-      filterBySearch(
-        items,
-        { id: "search_1", search: ["astro web"], type: "any" },
-        (item, word) => item.title.toLowerCase().includes(word),
+      filterBySearch(items, { id: "search_1", search: ["astro web"], type: "any" }, (item, word) =>
+        item.title.toLowerCase().includes(word),
       ),
     ).toHaveLength(1);
     const first = filterByKeywords(
@@ -69,10 +67,7 @@ describe("listing filters", () => {
       },
       (item) => item.date,
     );
-    expect(matches.map((item) => item.title)).toEqual([
-      "TypeScript guide",
-      "Travel",
-    ]);
+    expect(matches.map((item) => item.title)).toEqual(["TypeScript guide", "Travel"]);
   });
 
   it("preserves search-filter insertion order and defaults to all", () => {
@@ -102,10 +97,7 @@ describe("URL compatibility helpers", () => {
   it("parses URL-encoded commas as separate values, matching the original behavior", () => {
     const params = new URLSearchParams();
     params.set("search_1", serializeToQueryParams(["alpha,beta"]));
-    expect(parseQueryState(`?${params.toString()}`).get("search_1")).toEqual([
-      "alpha",
-      "beta",
-    ]);
+    expect(parseQueryState(`?${params.toString()}`).get("search_1")).toEqual(["alpha", "beta"]);
   });
 });
 

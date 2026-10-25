@@ -20,8 +20,7 @@ const pages = [
   {
     title: "Portfolio",
     slug: "/portfolio/",
-    description:
-      "My developer portfolio, including only my best and most up-to-date projects.",
+    description: "My developer portfolio, including only my best and most up-to-date projects.",
   },
   {
     title: "Projects",
@@ -124,9 +123,7 @@ const technologyNames = {
 function dateWords(value) {
   const [year, monthText] = String(value).split("-");
   const month = Number(monthText);
-  return month >= 1 && month <= 12
-    ? [monthNames[month - 1], shortMonths[month - 1], year]
-    : [year];
+  return month >= 1 && month <= 12 ? [monthNames[month - 1], shortMonths[month - 1], year] : [year];
 }
 
 function truncate(value, limit = 300) {
@@ -152,9 +149,7 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
   const directory = path.join(root, kind);
   let files = [];
   try {
-    files = (await readdir(directory))
-      .filter((file) => /\.(md|mdx)$/.test(file))
-      .sort();
+    files = (await readdir(directory)).filter((file) => /\.(md|mdx)$/.test(file)).sort();
   } catch {}
   for (let sourceOrder = 0; sourceOrder < files.length; sourceOrder++) {
     const file = files[sourceOrder];
@@ -165,12 +160,7 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
     if (data.draft) continue;
     if (!data.title || !data.slug || !data.published)
       throw new Error(`Missing required title/slug/published: ${kind}/${file}`);
-    const summaryText = summary(
-      source,
-      data.excerpt,
-      data.description,
-      data.title,
-    );
+    const summaryText = summary(source, data.excerpt, data.description, data.title);
     const content = plainText(source);
     const categories = data.categories ?? [];
     const tags = data.tags ?? [];
@@ -181,10 +171,7 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
       stories: "story",
       projects: "project",
     }[kind];
-    const date =
-      kind === "projects"
-        ? data.firstReleased || data.published
-        : data.published;
+    const date = kind === "projects" ? data.firstReleased || data.published : data.published;
     const dateMetadata = dateWords(date);
     const longTechnologies = technologies.map((item) => {
       const match = Object.entries(technologyNames).find(
@@ -208,12 +195,8 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
         ...(data.purchaseLinks ?? []).map(() => "[object Object]"),
         ...normalize(truncate(summaryText)).split(" "),
         ...(data.relatedStoryTitles ?? []).flatMap((title) => title.split(" ")),
-        ...(data.relatedProjectTitle
-          ? data.relatedProjectTitle.split(" ")
-          : []),
-        ...(data.relatedProjectDescription
-          ? data.relatedProjectDescription.split(" ")
-          : []),
+        ...(data.relatedProjectTitle ? data.relatedProjectTitle.split(" ") : []),
+        ...(data.relatedProjectDescription ? data.relatedProjectDescription.split(" ") : []),
       ];
     } else if (kind === "stories") {
       indexed = [
@@ -250,11 +233,7 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
       url: `/${type}/${data.slug.replace(/^\/+|\/+$/g, "")}/`,
       excerpt: summaryText,
       content:
-        kind === "stories"
-          ? truncate(content)
-          : kind === "posts"
-            ? undefined
-            : truncate(content),
+        kind === "stories" ? truncate(content) : kind === "posts" ? undefined : truncate(content),
       categories,
       tags,
       technologies,
@@ -266,15 +245,11 @@ for (const kind of ["books", "stories", "posts", "projects"]) {
     });
   }
   records[kind].sort(
-    (a, b) =>
-      b.published.localeCompare(a.published) || a.sourceOrder - b.sourceOrder,
+    (a, b) => b.published.localeCompare(a.published) || a.sourceOrder - b.sourceOrder,
   );
 }
 
-await writeFile(
-  "src/generated/search-data.json",
-  `${JSON.stringify(records)}\n`,
-);
+await writeFile("src/generated/search-data.json", `${JSON.stringify(records)}\n`);
 await writeFile("src/generated/lookups.json", `${JSON.stringify(lookup)}\n`);
 console.log(
   `Generated search data: ${records.posts.length} posts, ${records.books.length} books, ${records.stories.length} stories, ${records.projects.length} projects.`,

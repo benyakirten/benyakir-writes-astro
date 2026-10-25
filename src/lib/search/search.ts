@@ -26,10 +26,7 @@ export type SearchDataset = {
 
 export type SearchResults = SearchDataset;
 
-export function search(
-  query: string,
-  dataset: SearchDataset,
-): SearchResults | null {
+export function search(query: string, dataset: SearchDataset): SearchResults | null {
   if (!query) return null;
   const words = query.toLowerCase().split(" ");
   const hasText = (value: string | undefined, word: string) =>
@@ -43,23 +40,17 @@ export function search(
     books: filter(
       dataset.books,
       (item, word) =>
-        hasText(item.title, word) ||
-        hasText(item.content, word) ||
-        Boolean(item.meta[word]),
+        hasText(item.title, word) || hasText(item.content, word) || Boolean(item.meta[word]),
     ),
     stories: filter(
       dataset.stories,
       (item, word) =>
-        Boolean(item.meta[word]) ||
-        hasText(item.title, word) ||
-        hasText(item.content, word),
+        Boolean(item.meta[word]) || hasText(item.title, word) || hasText(item.content, word),
     ),
     projects: filter(
       dataset.projects,
       (item, word) =>
-        Boolean(item.meta[word]) ||
-        hasText(item.title, word) ||
-        hasText(item.content, word),
+        Boolean(item.meta[word]) || hasText(item.title, word) || hasText(item.content, word),
     ),
     posts: filter(
       dataset.posts,

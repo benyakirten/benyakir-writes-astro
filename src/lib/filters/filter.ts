@@ -11,10 +11,7 @@ export function filterBySearch<T>(
   matches: (item: T, word: string) => boolean,
 ): T[] {
   if (filter.search.length === 0 || filter.search[0] === "") return [...items];
-  const words = filter.search[0]
-    .replace(/,\s/g, " ")
-    .replace(/,(\S)/g, " $1")
-    .split(" ");
+  const words = filter.search[0].replace(/,\s/g, " ").replace(/,(\S)/g, " $1").split(" ");
   return items.filter((item) =>
     filter.type === "any"
       ? words.some((word) => matches(item, word))
@@ -42,9 +39,7 @@ export function filterByDate<T>(
 ): T[] {
   const start = filter.start.getTime();
   const end = filter.end.getTime();
-  return items.filter(
-    (item) => date(item).getTime() >= start && date(item).getTime() <= end,
-  );
+  return items.filter((item) => date(item).getTime() >= start && date(item).getTime() <= end);
 }
 
 export function buildTextFilters(state: Map<string, string[]>): SearchFilter[] {
@@ -65,10 +60,7 @@ export function applyTextFilters<T>(
   filters: readonly SearchFilter[],
   matches: (item: T, word: string) => boolean,
 ): T[] {
-  return filters.reduce(
-    (result, filter) => filterBySearch(result, filter, matches),
-    [...items],
-  );
+  return filters.reduce((result, filter) => filterBySearch(result, filter, matches), [...items]);
 }
 
 export function filterFromSearch(search: string): Map<string, string[]> {
@@ -92,9 +84,7 @@ export function matchesText(
     item.title.toLocaleLowerCase().includes(lowered) ||
     item.excerpt?.toLocaleLowerCase().includes(lowered) ||
     item.content?.toLocaleLowerCase().includes(lowered) ||
-    item.categories?.some((value) =>
-      value.toLocaleLowerCase().includes(lowered),
-    ) ||
+    item.categories?.some((value) => value.toLocaleLowerCase().includes(lowered)) ||
     item.tags?.some((value) => value.toLocaleLowerCase().includes(lowered)),
   );
 }

@@ -58,9 +58,10 @@ export class Trie {
       previous[0] = i;
       for (let j = 1; j <= right.length; j++) {
         const above = previous[j];
-        previous[j] = left[i - 1] === right[j - 1]
-          ? diagonal
-          : Math.min(previous[j] + 1, previous[j - 1] + 1, diagonal + 1);
+        previous[j] =
+          left[i - 1] === right[j - 1]
+            ? diagonal
+            : Math.min(previous[j] + 1, previous[j - 1] + 1, diagonal + 1);
         diagonal = above;
       }
     }

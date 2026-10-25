@@ -1,11 +1,4 @@
-import {
-  access,
-  copyFile,
-  mkdir,
-  readFile,
-  stat,
-  writeFile,
-} from "node:fs/promises";
+import { access, copyFile, mkdir, readFile, stat, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { parseHTML } from "linkedom";
 import phpSerialize from "php-serialize";
@@ -15,14 +8,11 @@ import { stringify } from "yaml";
 
 const options = new Map();
 for (let i = 2; i < process.argv.length; i++) {
-  if (process.argv[i].startsWith("--"))
-    options.set(process.argv[i].slice(2), process.argv[++i]);
+  if (process.argv[i].startsWith("--")) options.set(process.argv[i].slice(2), process.argv[++i]);
 }
 const applying = process.argv.includes("--apply");
 const sqlPath = path.resolve(options.get("sql") ?? "data/benyakir_WPSTA.sql");
-const uploadsPath = options.get("uploads")
-  ? path.resolve(options.get("uploads"))
-  : null;
+const uploadsPath = options.get("uploads") ? path.resolve(options.get("uploads")) : null;
 const sql = await readFile(sqlPath, "utf8");
 const prefix = "_STA_";
 const tableNames = new Set([
@@ -70,12 +60,7 @@ function parseRows(source, start, columns) {
         values.push(value);
       } else {
         const valueStart = index;
-        while (
-          index < source.length &&
-          source[index] !== "," &&
-          source[index] !== ")"
-        )
-          index++;
+        while (index < source.length && source[index] !== "," && source[index] !== ")") index++;
         const raw = source.slice(valueStart, index).trim();
         values.push(raw === "NULL" ? null : raw);
       }
@@ -84,21 +69,15 @@ function parseRows(source, start, columns) {
         index++;
         break;
       }
-      if (source[index] !== ",")
-        throw new Error(`Invalid SQL row delimiter near byte ${index}`);
+      if (source[index] !== ",") throw new Error(`Invalid SQL row delimiter near byte ${index}`);
       index++;
     }
     if (values.length !== columns.length)
-      throw new Error(
-        `SQL row has ${values.length} fields; expected ${columns.length}`,
-      );
-    rows.push(
-      Object.fromEntries(columns.map((column, i) => [column, values[i]])),
-    );
+      throw new Error(`SQL row has ${values.length} fields; expected ${columns.length}`);
+    rows.push(Object.fromEntries(columns.map((column, i) => [column, values[i]])));
     while (/\s/.test(source[index] ?? "")) index++;
     if (source[index] === ";") break;
-    if (source[index] !== ",")
-      throw new Error(`Expected row separator near byte ${index}`);
+    if (source[index] !== ",") throw new Error(`Expected row separator near byte ${index}`);
     index++;
   }
   return rows;
@@ -116,13 +95,9 @@ for (const [table, rows] of tables) {
 
 const posts = tables.get(`${prefix}posts`);
 const metadata = tables.get(`${prefix}postmeta`);
-const terms = new Map(
-  tables.get(`${prefix}terms`).map((term) => [term.term_id, term]),
-);
+const terms = new Map(tables.get(`${prefix}terms`).map((term) => [term.term_id, term]));
 const taxonomy = new Map(
-  tables
-    .get(`${prefix}term_taxonomy`)
-    .map((term) => [term.term_taxonomy_id, term]),
+  tables.get(`${prefix}term_taxonomy`).map((term) => [term.term_taxonomy_id, term]),
 );
 const relations = tables.get(`${prefix}term_relationships`);
 const meta = new Map();
@@ -157,10 +132,7 @@ const sourceType = {
   shortstory: "stories",
 };
 const idToSlug = new Map(
-  publicPosts.map((post) => [
-    post.ID,
-    post.post_name || slugify(post.post_title),
-  ]),
+  publicPosts.map((post) => [post.ID, post.post_name || slugify(post.post_title)]),
 );
 const slugCounts = new Map();
 for (const post of publicPosts) {
@@ -198,9 +170,7 @@ function getMeta(id, key) {
     try {
       return phpSerialize.unserialize(value);
     } catch (error) {
-      throw new Error(
-        `Cannot decode serialized field ${key} for post ID ${id}: ${error.message}`,
-      );
+      throw new Error(`Cannot decode serialized field ${key} for post ID ${id}: ${error.message}`);
     }
   }
   return value;
@@ -282,12 +252,9 @@ function htmlToMarkdown(post) {
   };
   const blocks = [];
   let blockIndex = 0;
-  for (const element of [
-    ...body.querySelectorAll(".benyakir-syntax-highlighter"),
-  ]) {
+  for (const element of [...body.querySelectorAll(".benyakir-syntax-highlighter")]) {
     const pre = element.querySelector("pre");
-    if (!pre)
-      throw new Error(`Highlighter block has no <pre> in post ID ${post.ID}`);
+    if (!pre) throw new Error(`Highlighter block has no <pre> in post ID ${post.ID}`);
     let payload;
     const candidates = [pre.innerHTML, pre.textContent];
     for (const candidate of candidates) {
@@ -296,11 +263,7 @@ function htmlToMarkdown(post) {
         break;
       } catch {}
     }
-    if (
-      !payload ||
-      typeof payload.code !== "string" ||
-      typeof payload.lang !== "string"
-    ) {
+    if (!payload || typeof payload.code !== "string" || typeof payload.lang !== "string") {
       throw new Error(`Invalid syntax-highlighter JSON in post ID ${post.ID}`);
     }
     let code = payload.code
@@ -323,9 +286,7 @@ function htmlToMarkdown(post) {
       go: "go",
     }[payload.lang];
     if (!language)
-      throw new Error(
-        `Unsupported highlighter language ${payload.lang} in post ID ${post.ID}`,
-      );
+      throw new Error(`Unsupported highlighter language ${payload.lang} in post ID ${post.ID}`);
     blocks.push({
       token: `MIGRATION_CODE_BLOCK_${blockIndex++}`,
       code,
@@ -340,8 +301,7 @@ function htmlToMarkdown(post) {
     const codeElement = pre.querySelector("code");
     const code = codeElement?.textContent ?? pre.textContent ?? "";
     const classNames = `${pre.getAttribute("class") ?? ""} ${codeElement?.getAttribute("class") ?? ""}`;
-    const language =
-      classNames.match(/(?:language-|lang-)([\w+-]+)/)?.[1] ?? "";
+    const language = classNames.match(/(?:language-|lang-)([\w+-]+)/)?.[1] ?? "";
     const token = `MIGRATION_CODE_BLOCK_${blockIndex++}`;
     blocks.push({ token, code, language });
     const replacement = document.createElement("p");
@@ -350,17 +310,13 @@ function htmlToMarkdown(post) {
     report.codeBlocks++;
   }
   for (const element of [
-    ...body.querySelectorAll(
-      ".sharedaddy, .sd-sharing-enbaled, script, style, form",
-    ),
+    ...body.querySelectorAll(".sharedaddy, .sd-sharing-enbaled, script, style, form"),
   ]) {
     element.remove();
     report.widgetsRemoved++;
   }
   report.retainedEmbeds = body.querySelectorAll("iframe, video, audio").length;
-  for (const element of body.querySelectorAll(
-    "[src], [href], [poster], [srcset]",
-  )) {
+  for (const element of body.querySelectorAll("[src], [href], [poster], [srcset]")) {
     for (const attribute of ["src", "href", "poster", "srcset"]) {
       const value = element.getAttribute(attribute);
       if (!value) continue;
@@ -376,17 +332,11 @@ function htmlToMarkdown(post) {
           return [url, descriptor].filter(Boolean).join(" ");
         }
         if (parsed.pathname.includes("/wp-content/uploads/")) {
-          const relative = decodeURIComponent(
-            parsed.pathname.split("/wp-content/uploads/")[1],
-          );
-          const publicPath = relative.startsWith("2019/12/")
-            ? relative
-            : relative;
+          const relative = decodeURIComponent(parsed.pathname.split("/wp-content/uploads/")[1]);
+          const publicPath = relative.startsWith("2019/12/") ? relative : relative;
           report.uploadLinks++;
           report.uploadPaths.push(relative);
-          return [`/wp-content/uploads/${publicPath}`, descriptor]
-            .filter(Boolean)
-            .join(" ");
+          return [`/wp-content/uploads/${publicPath}`, descriptor].filter(Boolean).join(" ");
         }
         const internal = [
           "benyakiredits.com",
@@ -409,10 +359,7 @@ function htmlToMarkdown(post) {
         }
         return [url, descriptor].filter(Boolean).join(" ");
       });
-      element.setAttribute(
-        attribute,
-        attribute === "srcset" ? rewritten.join(", ") : rewritten[0],
-      );
+      element.setAttribute(attribute, attribute === "srcset" ? rewritten.join(", ") : rewritten[0]);
     }
   }
   const service = new TurndownService({
@@ -433,19 +380,16 @@ function htmlToMarkdown(post) {
     const fenceChar = block.code.includes("`") ? "~" : "`";
     const longest = Math.max(
       0,
-      ...[
-        ...block.code.matchAll(
-          new RegExp(`${fenceChar === "`" ? "`" : "~"}+`, "g"),
-        ),
-      ].map((match) => match[0].length),
+      ...[...block.code.matchAll(new RegExp(`${fenceChar === "`" ? "`" : "~"}+`, "g"))].map(
+        (match) => match[0].length,
+      ),
     );
     const fence = fenceChar.repeat(Math.max(3, longest + 1));
     const label = block.language ? block.language : "";
     const replacement = `${fence}${label}\n${block.code}${block.code.endsWith("\n") ? "" : "\n"}${fence}`;
     markdown = markdown.replace(block.token, replacement);
   }
-  const shortcodePattern =
-    /(?<!\\)!?\[(?:\/?[A-Za-z_-]+)(?:\s+[^\]]*)?\](?!\()/g;
+  const shortcodePattern = /(?<!\\)!?\[(?:\/?[A-Za-z_-]+)(?:\s+[^\]]*)?\](?!\()/g;
   if (shortcodePattern.test(markdown))
     report.shortcodes = (markdown.match(shortcodePattern) ?? []).length;
   return { markdown, report };
@@ -460,8 +404,7 @@ function frontmatter(post, markdown) {
       kind === "posts"
         ? parseDate(post.post_date)
         : parseDate(
-            getMeta(post.ID, "published_on") ??
-              getMeta(post.ID, "first_released"),
+            getMeta(post.ID, "published_on") ?? getMeta(post.ID, "first_released"),
             post.post_date,
           ),
     description: post.post_excerpt?.trim() || undefined,
@@ -472,18 +415,12 @@ function frontmatter(post, markdown) {
     },
   };
   if (kind === "posts")
-    Object.assign(
-      data,
-      taxonomyByPost.get(post.ID) ?? { categories: [], tags: [] },
-    );
+    Object.assign(data, taxonomyByPost.get(post.ID) ?? { categories: [], tags: [] });
   if (kind === "projects") {
     const technologies = toList(getMeta(post.ID, "technologies")).map(String);
     Object.assign(data, {
       published: parseDate(getMeta(post.ID, "first_released"), post.post_date),
-      firstReleased: parseDate(
-        getMeta(post.ID, "first_released"),
-        post.post_date,
-      ),
+      firstReleased: parseDate(getMeta(post.ID, "first_released"), post.post_date),
       latestUpdate: getMeta(post.ID, "latest_update")
         ? parseDate(getMeta(post.ID, "latest_update"))
         : undefined,
@@ -601,24 +538,16 @@ console.log(
   JSON.stringify(
     {
       sqlFile: path.basename(sqlPath),
-      tables: Object.fromEntries(
-        [...tables].map(([name, rows]) => [name, rows.length]),
-      ),
+      tables: Object.fromEntries([...tables].map(([name, rows]) => [name, rows.length])),
       publicCounts: counts,
       convertedCounts: converted,
       conversionProblems: problems,
-      codeBlocksConverted: results.reduce(
-        (total, record) => total + record.report.codeBlocks,
-        0,
-      ),
+      codeBlocksConverted: results.reduce((total, record) => total + record.report.codeBlocks, 0),
       removedWidgetBlocks: results.reduce(
         (total, record) => total + record.report.widgetsRemoved,
         0,
       ),
-      uploadReferences: results.reduce(
-        (total, record) => total + record.report.uploadLinks,
-        0,
-      ),
+      uploadReferences: results.reduce((total, record) => total + record.report.uploadLinks, 0),
       apply: applying,
     },
     null,
@@ -632,8 +561,7 @@ if (applying && !problems.length) {
   const preflightAttachmentPaths = [...attachments.values()]
     .map((attachment) => attachment.path)
     .filter(Boolean);
-  for (const record of results)
-    preflightAttachmentPaths.push(...record.report.uploadPaths);
+  for (const record of results) preflightAttachmentPaths.push(...record.report.uploadPaths);
   const mediaSources = new Map();
   for (const original of new Set(preflightAttachmentPaths)) {
     let relative = original.startsWith("/") ? original.slice(1) : original;
@@ -648,8 +576,7 @@ if (applying && !problems.length) {
     } catch {
       throw new Error(`Missing upload ${original} (looked for ${source})`);
     }
-    if (!sourceStats.isFile())
-      throw new Error(`Upload is not a file: ${original}`);
+    if (!sourceStats.isFile()) throw new Error(`Upload is not a file: ${original}`);
     if (sourceStats.size > 25 * 1024 * 1024)
       throw new Error(
         `Upload exceeds Pages' 25 MiB limit: ${original} (${sourceStats.size} bytes). Choose an optimized rendition before applying.`,
@@ -667,9 +594,7 @@ if (applying && !problems.length) {
   }
   try {
     await access("migration/reports/import-manifest.json");
-    throw new Error(
-      "Refusing to overwrite migration/reports/import-manifest.json",
-    );
+    throw new Error("Refusing to overwrite migration/reports/import-manifest.json");
   } catch (error) {
     if (error.code !== "ENOENT") throw error;
   }
@@ -707,12 +632,10 @@ if (applying && !problems.length) {
   const attachmentPaths = [...attachments.values()]
     .map((attachment) => attachment.path)
     .filter(Boolean);
-  for (const record of results)
-    attachmentPaths.push(...record.report.uploadPaths);
+  for (const record of results) attachmentPaths.push(...record.report.uploadPaths);
   for (const original of new Set(attachmentPaths)) {
     let relative = original.replace(/^\/+/, "");
-    if (relative.startsWith("2019/12/"))
-      relative = relative.replace(/^2019\/12\//, "2019/2019/");
+    if (relative.startsWith("2019/12/")) relative = relative.replace(/^2019\/12\//, "2019/2019/");
     const source = path.resolve(uploadsPath, relative);
     if (!source.startsWith(`${uploadsPath}${path.sep}`))
       throw new Error(`Unsafe upload path ${original}`);
