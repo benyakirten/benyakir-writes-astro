@@ -1,0 +1,39 @@
+---
+title: Watchmen - Alan Moore, Dave Gibbons
+slug: watchmen
+published: "2020-02-06"
+legacy:
+  wpId: 520
+  postType: post
+  sourceOrder: 8
+categories:
+  - Reviews
+tags:
+  - book-review
+  - graphic-novel
+  - 5.5-stars
+---
+
+Rating: 5.5 stars
+
+First, an aside. The copy of Watchmen that I got has a nice box on the front telling us that the graphic novel’s now an HBO series, which is kinda funny, right? The events of the book are mostly (kinda) in the movie, which seems to have been forgotten pretty quickly, and just as well. There’s one problem though, and that’s the series takes place after the graphic novel. You should just really ignore that until you’ve read the graphic novel. Also, don’t see the movie. It’s all right, but, just like whoever printed this front cover, I would suggest you forget it existed.
+
+I have a hard time calling any comic book a graphic novel (especially with it being issued in 12 parts and not a singular, coherent entity), but this and maybe Maus are the only ones (I have yet read) that deserve it. I think a lot of books aren’t worth of being called novels either. What matters to me most is a message, a philosophy the book sticks to hard, and Watchmen has that besides heap of intriguing visual-textual play between the comic book format and the text. It also has heaps of normal literary stuff like allegory, metaphor and such. Some books are called plot driven, and some are called character driven. Few and the best are an ecosystem where one leads into the other and the other leads back into the first. You may think, for example, a book like Recursion does that, but it doesn’t. It lacks symbolic and metaphorical weight to reinforce it. Every panel of Watchmen (minus mostly chapter 11), subplot and character reinforces the message. For that reason, I prize the book. The message itself, however, is postmodern. It’s a bunch of people’s lives and doesn’t seem to really push anyone to any conclusion. Sometimes good people do bad things, and sometimes bad people do good things. What I got out of it is that humans are complicated and that there is no ultimate truth.
+
+If I had read this before 2016, I might have said ‘yup, that’s how it is’, but now I don’t feel that way. Actually, I guess I want to say that recently I’ve come to the brief that there may be no ultimate truth but that there is definitely a wrong way. And that the conclusion, doesn’t really punish the antagonist or say clearly if he has erred or not. I didn’t detail any of it because there might be someone out there who hasn’t read Watchmen yet, and you should. This is my last warning. I may casually let off some spoilers, not that I really care about such things. Read the book if this sounds like your thing. It’s masterfully written and definitely deserves a reading, no matter who you are. I got my copy for $15. It is most definitely one of the few books I’m going to make my children read when they get old enough.
+
+Remember when I was talking about comic books being published in issues? Watchmen handles it quite well by spending the first few chapters mostly having exploring the characters with the plot going on in the background. So, whatever, I want to talk about them.
+
+Last warning, spoilers ahead.
+
+The book starts off with Rorschach’s rant in his diary, which, if you’ve read it is a kinda funny. Even the super reactionary magazine that he reads faithfully calls it over the top. You know, I expected him to speak to me less. By that I mean, I expected to see him as a person I knew. Well, that may be over the top because I don’t actually know anyone like that, but I could. He’s the fantasy persona of anyone who says they hate politicians and think that everyone is guilty of crimes. In other words, Rorschach is quintessentially an angry, frustrated man shouting ‘I have not sinned so I may judge others’ while being right about everything (to himself) and being really good at fighting. The book takes a ton of opportunities to show him as a hypocrite and basically ridicule him, which is a bit cathartic. I pondered the ending for awhile. Out of all the remaining super heroes, Rorschach is the only who opposes New York being destroyed. At first, I thought ‘well, he thought New York (and by extension the human race) was full of sinners who deserved punishment for their sins, so why’s he got a problem with Ozymandias’ plan?” Then I was like, duh, of course. Ozymandias is on the left (well, he’s a 1%er so it doesn’t really matter), and Rorschach wants to be the one who judges people, or he doesn’t believe all the crap he says. Which is the most likely of the three? I believe the latter, but it doesn’t have to be one over the other.
+
+In summary, Watchmen is a land of contrasts. I say that because no one else really cares, putting ‘the big picture’ ahead of everything else. I don’t really have much to say about Nite Owl and the Silk Specter. Nite-Owl is a solid centrist who has less ideas and more a desire to continue to do what he finds interesting. I would have thought him the most ‘audience’ character, but his inaction or obeying whoever is in charge at the moment speaks much more strongly than his neutrality. At first, he believes in law and order. Later, he obeys Rorschach. Finally, he obeys Ozymandias because, ostensibly, it’s the greater good. One last addendum, I definitely didn’t get or appreciate the impotence joke about Nite Owl when I first read the book (I think I was like 16 or 18 and had little idea of such things), but I thought it was absolutely hilarious this time around. It was some truly biting satire of Nite Owl’s life.
+
+Okay, back to themes. He’s a foil to Silk Specter in that he’s given all the choice in the world and ends up a superhero. Silk Specter is given no choice at really any point and wants to deviate from it. She’s raised from day one to be a superhero, starts dating Dr. Manhattan when she’s 16 and seems to spend most of the book getting away from adventuring. She’s the only person who seems strongly disconnected from her superhero persona.
+
+When I was re-reading the book, I fully knew the story and thought I got everything (this made chapter 11 pretty boring and not nearly as good as the other chapters, though I might have thought that if this were my first reading. It didn’t have almost any subtext and visual metaphors like the rest of the book). Most importantly, that Dr. Manhattan was just getting alien, but that wasn’t that at all. He’s a watchmaker so he chooses to see the world as causal and deterministic despite having enough omnipotence to know he’s not omniscient.
+
+I should talk about Ozymandias because he is a good character. He refuses the title of ‘world’s smartest man’ but in name only. He’s just super rich, and most of his wealth doesn’t come from anything necessarily genius. Like it’s quite evident he’s a savant of some sort and obsessive over success, but he got most of his money from a patent on a type of fire hydrant. He’s so filthy rich that he believes himself above all others. His plan for world peace requires the killing of a million and a half, the sacrifice that those people make on behalf of a great man. It’s no different than a general commanding troops to die by the dozen. It’s great because it’s really the superhero persona of any stupidly rich person such as Zuckerberg. Oh man, I doubt if he ever read Watchmen that he’d get the irony and derision of Ozymandias as a false persona to justify genocide.
+
+I guess I don’t have much else to say. Read Watchmen. It’s one of the few books I will cherish for the rest of my life.

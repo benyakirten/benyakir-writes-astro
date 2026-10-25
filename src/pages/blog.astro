@@ -1,0 +1,10 @@
+---
+import { getCollection } from 'astro:content';
+import ContentCards from '../components/ContentCards.astro';
+import SiteLayout from '../layouts/SiteLayout.astro';
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort((a, b) => b.data.published.localeCompare(a.data.published));
+---
+<SiteLayout title="Blog" description="Browse a list of all my blog posts ordered by most recent publication to least recent. Users can filter the blog results by publication date, category and tags.">
+  <h1 class="page-title">Blog Posts</h1>
+  {posts.length ? <ContentCards items={posts} kind="posts" /> : <p>Blog posts will appear here after the WordPress import.</p>}
+</SiteLayout>

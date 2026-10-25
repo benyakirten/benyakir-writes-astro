@@ -1,0 +1,31 @@
+---
+title: Lexicon - Max Barry
+slug: lexicon
+published: "2019-07-05"
+legacy:
+  wpId: 284
+  postType: post
+  sourceOrder: 53
+categories:
+  - Reviews
+tags:
+  - 2-stars
+  - traditionally-published
+  - thriller
+---
+
+Rating: 2 stars
+
+I was disappointed with this book, really, really disappointed. I thought the basics (as I’ve called it before, the profession of writing) was all right, but for a book that talks about the impact of words (especially the boisterous, loud defenses of it in reviews on the back, which made me doubt how good readers and writers those people who wrote those quips are), it uses them so poorly. It has no art. Partly because the book kinda touches on linguistics, which is kinda my area so I’m defensive about it.
+
+The subject is basically a secret society (more or less the Illuminati) that controls the world (at least they were responsible for Bush’s victory in 2004 for… reasons), using words to hypnotize people. So the three important elements, the illuminati, the words and hypnotization. According to the plot, the words and the hypnotization are related, but they really aren’t. That’s what made me so angry when I read this. The part about words is that there basically is a language that underlies every modern spoken language. I’m not gonna get into it, but that works within a language family but not across all languages. But you may recognize this sort of ‘there’s one language that’s the basis for every other one’ as very Chomsky (or what he’s known for). There’s also some Sapir-Wharf hypothesis in the book, and if you know me, you know how much I despise this. Like Chomsky, Sapir-Wharf is what a lot of people like to claim in order to sound smart when it’s a lot more complicated. Also, I’m gonna go on a rant here, there is no language from which all others sprung. That is so ridiculous, to imply that things like Darwin and Alfred Russel Wallace existing at the same time doesn’t happen, that parallel inventions don’t happen. What I’m saying is that just as valid a hypothesis (and far more explaining of stuff) is that multiple groups of humans (or proto-humans) developed/created language at the same time in different ways in different places. However, the Maltese Falcon of the plot relies on special words that can hypnotize everyone no matter what language they speak.
+
+So, as for the story, it’s a romp where a man is basically abducted, and he just follows along. There are a series of flashbacks, and you slowly piece together thing that happens. So that’s my number two… three? four? complaint. Seen from the point of view of the reader, the flashbacks don’t really contribute much other than exposition. If it isn’t like that, why not just put it in the correct order? Also it does the really annoying thing of where the protagonist won’t know something, then there’s the flashback that talks about it (just the past story), and suddenly he knows it now. Or they talk about it. That’s stupid. It needlessly builds tension, and it shows to me an inability of the author rather than a capability.
+
+Okay, as far as the hypnosis, it’s hand-waved away as some form of neurolinguistics. The idea is that people can be organized into 200-odd categories, and if you make the right sounds at them, they will do whatever you want. The first problem I have with this is that it’s way too classical. There’s no way that people can be categorized that easily. A realistic description would be 1 category with a ton of sub-categories based more on nurture than nature and outliers. However, the book says it’s the opposite, that what category a person is is determined by their nature. But it can be changed if it’s worked on really hard. If someone has studied linguistics so far as to learn some neurolinguistics, they should feel a personal responsibility to not share such classical rubbish. That’s what it is, simplifying idiocy that’s convenient to a plot. If you can’t figure it out by now, I’m (figuratively) pulling out my hair in astonishment. Rabble rabble rabble!
+
+Okay, here’s my penultimate complaint. For a book whose plot is about careful use of words, you expect the book to be carefully written, and every detail is something that the author paid attention to. That’s what I’d want to write if this were the subject I’d chosen for a book. And if I couldn’t, then I would change the story because the lexicon part of it (the title, if you forgot) serves only to take away from the story. The author should’ve changed that part of the book because it sets up a promise the author isn’t good enough to fulfill.
+
+Last complaint, and this reflects largely on the previous paragraph. Most of the book is a romp. Throughout most of it, I was thinking “this is like Neuromancer but worse.” I don’t think that’s something to be ashamed of. Neuromancer was a great book for its style. I’m not a big fan, but I can recognize that it set trends and helped define how the interface between technology and humanity would be portrayed in future books. In other words, this book isn’t groundbreaking. That wouldn’t be a problem, but it promised a lot and failed to deliver on every count. If it (or the author) had limited its scope and acknowledged its deficiencies, the book could’ve gotten 2.5-3 stars instead of 2 stars.
+
+Oh, one last complaint. At the very end, love overpowers the McGuffin. I hate these normative stories about what love is and what love isn’t. Some people just can’t take that each person does it in their own way. This is coming from someone who is happily in a relationship that would conform exactly with traditional love.

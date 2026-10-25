@@ -1,0 +1,71 @@
+---
+import { getCollection } from "astro:content";
+
+import SiteLayout from "../layouts/SiteLayout.astro";
+import { contentPath } from "../config";
+const [posts, books, stories, projects] = await Promise.all([
+    getCollection("posts", ({ data }) => !data.draft),
+    getCollection("books", ({ data }) => !data.draft),
+    getCollection("stories", ({ data }) => !data.draft),
+    getCollection("projects", ({ data }) => !data.draft),
+]);
+const latest = [
+    ...books.map((entry) => ({
+        entry,
+        kind: "books" as const,
+        date: entry.data.published,
+    })),
+    ...stories.map((entry) => ({
+        entry,
+        kind: "stories" as const,
+        date: entry.data.published,
+    })),
+    ...projects.map((entry) => ({
+        entry,
+        kind: "projects" as const,
+        date: entry.data.firstReleased,
+    })),
+    ...posts.map((entry) => ({
+        entry,
+        kind: "posts" as const,
+        date: entry.data.published,
+    })),
+]
+    .sort(
+        (a, b) =>
+            Date.parse(`${b.date}T00:00:00Z`) -
+            Date.parse(`${a.date}T00:00:00Z`),
+    )
+    .slice(0, 10);
+---
+
+<SiteLayout
+    title="Home"
+    description="Get an overview of my latest creations. As a fluent speaker of Italian, former writer, editor and current fullstack dev, I have a lot to share."
+>
+    <h1 class="page-title">Latest Posts</h1>
+    {latest.length ? (
+        <div class="card-grid">
+            {latest.map(({ entry, kind }) => (
+                <article class="content-card">
+                    <h2>
+                        <a href={contentPath(kind, entry.data.slug)}>
+                            {entry.data.title}
+                        </a>
+                    </h2>
+                    <time datetime={entry.data.published}>
+                        {entry.data.published}
+                    </time>
+                    {(entry.data.excerpt || entry.data.description) && (
+                        <p>{entry.data.excerpt || entry.data.description}</p>
+                    )}
+                </article>
+            ))}
+        </div>
+    ) : (
+        <p>
+            Content is being prepared for migration. Once Markdown entries are
+            added to <code>src/content/</code>, the latest posts appear here.
+        </p>
+    )}
+</SiteLayout>

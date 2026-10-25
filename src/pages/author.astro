@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+
+import SiteLayout from "../layouts/SiteLayout.astro";
+const books = await getCollection("books", ({ data }) => !data.draft);
+const stories = await getCollection("stories", ({ data }) => !data.draft);
+const items = [
+    ...books.map((entry) => ({ entry, kind: "books" as const })),
+    ...stories.map((entry) => ({ entry, kind: "stories" as const })),
+].sort((a, b) => b.entry.data.published.localeCompare(a.entry.data.published));
+---
+
+<SiteLayout
+    title="Author"
+    description="A view of all of my published books and short stories. They can be filtered by keyword or date of publication."
+>
+    <h1 class="page-title">Written Work</h1>
+    {items.length ? (
+        <div class="card-grid">
+            {items.map(({ entry, kind }) => (
+                <article class="content-card">
+                    <h2>
+                        <a
+                            href={`/${kind === "books" ? "book" : "story"}/${entry.data.slug}/`}
+                        >
+                            {entry.data.title}
+                        </a>
+                    </h2>
+                    <time datetime={entry.data.published}>
+                        {entry.data.published}
+                    </time>
+                    <p>{entry.data.excerpt || entry.data.description}</p>
+                </article>
+            ))}
+        </div>
+    ) : (
+        <p>Books and stories will appear here after the WordPress import.</p>
+    )}
+</SiteLayout>

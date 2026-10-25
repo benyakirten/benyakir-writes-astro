@@ -1,0 +1,20 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+export async function getStaticPaths() {
+  const entries = await getCollection('stories', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<SiteLayout title={entry.data.title} description={entry.data.description || entry.data.excerpt}>
+  <article class="article">
+    <nav aria-label="Breadcrumb"><a href="/author/">Books &amp; Stories</a></nav>
+    <h1>{entry.data.title}</h1>
+    <p class="muted"><time datetime={entry.data.published}>{entry.data.published}</time></p>
+    <Content />
+    {entry.data.alternateLinks.length > 0 && <section><h2>Also available</h2><ul>{entry.data.alternateLinks.map((link) => <li><a href={link.url} rel="external">{link.name}</a></li>)}</ul></section>}
+    {entry.data.relatedBook && <aside><p>{entry.data.relatedBook.relationship || 'Related book'}: <a href={`/book/${entry.data.relatedBook.slug}/`}>{entry.data.relatedBook.slug}</a></p></aside>}
+  </article>
+</SiteLayout>

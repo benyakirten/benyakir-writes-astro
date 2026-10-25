@@ -1,0 +1,38 @@
+---
+import SiteLayout from '../layouts/SiteLayout.astro';
+const history = [
+  { title: 'Independent Contractor', company: 'English Garden Talk Press', dates: 'January 2025 – Present', points: ['Designed, architected and began to implement an open and extensible word processor for writers'] },
+  { title: 'Independent Contractor', company: 'SpringBlock', dates: 'October 2023 – December 2024', points: ['Planned and executed migration scheme to move data from legacy Oracle database to normalized Postgres database', 'Created a dynamic no-build frontend with JSDoc, Jinja templates and HTMX', 'Designed and implemented a Shopify Remix app with a caching layer between Postgres and Shopify Admin GraphQL'] },
+  { title: 'Frontend Engineer', company: 'Thread', dates: 'February 2022 – July 2023', points: ['Created customer-facing and internal web applications using Svelte with product managers and designers', 'Built image inspection tools with annotations and collaboration features', 'Worked with backend developers on Golang and SQL infrastructure', 'Led integration testing and quality efforts', 'Built internal tooling in Python and Bash'] },
+  { title: 'Web Developer', company: 'The Saint Bridged Vineyard Press', dates: 'September 2020 – February 2022', points: ['Designed responsive websites with an emphasis on SEO and accessibility', 'Developed custom WordPress themes and plugins', 'Managed hosting and domain registration'] },
+];
+const section = Astro.url.searchParams.get('section') || 'bio';
+---
+<SiteLayout title="Portfolio" description="My developer portfolio, including only my best and most up-to-date projects.">
+  <h1 class="page-title">Portfolio</h1>
+  <div class="portfolio-tabs" role="tablist" aria-label="Portfolio sections">
+    <a role="tab" aria-selected={section === 'bio' ? 'true' : 'false'} href="?section=bio#bio">About me</a>
+    <a role="tab" aria-selected={section === 'history' ? 'true' : 'false'} href="?section=history#history">Work history</a>
+    <a role="tab" aria-selected={section === 'projects' ? 'true' : 'false'} href="?section=projects#projects">Recent projects</a>
+  </div>
+  <section id="bio" class="portfolio-panel" aria-labelledby="portfolio-bio">
+    <h2 id="portfolio-bio">About me</h2>
+    <article class="content-card">
+      <img src="/images/profile_picture.png" alt="Ben Horowitz" width="100" height="100" loading="lazy" />
+      <h3>Ben Horowitz — Full Stack Developer</h3>
+      <p>I am a passionate full-stack web developer with four years of experience building every part of web applications. I am eternally curious, a quick learner, self-motivated and a team player. I use every frontend technology, including React, Vue, Angular, Svelte and vanilla JavaScript. I also work with databases, Python, Node, Go, Rust and Elixir.</p>
+      <p>I studied at the University of Colorado Boulder for my undergraduate, where I studied Classics, Linguistics and Italian (graduated <em>Summa cum Laude</em>). I have been a member of Phi Beta Kappa since 2010. I studied for my Masters in Italian Language at Middlebury College and lived in Italy for two years (2014–2016).</p>
+      <p>I speak Italian fluently, studied Latin and Greek and used to converse in French. I worked as a writer and editor prior to becoming a developer. Much of the same passion drives me in both fields: the desire to create, intense curiosity about how things work, long-term planning and quick thinking, and the ability to work independently, be a team player and lead as the situation demands.</p>
+      <ul><li><a href="mailto:ben@benyakiredits.com">Email</a></li><li><a href="https://github.com/benyakirten" target="_blank" rel="noreferrer">GitHub</a></li><li><a href="https://www.linkedin.com/in/ben-horowitz-93609b8a/" target="_blank" rel="noreferrer">LinkedIn</a></li><li><a href="https://utfs.io/f/jl5ip7RNwFcAASylqLNhZviu5QWm7rMzboldeBIKnY39H1Sq" target="_blank" rel="noreferrer">Resume</a></li></ul>
+    </article>
+  </section>
+  <section id="history" class="portfolio-panel"><h2>Work history</h2><div class="card-grid">{history.map((job) => <article class="content-card"><h3>{job.title} at {job.company}</h3><p class="muted">{job.dates}</p><ul>{job.points.map((point) => <li>{point}.</li>)}</ul></article>)}</div></section>
+  <section id="projects" class="portfolio-panel"><h2>Recent projects</h2><p>Recent project highlights are being connected to the imported project collection.</p><p><a href="/projects/">Browse all projects</a></p></section>
+</SiteLayout>
+<style>
+  .portfolio-tabs { display:flex; flex-wrap:wrap; gap:.75rem; margin-bottom:1.5rem; font-family:var(--font-ui); }
+  .portfolio-tabs a[aria-selected="true"] { font-weight:700; }
+  .portfolio-panel { margin-block:2rem; scroll-margin-top:1rem; }
+  .portfolio-panel:target { outline:2px solid var(--accent); outline-offset:.5rem; }
+  .portfolio-panel img { float:left; width:5rem; height:5rem; object-fit:cover; border-radius:50%; margin:0 1rem 1rem 0; }
+</style>

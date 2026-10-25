@@ -1,0 +1,31 @@
+---
+title: Nothing Lasts Forever - Roderick Thorp
+slug: nothing-lasts-forever
+published: "2019-05-27"
+legacy:
+  wpId: 256
+  postType: post
+  sourceOrder: 45
+categories:
+  - Reviews
+tags:
+  - traditionally-published
+  - 3-stars
+  - thriller
+---
+
+Rating: 3 stars
+
+To begin this review, I would like to state that I don't like the gradations of ratings on Goodreads because I felt that The Ministry of Utmost Happiness wasn't as good as Killing Commendatore, and this book wasn't as good as Triburbia. But until I change from Goodreads, I don't care enough.
+
+Onto the review. This book is Die Hard. Well, no, but kinda. The book starts off a little before the movie. Joe Leland (John McClane) is in a taxi to the St. Louis airport. The taxi he's in accidentally rear-ends another car. Leland has to get to the airport, so he waves around his gun and threatens the other driver, who's threatening Leland's taxi's driver because he's black. I gave that summary of the first chapter because I kinda overlooked the theme because I thought it was too progressive for the time, namely the abuse of power.
+
+The book plays out mostly like the book, but it goes into more detail on most thing or changes things. Such as McClane isn't visiting his wife but Leland visiting his daughter. She's a secretary to a big shot (this was written in the late 70s, so hence why she isn't an exec herself), and she plays an important role in deciding things. The company's having a Christmas party to celebrate a deal they made with Chile to build a bridge for 150 million dollars. That number seems reasonable for a bridge to me (unless it's a dinky little 20 foot one over a creek), but it's unreasonable if you consider inflation. And you know a little history (which I only kinda did, so the book tells us). It's during the Pinochet regime and a deal to also smuggle arms into Chile to hold up the Fascist regime. Were you expecting this sort of commentary from Die Hard? Because I wasn't. They took the plot away in the movie, and it's pretty disappointing.
+
+The story is about how Leland's anger at both the terrorists and Klaxon (Nakatomi in the movie). It's about his fear and distrust of the corporate office environment which pursues greed more than ethics. During his shootouts, Leland is forced to hide in an office, where he's sure he'll be shot. The glass that cuts his feet is actually crushed up lightbulbs, a weaponization and use of the corporate environment. In the end, Leland concludes that the terrorists aren't able to blame purity (despite Anton Gruber getting out his message about Klaxon's deals with the Pinochet regime) because they're the products and victims of the corporate greed. Now, by the end, I was kinda on the same page, but I wasn't. It's a little both-sides-ish to me. If there's anything I've learned in the last two years, it's that both-sides-ism is kinda dishonest. I'd say maybe that was the point, but the very last scene where the last remaining terrorist (Karl, same as in the movie) shoots a bunch of reporters and Dwayne T. Robinson (same in the movie) before being shot. Al's (unchanged in the movie) conclusion is that Dwayne, who'd been criticized up until now gave up his life to safe Leland. That was a bit heavy-handed, but let's talk about Leland's criticism of the police.
+
+Leland's anger at the police captain (Robinson) trying to muscle way in over Al makes much more sense with that theme. It's about the police no longer having sympathy for the individual but serving greater masters. The whole plot of the helicopters being shot down is that Leland was supposed to give them cover fire. But he doesn't because he knows he'll be killed to do it, and it won't resolve anything. Robinson's just trying to establish any sort of control that he can. Towards the end of the book, Leland throws the money that was in the safe out of the building. It's after his daughter has died (oh yeah, Gruber dragged her out of the skyscraper as he falling), but he can hear the spectators wanting the 6 million dollars that Gruber promised they'd give them over caring about the human price. So Leland gives them what he wants because he hates Klaxon just as much as the terrorists. One thing to keep in mind is that Leland cares more and more about the terrorists as his killing spree goes on. He starts off justifying it as doing what he has to do to survive (and make sure his daughter survives, whoops). Then by the end he gets increasingly disgusted at himself as he becomes less horrific and more decrepit or objectionable.
+
+Okay, those were mostly things that I liked about the book. Now I want to talk about the things I didn't like. The first was kinda a big negative. The writing was a slog for me. I had trouble figuring out the logistics of battles because of the narration. I usually start a book slowly, pick up steam then end up tearing through the last third of the book. I don't think I really got into the book until the last few chapters, which is something you don't want from something that should be a quick read. An action/suspense book should flow very quickly, but this didn't. The second is that the book is rooted in the culture of middle-aged World War Two veterans and their way of speaking. I've talked to some people about this, but I have a hard time really getting it. There were times Leland and Al were talking where I didn't know if they had a positive relationship or were being rude and sniping at each other. The only person that understands that generation is another man from that generation. I have easier time understanding cultural meanings from the 1800s than this stuff.
+
+I really would've rated this book 2.5 stars because those last two things (and the both-sides-ism) were big turn offs to me, but between 2 and 3 stars, this book gravitated more towards a 3 than a 2.

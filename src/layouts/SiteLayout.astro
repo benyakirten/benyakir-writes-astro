@@ -1,0 +1,102 @@
+---
+import "../styles/global.css";
+import SearchIsland from "../components/SearchIsland";
+import { SITE } from "../config";
+const {
+    title = SITE.name,
+    description = "Writing, development projects, and books by Benyakir Horowitz.",
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.origin).toString();
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content={SITE.author} />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title={`${SITE.name} RSS`}
+            href="/rss.xml"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${SITE.name} - ${title}`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <title>{SITE.name} - {title}</title>
+        <script is:inline>
+            try {
+                const preference =
+                    localStorage.getItem("benyakir-theme-preference") ||
+                    "system";
+                if (preference !== "system")
+                    document.documentElement.dataset.theme = preference;
+            } catch {}
+        </script>
+    </head>
+    <body>
+        <header class="site-header">
+            <a class="site-brand" href="/">
+                {SITE.name}
+            </a>
+            <nav class="site-nav" aria-label="Main navigation">
+                <a href="/blog/">Blog</a>
+                <a href="/author/">Books &amp; Stories</a>
+                <a href="/projects/">Projects</a>
+                <a href="/portfolio/">Portfolio</a>
+                <a href="/search/" data-search-link>
+                    Search
+                </a>
+                <label class="theme-control">
+                    Theme{" "}
+                    <select aria-label="Color theme" data-theme-select>
+                        <option value="system">System</option>
+                        <option value="light">Light</option>
+                        <option value="dark">Dark</option>
+                    </select>
+                </label>
+            </nav>
+        </header>
+        <main>
+            <slot />
+        </main>
+        <footer class="site-footer">
+            © {new Date().getFullYear()} {SITE.author} ·{" "}
+            <a href="/rss.xml">RSS</a>
+        </footer>
+        <script>
+            const select = document.querySelector<HTMLSelectElement>(
+                "[data-theme-select]",
+            );
+            if (select) {
+                try {
+                    select.value =
+                        localStorage.getItem("benyakir-theme-preference") ||
+                        "system";
+                } catch {}
+                select.addEventListener("change", () => {
+                    const value = select.value;
+                    document.documentElement.dataset.theme =
+                        value === "system" ? "" : value;
+                    try {
+                        localStorage.setItem(
+                            "benyakir-theme-preference",
+                            value,
+                        );
+                    } catch {}
+                });
+            }
+            document
+                .querySelector("[data-search-link]")
+                ?.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    document.dispatchEvent(new Event("open-site-search"));
+                });
+        </script>
+        <SearchIsland client:load />
+    </body>
+</html>

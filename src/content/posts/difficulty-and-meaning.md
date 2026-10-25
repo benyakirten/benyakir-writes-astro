@@ -1,0 +1,43 @@
+---
+title: Difficulty and Meaning
+slug: difficulty-and-meaning
+published: "2020-06-25"
+legacy:
+  wpId: 612
+  postType: post
+  sourceOrder: 101
+categories:
+  - Ben's Thoughts
+tags:
+  - casuals
+---
+
+Hello everyone,
+
+An old theme came back to me as I was talking to Andy about how I took about a month to read Madame Bovary, the title of this post. He made a joke about ‘casuals’ who actually enjoy reading being inferior, and that was a joke. But it’s something I’ve heard, that people who enjoy something are unable to get to its true depths because they’re doing it out of choice. It’s a hilariously facile argument, right? Well, a lot of people actually do believe in it. And worse than that is that it has a longstanding historical precedents! People have been arguing it for a long time, and that’s absurd.
+
+The first historical example (so not the first example of it, undoubtedly, since history isn’t my thing) I have of it is Marcellinus in his introduction to his commentary on the History of the Peloponnesian War by Thucydides. It was a long time ago when I was still doing Greek. I was in a class about Thucydides for about two weeks before I dropped it. I kinda wanted to keep doing it, but I felt overwhelmed… and the class was at like 6:45 PM for an hour and a half. If you knew me back then, I worked my ass off to do well in Latin and Greek, and that was the semester it started to fall apart because I wanted to actually see friends and be a real human, which is not what Classics professors believe is a thing. I’ll talk about that later, I guess.
+
+Anyway, back to Marcellinus. From what I understood (again, maybe wrong), there’s two types of the knowledge: the one that’s easy to get and the one that’s hard or restricted to access. If I remember correctly, the precise words were (translated as) inclusive and exclusive. Inclusive was inferior, inherently because it was easy for everyone to get, and exclusive knowledge was better because it took effort to discover and understand.
+
+Now, 6th century AD? That was a long time ago so why talk about it? Well, obviously, the word casuals, but we can talk about some more examples between then and now. If you didn’t know, monarchs often found it necessary to justify their power somehow. You can read about a lot of this in Machiavelli. The two works I read were The Prince and The Mandrake.
+
+The monarchs, royalty and everyone involved in the court had to demonstrate why they were worthy of such a thing. How did they do this? They memorized tons of Latin and Greek prose and poetry for a long time. Then when there were the distinguished works of the vulgar languages (i.e. the early Romance languages) such as Dante’s Inferno or Petrarch’s poetry, those were accepted too. It gets more complicated as time goes on, given how much the modern languages were used and Latin less so. Either way, knowing all of these was called in Italian sprezzatura or, as is probably more familiar with anyone growing up in the 90s, nonchalance. It often didn’t require any sort of understanding but just knowledge of obscure things. Understanding and interpretation was good too, but it was fine for the scholars to do that sort of thing. Monarchs and such only needed to know these things to make sure any peasant that came into their presence would know who had the superior education.
+
+Let’s skip a bit ahead. Have you seen American Psycho? I’m thinking of the scene where Christian Bale is talking about Huey Lewis and the News. Or the opening scene of The Family Man (the movie with Nicolas Cage) where he sings along Pavarotti’s vision of Verdi’s Rigoletto. The Family Man’s version isn’t conscious of how it’s using the stereotyped of a rich, educated man listening to his élite Italian opera. In American Psycho it’s explicit, that the protagonist hordes his knowledge and ability to distinguish what he deems as some exclusive knowledge. It’s what the whole movie is about, the amount that the élite prize their victories over anyone else’s humanity.
+
+To be more explicit, watch Frasier. The hoighty-toightyness is what I’m talking about but not the focus of the series. What I mean really is when a show want a character to be educated or wise the person will enjoy fancy things like wine or classical music, things that people normally don’t like but require some sort of dedication and exquisite taste to get.
+
+Now for the second part of this essay, now that I’ve identified the attitude, what’s wrong with it or, really, why I don’t agree with it.
+
+If it’s not already obvious to you (as in you’re a true believer in the value of hard work for its own sake) then I’d ask you to consider what you think is and isn’t important and ask why. I do not enjoy a book because others have said it is great, otherwise I’d exclusively read Russian novels and stuff like the Paradise Lost. If that’s what I thought then I’d read a lot of Kant. He argued about universality of art and such things, saying that there were objectively good works for a good reason. He praised Homer, which I despise (I got into Classics because I like the languages, not the stories).
+
+Why don’t I like Paradise Lost? Have you tried reading the first page? I got so bored I took a few days just to get a dozen pages in, then I quit. What books do I enjoy? It’s certainly not books that are smooth, though I think that’s an important part of it. If anyone read my last blog post it was about interacting with your medium, and those books that read quickly (like most modern bestsellers and the ones I’ve been poo-pooing in my reviews). They don’t have the substance I seek, though, and that deprives me of finding meaning in them. I enjoy books that balance the two, yet it’s pretty rare. I can give some recommendations, but they’re my preference. They weren’t hard to read necessarily but neither easy. It comes down to my discretion. I'd recommend something like Flowers for Algernon, which is not a hard read whatsoever but has plenty of depth. Or something like Winesburg, Ohio, which isn't difficult but is one of my favorite books.
+
+Let’s take video games because that’s something that I’m better able to give contemporary examples from (because the technology rapidly changes, and what works now might not do so in fifteen years, unlike books). One of my favorite games ever is Slay the Spire. If you enjoy video games, you can get it on Steam. Caveat Emptor, however. Look it up on youtube to see if you’d enjoy it. Why do I enjoy it? Does it integrate gameplay and storytelling? Does it look pretty or captivating? No, not at all. But I find it a really consistent entertainment that I’ll pick up for a half hour without having to know any context. And I like the message, which is what happens in a lot of games like it (roguelites, where you are on a never-ending cycle of defeat trying again, where victory doesn’t do anything too substantively much) is that it emphasizes the nature of life, repetition and vaguely-stated goals towards which you can’t move directly but only tangentially.
+
+I’m going to cap this off with some criticisms I can imagine. The first bad faith argument I can imagine is that I have education so therefore am a hypocrite by rallying against it. I’m sure there’s lots of ways to say it, but this is the most memorable way that I remember the argument: “but you yourself are made out of carbon!”
+
+The second rebuttal I can imagine is ‘so you’re against education, eh?” I mean, if you’re using education is a weapon, to demonstrate your superiority and/or infallibility, then yes. If you’re just into learning about stuff, great! That’s me too.
+
+Anyway, I think it’s diminishing as people like me are getting older and becoming parents, but when I was growing up (ugh, the 90s) it was very common to hear that hard work was its own reward. No, that’s not true. Often hard, thankless work is necessary, but you should never convince yourself or anyone else that you’re doing it for the pleasure of doing it. You’re doing it because it’s necessary or you enjoy it (those two can overlap, for good or bad). Period.

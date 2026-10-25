@@ -1,0 +1,13 @@
+---
+import { contentPath, type ContentKind } from '../config';
+const { items, kind } = Astro.props as { items: { id: string; data: { title: string; slug: string; published: string; excerpt?: string; description?: string } }[]; kind: ContentKind };
+---
+<div class="card-grid">
+  {items.map(({ data }) => (
+    <article class="content-card">
+      <h2><a href={contentPath(kind, data.slug)}>{data.title}</a></h2>
+      <time datetime={data.published}>{new Date(`${data.published}T12:00:00Z`).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: '2-digit', timeZone: 'UTC' })}</time>
+      {(data.excerpt || data.description) && <p>{data.excerpt || data.description}</p>}
+    </article>
+  ))}
+</div>

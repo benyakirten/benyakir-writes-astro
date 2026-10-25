@@ -1,0 +1,42 @@
+---
+title: The Harper letter, or why you shouldn't be forced to listen to anyone.
+slug: the-harper-letter
+published: "2020-07-15"
+legacy:
+  wpId: 622
+  postType: post
+  sourceOrder: 103
+categories:
+  - Ben's Thoughts
+tags: []
+---
+
+Hello everyone,
+
+I think most everyone forgot about the Harper letter, and I have to admit I’m a bit slow in writing this too. I’ve been quite swamped, mostly in good ways, and it’s about time I write the blog post I wanted to about it. So you know what I’m talking about, here’s a link: [https://harpers.org/a-letter-on-justice-and-open-debate/](https://harpers.org/a-letter-on-justice-and-open-debate/)
+
+Quick evaluation, what is the thing I just linked? 140 or so famous people signed a letter, and its contents are infuriating to anyone who isn’t one of them. It’s full of, more or less, people telling you that by not listening to them all the time you’re silencing them. That’s the quickest summary I can write, but I’ll get into further detail and break down the letter.
+
+I think I’ve written about this before, but the first and last sentence of anything are by far the most important. I learned that, explicitly, in graduate school (for Italian... but that’s not the point), but it’s something you should have just figured out from the first book I read or movie I ever saw. I mean, I did learn that also for cinema, but I undervalued that lesson. Also I always heard something about paintings and the artist putting most of their work into figuring out and getting their point across in the first place where your eyes are attracted. Long story short, the first sentence of the letter: “Our cultural institutions are facing a moment of trial.”
+
+What in the world does that sentence mean? Like, actually, it’s just north of “it’s a land of contrasts” in terms of being purposefully meaningless drivel. Cultural institutions are constantly facing moments of trial. That’s what it means to be a cultural institution! They exist in the middle of opinion and set the standard from which other opinions deviate. They face constant questioning by anyone whatsoever. Putting our cultural institutions through trials is how they move from one thing to another. You could say that the writing of the American constitution was a moment of trial for the cultural institution of owning colonies (let’s just ignore America’s colonies for a second). If we’re not changing them or putting them through trials, they’re merely propagandistic tools and not actual exercises of intelligent thought and philosophers. They have to prove themselves constantly. Duh!
+
+I counted over 20 writers (okay, I didn’t do a thorough job, and I went only for the people with literally ‘writer’ in their description). It includes Salman Rushdie, J.K. Rowling, and besides those are a bunch of academics. And I have to ask, is this was the best they could come up with? Some tepid non-statement?
+
+Then let’s go further on to the words “Powerful protests”. It, again, means nothing, but thankfully it clears that up right away with the word “police reform”. That phrase tells you everything else you need to know if you haven’t already figured it out. If you don’t know (or are reading this from some distant future where the words have lost their meanings, which seems to happen every two days with how everyone seems to want to defang words as quickly as possible), there are four main ideas of what should be done regarding the police: abolish, defund, reform or nothing at all. These policies roughly correspond to far left (okay, that’s a bit of an exaggeration, but I’m just doing that for rhetorical simplicity. The people asking for abolishment of the police aren’t crazy or anything when you spend a decent amount of time analyzing the arguments; it’s like legalizing marijuana vs. de-criminalizing it, but I’m too lazy to really engage with those ideas in depth here, so, yeah, far left), left, center and right. But anyway, reform is the current center position because it really won’t accomplish much, given that it hasn’t despite years of reform. Those two words should remind you of the first sentence.
+
+Let’s proceed to the comeuppance to a not-rightwing argument: the weakening of norms. Now, I’ll ask, what exactly are these norms? The wording is extremely vague (like everything up until now), but it does opine (roughly) about how norms are about allowing tolerance of different opinions. What could that mean? Does it mean that we are opposing the targeting of journalists by the president? Does it mean that we are talking about the worrying prevalence of law enforcement shooting at and imprisoning legal observers and journalists? Before I respond, I’m going to go a little further. it gets more dire when the letter says, “…the result has been to steadily narrow the boundaries of what can be said without the threat of reprisal.”
+
+Holy moly! It sounds quite dire, like people are getting sent to the gulag and facing death squads. So it’s all of those terrible things I said, right?
+
+No! Of course not! It’s saying one specific thing: you better listen to everyone who is in a position of authority, whether you agree with their message or are tired of them (or they say something hilariously stupid). Now, should I give you an example? Yes! Will I? No, mostly because I’m lazy. I suggest you look up Bari Weiss, one of the signatories and the prime example of this thought pattern.
+
+Now, you may recognize the problem with their argument right off the bat. Why weren’t you, reader, asked to sign the letter? Or me? I want people to be forced to listen to me, and I want to have a guaranteed platform. They don’t want to have to endure people disagreeing with what they said and saying that they’re dumb.
+
+There is no restriction on debate, despite what they contend, at least not from people mocking them or pointing out errors. In the case of Rowling, I know precisely what the problem is. She’s being oppressed for being called a TERF (trans-exclusionary radical feminist), not because, with her billions of dollars, she can’t find anyone to listen to her. She has everything she could ever want, and there are billions of people in the world that would do anything to be in her shoes. But besides that, what rights of hers are being suppressed? Why, the right of her to not face criticism, of course! Because that’s what this letter is about, not that she’s being silenced but that she’s being disagreed with.
+
+Then they have the audacity to end their letter to call for good-faith disagreement because their professional careers are at stake. Yes, that is a problem. However, they see only one problem, the surface issue, that  this enemy is challenging their livelihood over what they consider to be a difference of opinion. They never, for a moment, consider why their livelihood should, in fact, be based on having popular opinions. They are so involved with defending things as they are that they never consider why things are the way they are.
+
+In sum, if I, an absolute nobody, have put more thought into this, then why haven’t any of these academics, thinkers or writers done equal or more? Why haven’t they asked why should a system that allows free debate put a literal price on it, creating the situation where anyone who speaks risks a societal position by expressing themselves? Why is position allowed to be connected to what you have to say? You may think that’s ironic, given that I may want to sell books as a writer. I’d happily give away all my books (especially with, as what I called before, the near-infinite reproducibility of media in the computer age) if I didn’t have to buy food and such.
+
+Now, as an addendum, I’m going to make this about politics (as if it isn’t already). No one can say you need to vote one way or another (just as they can’t say you need to listen to me). What’s the point of a democracy if we all have to vote as we are told? They can only convince you of something. The current strategy for Joe Biden seems to be a negative, i.e. you are not voting for me but against Donald Trump. Well, I’m not voting for Donald Trump (I’ll delete this post in 2040 when the American Gestapo rule any questioning of the Trump dynasty as worthy of being sent to the gulag, which, ironically, is the same time that we have those saying 'but questioning the Trump dynasty is really questioning our right to free debate), but why should I vote for Biden? It’s what every voter should ask themselves.
