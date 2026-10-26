@@ -542,10 +542,10 @@ const resume =
         overflow: auto;
         padding: 2rem 1rem;
         color: var(--text);
-        --tab-bg: hsl(213 35% 25%);
-        --tab-text: hsl(213 50% 90%);
-        --selected-tab-bg: hsl(213 40% 92%);
-        --selected-tab-text: hsl(213 40% 20%);
+        --tab-bg: var(--portfolio-tab-bg);
+        --tab-text: var(--portfolio-tab-text);
+        --selected-tab-bg: var(--portfolio-selected-tab-bg);
+        --selected-tab-text: var(--portfolio-selected-tab-text);
     }
     .portfolio-header {
         display: grid;
@@ -671,6 +671,9 @@ const resume =
         flex: 0 0 1.5rem;
         width: 1.5rem;
         height: 1.5rem;
+    }
+    .iconed-text > img[src$="/Github.svg"] {
+        filter: var(--monochrome-filter);
     }
     .job-points {
         margin: 0.8rem 0 0;

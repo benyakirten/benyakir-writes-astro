@@ -11,7 +11,7 @@ The owner wants an agent to be able to execute this document without the precedi
 ### 0.1 Confirmed owner requirements
 
 1. Replace the entire Gatsby site: posts, books, short stories, projects, portfolio, home, navigation, global search, listing search/filtering, pagination, and associated content relationships.
-2. Port the existing visual design without redesigning navigation, cards, typography, or spacing. Remove all visitor theme controls, including light/dark/system selectors and the old theme editor; use the original Day palette.
+2. Port the existing visual design without redesigning navigation, cards, typography, or spacing. Remove all visitor theme controls, including light/dark/system selectors and the old theme editor; automatically follow the system color preference using the original Day and Night palettes.
 3. Preserve search/filter functionality, especially the existing trie autocomplete and Levenshtein alternatives. Do not silently substitute different matching or ranking.
 4. Use database titles/slugs as the content identity source. Exact old slug/URL preservation is not required; deriving new slugs from database titles is acceptable. Keep the four detail-route prefixes by default. The owner controls both `benyakir-writes.com` and `benyakiredits.com`, and intends to move them to Cloudflare.
 5. The supplied database contains 140 published posts, 16 projects, 3 books, and 2 short stories (161 main items); the owner confirmed these counts. Theme/MU code and matching uploads are available; see §1.3.
@@ -32,7 +32,7 @@ The owner wants an agent to be able to execute this document without the precedi
 - React islands for existing complex interactive UI; Astro components for content/layout where possible.
 - Preserve search compatibility quirks initially. Correcting them is a separate approved change, not an incidental migration refactor.
 - Prefer stored `post_name` slugs to minimize work, but title-derived slugs and necessary collision fixes are approved. Persist the chosen slug explicitly and rewrite internal links/references. Canonical directory-style content paths end in `/`; accept slashless requests through tested platform normalization.
-- Use Astro's built-in Shiki with `github-light` for the fixed Day palette. Do not add a visitor theme preference.
+- Use Astro's built-in Shiki with `github-light` and `github-dark`, selected automatically by `prefers-color-scheme`. Do not add a visitor theme preference.
 - Preserve Faustina/Mulish typography using locally served font assets.
 - Keep all runtime-public media within Pages asset limits. Do not add R2 or another usage-billed service as an automatic workaround.
 - Owner confirmation is needed only for genuinely missing source artifacts, real content ambiguities, platform/account actions, or deliberate departures from parity.
@@ -55,7 +55,7 @@ Preserve **search algorithms, filter controls, parameter behavior, weighting rul
 - Large desktop viewports show three cards across, capped at three on ultrawide screens. Preserve a two-column intermediate layout and one-column phone layout. All listings use the source card variants, full-card links, metadata badges/covers, shadows, and animated arrows—not generic title-only cards.
 - Share page margins through the layout so project, author, portfolio, and detail routes cannot accidentally render edge-to-edge. The portfolio retains its source-specific tabs and layout.
 - The collapsed navigation rail is wider (4rem) and must contain the complete wheel. Center the wheel in the exposed rail and rotate it on both opening and closing. Respect reduced-motion preferences.
-- Oxfmt and Oxlint replace Biome. No visitor can select a theme; do not restore the former top-right dropdown, sidebar theme toggle, or theme preference storage.
+- Oxfmt and Oxlint replace Biome. No visitor can manually select a theme; do not restore the former top-right dropdown, sidebar theme toggle, or theme preference storage. Follow system light/dark changes automatically, including changes while a page is open.
 
 ## 1. Reference inventory and verified implementation facts
 
@@ -940,7 +940,7 @@ If the chosen Astro release cannot support reliable shell persistence, record th
 | Portfolio  | Existing biography/work history, social/resume links, project screenshots, tabs and URL state                     |
 | Navigation | Existing main destinations except Theme; responsive sidebar and keyboard/modal behavior                           |
 | 404        | Genuine 404 response, helpful navigation/search entrypoint                                                        |
-| Theme      | Fixed original Day palette; no visitor theme controls or preference storage; `/theme` redirects home              |
+| Theme      | Automatic original Day/Night palettes from system preference; no manual controls/storage; `/theme` redirects home |
 
 ### 10.4 Portfolio details that must not be accidentally lost
 
@@ -962,9 +962,9 @@ To honor “port everything,” retain this small optional browser behavior on r
 - Reuse visual identity from `src/styles`, cards, sidebar and portfolio; avoid an unrelated template redesign.
 - Use local Faustina/Mulish fonts with limited weights, `font-display: swap`, sensible fallbacks.
 - Define CSS tokens for spacing, typography, border/surface/text/accent colors; maintain AA contrast.
-- Theme preference values: `light`, `dark`, `system`, one new namespaced localStorage key. Do not migrate arbitrary stored user-defined themes.
-- Inline minimal early theme initialization to avoid flash, with storage access guarded for disabled storage. Support OS changes only when preference is `system`.
-- Code styles use `.astro-code` and Shiki dark variables under the active dark-theme selector; test explicit light preference on a dark OS and vice versa.
+- No manual theme preference, localStorage key, dropdown, sidebar toggle, or JavaScript theme initialization. Use CSS `prefers-color-scheme: dark` to override original Day tokens with original Night tokens, updating immediately when the OS preference changes.
+- Cover gradients, card shadows/arrows/badges, portfolio tabs, text/borders and monochrome icon contrast; avoid hard-coded light colors outside the original deliberately light search/shortcut dialogs.
+- Code styles use Shiki's default inline light colors and `.astro-code`/span dark variables inside the dark system media query. Test both initial preference and live light → dark → light changes without navigation.
 - Style Markdown headings/lists/tables/figures/links/blockquote and horizontal code overflow. Do not force mobile page-width overflow.
 - No code-block toolbars or interactive highlighter extras.
 - Respect reduced motion and keyboard focus, allow text zoom to 200%, and verify mobile navigation/readability.

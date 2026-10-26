@@ -32,6 +32,62 @@
     --content-width: 72rem;
     --nav-width: 15rem;
     --nav-peek: 4rem;
+    --page-gradient: linear-gradient(
+        to right,
+        hsl(213 23% 97%),
+        hsl(213 33% 95%) 80%,
+        hsl(213 16% 92%)
+    );
+    --sidebar-shadow: hsl(213 10% 10% / 30%);
+    --card-shadow: hsl(213 70% 15%);
+    --card-arrow: hsl(213 20% 92%);
+    --heading-start: hsl(213 48% 10%);
+    --heading-end: hsl(33 61% 56%);
+    --pill-text: hsl(213 40% 8%);
+    --pill-bg: hsl(213 10% 86%);
+    --portfolio-tab-bg: hsl(213 35% 25%);
+    --portfolio-tab-text: hsl(213 50% 90%);
+    --portfolio-selected-tab-bg: hsl(213 40% 92%);
+    --portfolio-selected-tab-text: hsl(213 40% 20%);
+    --monochrome-filter: none;
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --text: hsl(222 30% 84%);
+        --page-bg: hsl(222 50% 13%);
+        --surface: hsl(222 80% 15%);
+        --border: hsl(222 40% 80%);
+        --link: hsl(222 70% 84%);
+        --muted: hsl(222 30% 84%);
+        --page-gradient: linear-gradient(
+            to bottom right,
+            hsl(222 50% 13%),
+            hsl(222 80% 16%),
+            hsl(222 50% 13%)
+        );
+        --sidebar-link: hsl(222 70% 90%);
+        --sidebar-gradient: linear-gradient(
+            to bottom right,
+            hsl(222 90% 10%),
+            hsl(222 80% 15%),
+            hsl(222 80% 25%),
+            hsl(222 40% 15%),
+            hsl(222 67% 27%)
+        );
+        --sidebar-shadow: hsl(222 10% 80% / 30%);
+        --card-shadow: hsl(222 35% 84%);
+        --card-arrow: hsl(222 60% 25%);
+        --heading-start: hsl(222 30% 92%);
+        --heading-end: hsl(42 70% 44%);
+        --pill-text: hsl(222 60% 5%);
+        --pill-bg: hsl(222 25% 85%);
+        --portfolio-tab-bg: hsl(222 30% 92%);
+        --portfolio-tab-text: hsl(222 25% 15%);
+        --portfolio-selected-tab-bg: hsl(222 80% 15%);
+        --portfolio-selected-tab-text: hsl(222 30% 84%);
+        --monochrome-filter: invert(1);
+    }
 }
 * {
     box-sizing: border-box;
@@ -95,7 +151,7 @@ ul {
     user-select: none;
     background-image: var(--sidebar-gradient);
     border-right: 2px solid var(--border);
-    box-shadow: 2px 0 2px 1px hsl(213 10% 10% / 30%);
+    box-shadow: 2px 0 2px 1px var(--sidebar-shadow);
 }
 .sidebar.open {
     transform: translateX(0);
@@ -221,6 +277,7 @@ ul {
     width: 2.5rem;
     height: 2.5rem;
     object-fit: contain;
+    filter: var(--monochrome-filter);
     transform: rotate(var(--wheel-angle, 0deg));
     transition: transform 500ms ease;
 }
@@ -240,12 +297,7 @@ ul {
     min-height: 100vh;
     margin-left: var(--nav-peek);
     overflow: hidden;
-    background: linear-gradient(
-        to right,
-        hsl(213 23% 97%),
-        hsl(213 33% 95%) 80%,
-        hsl(213 16% 92%)
-    );
+    background: var(--page-gradient);
 }
 
 .site-footer {
@@ -333,6 +385,7 @@ ul {
 /* Search modal follows the original Gatsby dialog dimensions and visual hierarchy. */
 .search-dialog,
 .shortcuts-dialog {
+    color-scheme: light;
     position: fixed;
     top: 20%;
     left: 50%;
@@ -551,10 +604,12 @@ ul {
     white-space: nowrap;
     clip-path: inset(50%);
 }
-.astro-code,
-.astro-code span {
-    color: var(--shiki-light) !important;
-    background-color: var(--shiki-light-bg) !important;
+@media (prefers-color-scheme: dark) {
+    .astro-code,
+    .astro-code span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+    }
 }
 @media (max-width: 1200px) {
     .search-dialog {
@@ -601,8 +656,8 @@ ul {
     font-weight: 700;
     background-image: linear-gradient(
         to right,
-        hsl(213 48% 10%) 40%,
-        hsl(33 61% 56%)
+        var(--heading-start) 40%,
+        var(--heading-end)
     );
     background-position: left;
     background-size: 300%;
@@ -642,12 +697,12 @@ ul {
     border-radius: 0.4rem;
     background-color: var(--page-bg);
     overflow: visible;
-    box-shadow: 2px 6px 0 0 hsl(213 70% 15%);
+    box-shadow: 2px 6px 0 0 var(--card-shadow);
     transition: box-shadow 300ms ease;
 }
 .latest-card:hover,
 .latest-card-link:focus-visible .latest-card {
-    box-shadow: 2px 16px 0 0 hsl(213 70% 15%);
+    box-shadow: 2px 16px 0 0 var(--card-shadow);
 }
 .latest-category {
     grid-column: 1 / 2;
@@ -682,8 +737,8 @@ ul {
     height: min-content;
     padding: 0.4rem 0.8rem;
     border-radius: 2.4rem;
-    color: hsl(213 40% 8%);
-    background: hsl(213 10% 86%);
+    color: var(--pill-text);
+    background: var(--pill-bg);
     font: 0.875rem var(--font-ui);
     text-transform: capitalize;
     white-space: nowrap;
@@ -731,7 +786,7 @@ ul {
     width: 99%;
     height: 8px;
     opacity: 0;
-    background: hsl(213 20% 92%);
+    background: var(--card-arrow);
     clip-path: polygon(0% 35%, 1% 35%, 1% 0, 2% 50%, 1% 100%, 1% 65%, 0% 65%);
     transition:
         clip-path 300ms ease 100ms,
