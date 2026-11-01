@@ -88,7 +88,7 @@ for (const route of [
 ]) {
   test(`${route} has shared page margins`, async ({ page }) => {
     await page.goto(route);
-    const bounds = await page.locator(".article").boundingBox();
+    const bounds = await page.locator(".page-content > article").boundingBox();
     if (!bounds) throw new Error("Article must have rendered bounds");
     expect(bounds.x).toBeGreaterThanOrEqual(80);
     expect(bounds.y).toBeGreaterThanOrEqual(32);

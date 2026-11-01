@@ -15,8 +15,9 @@ test("initial dark system preference applies across pages without a manual theme
     if (route !== "/portfolio/") {
       await expect(page.locator(".latest-card").first()).toHaveCSS(
         "background-color",
-        "rgb(17, 27, 50)",
+        route === "/author/" ? "rgba(0, 0, 0, 0)" : "rgb(17, 27, 50)",
       );
+      await expect(page.locator(".latest-card").first()).toHaveCSS("color", "rgb(202, 209, 226)");
     }
   }
 });

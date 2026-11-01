@@ -1,6 +1,17 @@
 ---
 import "../styles/global.css";
 import SearchIsland from "../components/SearchIsland";
+import { SearchIcon, ShortcutsIcon, CloseIcon } from "../components/Icons";
+import faustinaRegular from "@fontsource/faustina/files/faustina-latin-400-normal.woff2?url";
+import faustinaBold from "@fontsource/faustina/files/faustina-latin-700-normal.woff2?url";
+import mulishRegular from "@fontsource/mulish/files/mulish-latin-400-normal.woff2?url";
+import mulishBold from "@fontsource/mulish/files/mulish-latin-700-normal.woff2?url";
+const criticalFonts = [
+    faustinaRegular,
+    faustinaBold,
+    mulishRegular,
+    mulishBold,
+];
 import { SITE } from "../config";
 const {
     title = SITE.name,
@@ -24,6 +35,15 @@ const navLinks = [
         <meta name="author" content={SITE.author} />
         <meta name="description" content={description} />
         <link rel="canonical" href={canonical} />
+        {criticalFonts.map((href) => (
+            <link
+                rel="preload"
+                as="font"
+                type="font/woff2"
+                href={href}
+                crossorigin="anonymous"
+            />
+        ))}
         <link
             rel="alternate"
             type="application/rss+xml"
@@ -96,7 +116,7 @@ const navLinks = [
                                 data-search-open
                             >
                                 <span class="sidebar-icon" aria-hidden="true">
-                                    ⌕
+                                    <SearchIcon />
                                 </span>
                                 Search
                             </button>
@@ -106,7 +126,7 @@ const navLinks = [
                                 data-shortcuts-open
                             >
                                 <span class="sidebar-icon" aria-hidden="true">
-                                    ⌨
+                                    <ShortcutsIcon />
                                 </span>
                                 Shortcuts
                             </button>
@@ -139,7 +159,7 @@ const navLinks = [
                 aria-label="Close shortcuts"
                 data-shortcuts-close
             >
-                ×
+                <CloseIcon />
             </button>
             <h1>Keyboard Shortcuts</h1>
             <h2>General</h2>
@@ -206,9 +226,23 @@ const navLinks = [
             toggle?.addEventListener("click", () =>
                 setSidebar(!sidebar?.classList.contains("open")),
             );
+            sidebar?.addEventListener("click", (event) => {
+                const target = event.target;
+                if (
+                    !(target instanceof Element) ||
+                    target.closest(
+                        'a, button, input, select, textarea, label, summary, [role="button"], [role="link"]',
+                    )
+                )
+                    return;
+                setSidebar(!sidebar.classList.contains("open"));
+            });
             backdrop?.addEventListener("click", () => setSidebar(false));
-            const searchOpen = () =>
+            const searchOpen = () => {
+                // Preserve early requests until the search island has hydrated.
+                document.documentElement.dataset.pendingSiteSearch = "true";
                 document.dispatchEvent(new Event("open-site-search"));
+            };
             document
                 .querySelectorAll("[data-search-open]")
                 .forEach((button) =>
@@ -236,6 +270,11 @@ const navLinks = [
                         ));
                 if (event.key === "Escape") setSidebar(false);
                 if (typing) return;
+                if ((event.metaKey || event.ctrlKey) && event.key === "/") {
+                    event.preventDefault();
+                    searchOpen();
+                    return;
+                }
                 if (event.shiftKey && event.key === "<") setSidebar(false);
                 if (event.shiftKey && event.key === ">") setSidebar(true);
                 if (event.shiftKey && event.key === "?") {
