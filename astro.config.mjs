@@ -9,6 +9,7 @@ export default defineConfig({
   trailingSlash: "always",
   redirects: { "/blog/": "/" },
   integrations: [react(), mdx(), sitemap()],
+
   markdown: {
     shikiConfig: {
       themes: {
