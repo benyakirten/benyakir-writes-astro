@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import ContentCards from "../components/ContentCards.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+
+const latest = (await getCollection("posts", ({ data }) => !data.draft))
+    .sort((a, b) => b.data.published.localeCompare(a.data.published))
+    .slice(0, 12);
+---
+
+<SiteLayout
+    title="Home"
+    description="Get an overview of my latest creations. As a fluent speaker of Italian, former writer, editor and current fullstack dev, I have a lot to share."
+>
+    <div class="home-content">
+        <h1 class="lead-heading">Latest Posts</h1>
+        <section class="latest-group" aria-label="Latest blog posts">
+            <ContentCards items={latest} kind="posts" />
+        </section>
+    </div>
+</SiteLayout>

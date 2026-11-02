@@ -1,0 +1,22 @@
+---
+import { getCollection, render } from 'astro:content';
+import SiteLayout from '../../layouts/SiteLayout.astro';
+export async function getStaticPaths() {
+  const entries = await getCollection('projects', ({ data }) => !data.draft);
+  return entries.map((entry) => ({ params: { slug: entry.data.slug }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+---
+<SiteLayout title={entry.data.title} description={entry.data.description || entry.data.excerpt}>
+  <article class="article">
+    <nav aria-label="Breadcrumb"><a href="/projects/">Projects</a></nav>
+    <h1>{entry.data.title}</h1>
+    <p class="muted"><time datetime={entry.data.firstReleased}>{entry.data.firstReleased}</time>{entry.data.latestUpdate && <> · Updated <time datetime={entry.data.latestUpdate}>{entry.data.latestUpdate}</time></>}</p>
+    {entry.data.image && <img src={entry.data.image} alt={entry.data.imageAlt || `${entry.data.title} screenshot`} loading="eager" />}
+    <Content />
+    {entry.data.technologies.length > 0 && <p>Technologies: {entry.data.technologies.join(', ')}</p>}
+    {entry.data.mainLink && <p><a href={entry.data.mainLink} rel="external">View project</a></p>}
+    {entry.data.repoLink && <p><a href={entry.data.repoLink} rel="external">Source code</a></p>}
+  </article>
+</SiteLayout>

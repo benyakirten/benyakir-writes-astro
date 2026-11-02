@@ -1,0 +1,46 @@
+---
+title: The Alice Network - Kate Quinn
+slug: the-alice-network
+published: "2020-04-27"
+legacy:
+  wpId: 584
+  postType: post
+  sourceOrder: 97
+categories:
+  - Reviews
+tags:
+  - 2-stars
+  - historical-fiction
+  - purple-prose
+  - pulp-fiction
+---
+
+Rating: 2 stars
+
+I don’t know how to begin this review so I’ll tell you an anecdote. Some scammers are known to not scam the best they can. They write imperfect English and don’t make a fuss of trying to make themselves look too legitimate. That’s because they’re targeting a market. Those that fall for their scam are not the brightest tools in the toolshed.
+
+I began with that because that’s how I felt about this book. It has the most purple prose of any pulp fiction I’ve seen of any modern book. Her audience doesn’t care about that, and that’s why she’s a New York Times/USA Today bestseller! I have no idea how an imprint of the big 5 allowed it. But it sells, apparently, and I’ve convinced myself that’s why it was given a pass. This is an author with a bunch of books, and I can only presume that most of them are written in the same way.
+
+Okay, I’m gonna talk about the story. It’s the postwar period, and a girl (Charlie) wants to find out what happened to her cousin who disappeared in France under Nazi occupation. She gets help from a PTSD-afflicted reluctant former spy (Eve) and her reticent helper (Finn). This happens while running away from Charlie’s overbearing mom who wants her to get an illicit abortion. That doesn’t sound too bad, but I’m going to get into why it’s egregious. But see what the book has already done to me? Just describing it makes me put an adjective on every noun!
+
+It’s based on a true story in a way that’s probably more fact-based than most movies ‘based on a true story’. There are characters based on real people… just not any important ones. I did learn about the existence of Louise de Bettignies and the massacre of Oradour-sur-Glane. It’s why this book isn’t getting a worse rating! It also taught me (again) why you shouldn’t have everything. That said, this is entirely pulp fiction that pretends it’s more for that slight non-fiction part. It’s not thematically coherent nor does it develop the characters in any interesting way. But first, let’s talk about a humongous, glaring annoyance you’ll see as soon as you get to chapter 2.
+
+So if you listened to my podcast on The Brief Wondrous Life of Oscar Wao, you’d have heard how much I don’t like shifting perspectives. It’s even more disagreeable here! Every chapter alternates between the POV of Charlie and Eve. Almost all of the Eve chapters happen during the Great War, and it’s jarring for every 5-10 pages to switch not only the characters but the time and setting. Why? This is always the question that comes up when it happens. Would the story suffer at all if it were what happened to Eve all in one half of the book and the present in the other? I’d say also that it’s jarring when the two timelines meet up but the POV changes continue to happen, and the Charlie chapters are written in first person but then the Eve chapters are written in third person. It’s incredibly awkward awkward.
+
+I, personally, think it would’ve been a more compelling story if you didn’t have this forced parallelism. The point of these POV changes is that you’re supposed to see how Charlie’s and Eve’s stories are similar. They’re not, really. I would’ve preferred that it be Eve’s perspective in both chapters. Having Charlie be Eve’s foil in some ways isn’t wrong, but it doesn’t work out to be as strong or interesting as the author would like.
+
+I didn’t know if I would give a bunch of details on the story and writing so I’ve decided I won’t. There are a bunch of ones that are kinda funny so I can’t list them all. I’ll just talk about the most egregious.
+
+First, Eve, a British spy, goes boar hunting in Poland, which is behind the iron curtain?!? It seemed so incredibly bizarre to include such insignificant detail that was blatantly ahistorical. Second is that Charlie is supposed to be good at math. The author obviously just put that down as a check mark on her character’s description without any other thought behind it. Is she good at math? Well, her arithmetic is good and… not much else. She always talks about things as ‘X situation plus Y complications, how does that factor into Z outcome?’ Even if that weren’t simple algebra… what does that even mean? She’s shown as good at accounting, but that it isn’t math! My mom went to high school in the 60s and was doing calculus by the time she graduated. I refuse to believe that in 15 years a good high school education with a focus in math went from the basics of Algebra to Calculus (which, by the way, was roughly equivalent to my high school math education in the 2000s). Calculus was discovered centuries before this, and it had been refined greatly by then. Charlie’s “math” is what the author knew, what you need to know for the SAT. I mean, whatever. There are lots of things I don’t know either, but I don’t comically include what I have no idea about in a book.
+
+My antepenultimate complaint is that the book is supposed to be about female empowerment. It’s not that at all. All character changes happen as a result of men. Eve’s story is mostly about two men, one is a good guy side character and a bad guy who is the antagonist. Their decisions and actions are ultimately cause the two most important events in the book, Eve’s transition to spy and an attack. The based-on-a-historical-character-but-with-a-changed-spy-name-for-no-reason (I suspect the author wanted to point out how this was a work of fiction) Louise de Bettignies and other female spy Violette don’t really do much. Oh, and Violette’s name was changed too. The author explains that it’s because her real name was Charlotte which was already taken by the protagonist. I don’t get why she wouldn’t just rename her protagonist! Anyway, the female empowerment spies (oh, look at how the Germans don’t suspect us because we’re women) don’t actually do much at all. And, laughably, the two most important pieces of information Eve gathers (about Verdun and an opportunity to assassinate the Kaiser) are hilariously ignored. So much for the value of women, eh? If you’re going to write a story about exactly that then you shouldn’t make up two pieces of information that are ignored so you can say ‘hey, dudes in the British military, you should respect women more in hindsight!’
+
+Also, Charlie is saved from disgrace, poverty and unhappiness because of Finn! The tall, handsome, stereotypical Scotsman has the solution. He’s actually a former convict, but he has a heart of gold. Please! I feel like I’m screaming into a void. Again, this was a New York Times/USA Today Bestseller!
+
+My hands aren’t too tired yet, but this has taken me awhile to type up completely. I still have two complaints to make. Characterization is this one. It feels like the author decided that she needed to show the characters changing so they do that spontaneously. Eve suddenly becomes the best spy ever when she’s under torture even though she’s stuttering and make a mess of everything right before. Also, she’s bellicose and a pain until the chapter where it suddenly gets decided that she needs to be welcoming of Charlie. Other than this halfhearted attempt, no character substantially changes throughout the whole book. Finn eases up on himself, I guess, and Charlie gets a bit more confident, I guess.
+
+I’m going to say some spoilers from here until the end of the next paragraph so brace for that. Charlie gets away with murder, and she’s perfectly fine with that. She pretends she isn’t for a little bit before the murder, but then it happens. All of a sudden, she’s not bothered at all by it. Not only that but she knows how to wipe her fingerprints and plant evidence. Holy moly! Maybe she should give up mathematics and become an assassin (or work for the NYPD/LAPD. Am I right, fellas?).
+
+The worst of everything (because it’s a horribly failed opportunity) is a little statue of Baudelaire. The antagonist (René, a war profiteer) loves Baudelaire and constantly quotes him. He uses the statue of Baudelaire to attack Eve at a certain point (I guess minor spoilers, but in the present time she has scars from that attack, and it’s fairly obvious from the beginning). What would’ve been great is if prior to this or during this, he had used Baudelaire’s poetry or something to justify his behavior. Without elaborating on it, it’s a wasted opportunity to have a good, meaningful metaphor.
+
+Wasted opportunity is most of this book, where a lot of things could have meant something but the author didn’t know how to do that. It comes off as a stereotype of a story where every single thing that was in doubt comes out with a positive ending. Every… single… thing! Two final, quick complaints: 1. the three different types of personal suffering of Finn, Eve and Charlie are equated; 2. there is a note by the author talking about the real history (she should’ve just written the bibliography) and discussion questions. Discussion questions? Who needs those because they can’t come up with their own? But beyond that this isn’t Moby Dick! The arrogance! And in purple prose-filled pulp fiction it’s so over-the-top I wish it were a joke.

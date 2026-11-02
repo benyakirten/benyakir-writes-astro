@@ -1,0 +1,25 @@
+---
+import { getCollection } from "astro:content";
+import AuthorCard from "../components/AuthorCard.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+const books = await getCollection("books", ({ data }) => !data.draft);
+const stories = await getCollection("stories", ({ data }) => !data.draft);
+const items = [
+    ...books.map((entry) => ({ entry, kind: "books" as const })),
+    ...stories.map((entry) => ({ entry, kind: "stories" as const })),
+].sort((a, b) => b.entry.data.published.localeCompare(a.entry.data.published));
+---
+
+<SiteLayout
+    title="Author"
+    description="A view of all of my published books and short stories. They can be filtered by keyword or date of publication."
+>
+    <h1 class="lead-heading">Written Work</h1>
+    <section class="latest-group" aria-label="Books and stories">
+        <ul class="latest-grid">
+            {items.map((item) => (
+                <AuthorCard {...item} />
+            ))}
+        </ul>
+    </section>
+</SiteLayout>

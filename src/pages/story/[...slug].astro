@@ -1,0 +1,203 @@
+---
+import { getCollection, render } from "astro:content";
+import SiteLayout from "../../layouts/SiteLayout.astro";
+
+export async function getStaticPaths() {
+    const entries = await getCollection("stories", ({ data }) => !data.draft);
+    return entries.map((entry) => ({
+        params: { slug: entry.data.slug },
+        props: { entry },
+    }));
+}
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+const relatedBook = data.relatedBook
+    ? (await getCollection("books", ({ data }) => !data.draft)).find(
+          (book) => book.data.slug === data.relatedBook?.slug,
+      )
+    : undefined;
+
+const published = new Date(`${data.published}T12:00:00Z`).toLocaleDateString(
+    "en-US",
+    { year: "numeric", month: "long", day: "2-digit", timeZone: "UTC" },
+);
+---
+
+<SiteLayout title={data.title} description={data.description || data.excerpt}>
+    <article class="story-page">
+        <header class="story-header">
+            {relatedBook && (
+                <span class="book-relationship">
+                    {data.relatedBook?.relationship || "Related book"} to{" "}
+                    <a href={`/book/${relatedBook.data.slug}/`}>
+                        {relatedBook.data.title}
+                    </a>
+                </span>
+            )}
+            <h1>{data.title}</h1>
+            <div class="published-date">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    aria-hidden="true"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"
+                    />
+                </svg>
+                <time datetime={data.published}>Published: {published}</time>
+            </div>
+            {data.alternateLinks.length > 0 && (
+                <p>
+                    Available on{" "}
+                    {data.alternateLinks.map((link, i) => (
+                        <>
+                            <a href={link.url} rel="external">
+                                {link.name}
+                            </a>
+                            {i < data.alternateLinks.length - 1 && ", "}
+                        </>
+                    ))}
+                </p>
+            )}
+        </header>
+        <div class="story-content wp-content">
+            <Content />
+        </div>
+    </article>
+</SiteLayout>
+<style>
+    .story-page {
+        min-width: 0;
+        font-size: 1rem;
+        line-height: normal;
+    }
+    .story-page p,
+    .story-page ul {
+        margin: 0;
+        padding: 0;
+    }
+    .story-header {
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+        margin-bottom: 0.8rem;
+    }
+    .book-relationship {
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    h1 {
+        margin: 0;
+        padding: 0.4rem 0;
+        font-size: 2.25rem;
+        line-height: 2.5rem;
+    }
+    h1,
+    h2 {
+        background: linear-gradient(
+            to right,
+            var(--heading-start) 40%,
+            var(--heading-end)
+        );
+        background-size: 300%;
+        background-clip: text;
+        color: transparent;
+        transition: background-position 500ms ease;
+    }
+    h1:hover,
+    h2:hover {
+        background-position: right;
+    }
+    h2 {
+        margin: 0 0 1.6rem;
+        padding: 0;
+        font-size: 1.5rem;
+        line-height: 2rem;
+    }
+    .published-date {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        color: var(--text);
+    }
+    .published-date svg {
+        flex: 0 0 1.5rem;
+        width: 1.5rem;
+        height: 1.5rem;
+    }
+    a,
+    .wp-content :global(a) {
+        color: var(--link);
+        background: linear-gradient(currentColor, currentColor) no-repeat 0
+            100% / 0 2px;
+        transition: background-size 300ms ease;
+    }
+    a:hover,
+    a:focus-visible,
+    .wp-content :global(a:hover),
+    .wp-content :global(a:focus-visible) {
+        background-size: 100% 2px;
+    }
+    .story-content {
+        margin: 1.6rem 0;
+    }
+    .wp-content {
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+    }
+    .wp-content :global(p),
+    .wp-content :global(code),
+    .wp-content :global(figure) {
+        margin: 0 0 1.6rem;
+    }
+    .wp-content :global(h1),
+    .wp-content :global(h2),
+    .wp-content :global(h3),
+    .wp-content :global(h4),
+    .wp-content :global(h5),
+    .wp-content :global(h6) {
+        margin: 0;
+        padding: 1.6rem 0;
+        font-family: var(--font-ui);
+        background: linear-gradient(
+            to right,
+            var(--heading-start) 40%,
+            var(--heading-end)
+        );
+        background-size: 300%;
+        background-clip: text;
+        color: transparent;
+    }
+    .wp-content :global(ul),
+    .wp-content :global(ol),
+    .wp-content :global(li) {
+        margin-left: 0.8rem;
+    }
+    .wp-content :global(a) {
+        color: var(--link);
+    }
+    .wp-content :global(img) {
+        max-width: 100%;
+        height: auto;
+    }
+
+    @media (max-width: 576px) {
+        h1 {
+            font-size: 1.875rem;
+            line-height: 2.25rem;
+        }
+        h2 {
+            font-size: 1.25rem;
+            line-height: 1.75rem;
+        }
+        .wp-content {
+            font-size: 1.125rem;
+        }
+    }
+</style>

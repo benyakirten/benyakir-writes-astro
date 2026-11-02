@@ -1,0 +1,54 @@
+{
+  "name": "benyakir-writes-astro",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro check && astro build",
+    "preview": "astro preview",
+    "check": "astro check",
+    "test": "vitest",
+    "test:unit": "vitest run",
+    "test:e2e": "playwright test",
+    "format": "oxfmt astro.config.mjs scripts tests src/lib src/workers",
+    "format:check": "oxfmt --check astro.config.mjs scripts tests src/lib src/workers",
+    "lint": "oxlint astro.config.mjs scripts tests src/lib src/workers",
+    "prebuild": "node scripts/build-data.mjs",
+    "precheck": "node scripts/build-data.mjs"
+  },
+  "dependencies": {
+    "@astrojs/mdx": "^8.1.1",
+    "@astrojs/react": "^7.1.1",
+    "@astrojs/rss": "^4.0.19",
+    "@astrojs/sitemap": "^3.7.4",
+    "@fontsource/faustina": "^5.3.0",
+    "@fontsource/mulish": "^5.3.0",
+    "astro": "^7.4.2",
+    "linkedom": "^0.18.14",
+    "php-serialize": "^5.1.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "turndown": "^7.2.4",
+    "turndown-plugin-gfm": "^1.0.2",
+    "yaml": "^2.8.1",
+    "zod": "^4.0.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.12",
+    "@playwright/test": "^1.64.1",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@types/turndown": "^5.0.5",
+    "oxfmt": "^0.74.0",
+    "oxlint": "^1.89.0",
+    "typescript": "^5.9.0",
+    "vitest": "^3.2.0"
+  }
+}

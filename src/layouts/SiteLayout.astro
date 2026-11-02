@@ -1,0 +1,288 @@
+---
+import "../styles/global.css";
+import SearchIsland from "../components/SearchIsland";
+import { SearchIcon, ShortcutsIcon, CloseIcon } from "../components/Icons";
+import faustinaRegular from "@fontsource/faustina/files/faustina-latin-400-normal.woff2?url";
+import faustinaBold from "@fontsource/faustina/files/faustina-latin-700-normal.woff2?url";
+import mulishRegular from "@fontsource/mulish/files/mulish-latin-400-normal.woff2?url";
+import mulishBold from "@fontsource/mulish/files/mulish-latin-700-normal.woff2?url";
+const criticalFonts = [
+    faustinaRegular,
+    faustinaBold,
+    mulishRegular,
+    mulishBold,
+];
+import { SITE } from "../config";
+const {
+    title = SITE.name,
+    description = "Writing, development projects, and books by Benyakir Horowitz.",
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.origin).toString();
+const path = Astro.url.pathname;
+const navLinks = [
+    { name: "Portfolio", href: "/portfolio/" },
+    { name: "Blog", href: "/" },
+    { name: "Author", href: "/author/" },
+    { name: "Projects", href: "/projects/" },
+];
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="author" content={SITE.author} />
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonical} />
+        {criticalFonts.map((href) => (
+            <link
+                rel="preload"
+                as="font"
+                type="font/woff2"
+                href={href}
+                crossorigin="anonymous"
+            />
+        ))}
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title={`${SITE.name} RSS`}
+            href="/rss.xml"
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content={`${SITE.name} - ${title}`} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <title>{SITE.name} - {title}</title>
+    </head>
+    <body>
+        <div class="site-shell">
+            <div class="sidebar-backdrop" data-sidebar-backdrop></div>
+            <nav class="sidebar" aria-label="Main navigation" data-sidebar>
+                <button
+                    class="sidebar-arrow"
+                    type="button"
+                    aria-label="Open navigation"
+                    aria-expanded="false"
+                    data-sidebar-toggle
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="1.5"
+                        stroke="currentColor"
+                        aria-hidden="true"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3"
+                        />
+                    </svg>
+                </button>
+                <div
+                    class="sidebar-content"
+                    data-sidebar-content
+                    inert
+                    aria-hidden="true"
+                >
+                    <div class="sidebar-links">
+                        <div class="sidebar-nav-group">
+                            {navLinks.map(({ name, href }) => {
+                                const active =
+                                    href === "/"
+                                        ? path === "/"
+                                        : path.startsWith(href);
+                                return (
+                                    <a
+                                        class:list={[
+                                            "sidebar-link",
+                                            { active },
+                                        ]}
+                                        href={href}
+                                        tabindex="-1"
+                                    >
+                                        {name}
+                                    </a>
+                                );
+                            })}
+                        </div>
+                        <div class="sidebar-actions">
+                            <button
+                                type="button"
+                                class="sidebar-action"
+                                data-search-open
+                            >
+                                <span class="sidebar-icon" aria-hidden="true">
+                                    <SearchIcon />
+                                </span>
+                                Search
+                            </button>
+                            <button
+                                type="button"
+                                class="sidebar-action"
+                                data-shortcuts-open
+                            >
+                                <span class="sidebar-icon" aria-hidden="true">
+                                    <ShortcutsIcon />
+                                </span>
+                                Shortcuts
+                            </button>
+                        </div>
+                        <div class="sidebar-legal">
+                            <span>© 2021-2024 by Benyakir Horowitz</span>
+                            <span>All Rights Reserved</span>
+                        </div>
+                    </div>
+                </div>
+                <a
+                    class="sidebar-logo"
+                    href="/"
+                    aria-label="Benyakir Writes home"
+                >
+                    <img src="/images/logo.svg" alt="Benyakir Writes Logo" />
+                </a>
+            </nav>
+            <main class="site-main">
+                <div class="page-content">
+                    <slot />
+                </div>
+            </main>
+        </div>
+
+        <dialog class="shortcuts-dialog" data-shortcuts-dialog>
+            <button
+                type="button"
+                class="shortcut-close"
+                aria-label="Close shortcuts"
+                data-shortcuts-close
+            >
+                <CloseIcon />
+            </button>
+            <h1>Keyboard Shortcuts</h1>
+            <h2>General</h2>
+            <div class="shortcut-list">
+                <span>Open/Close Shortcuts Menu</span>
+                <kbd>?</kbd>
+                <span>Open Search Menu</span>
+                <kbd>⌘/ctrl + /</kbd>
+                <span>Close Navigation Menu</span>
+                <kbd>&lt;</kbd>
+                <span>Open Navigation Menu</span>
+                <kbd>&gt;</kbd>
+                <span>Close Menu</span>
+                <kbd>esc</kbd>
+            </div>
+            <h2>Filter-only</h2>
+            <div class="shortcut-list">
+                <span>Focus New Filter Button</span>
+                <kbd>F/f</kbd>
+                <span>Focus Page Button</span>
+                <kbd>P/p</kbd>
+                <span>Next Page</span>
+                <kbd>+/=</kbd>
+                <span>Previous Page</span>
+                <kbd>-/_</kbd>
+            </div>
+        </dialog>
+        <script>
+            const sidebar =
+                document.querySelector<HTMLElement>("[data-sidebar]");
+            const toggle = document.querySelector<HTMLButtonElement>(
+                "[data-sidebar-toggle]",
+            );
+            const links =
+                document.querySelectorAll<HTMLAnchorElement>(".sidebar-link");
+            const backdrop = document.querySelector<HTMLElement>(
+                "[data-sidebar-backdrop]",
+            );
+            const sidebarContent = document.querySelector<HTMLElement>(
+                "[data-sidebar-content]",
+            );
+            let wheelAngle = 0;
+            const setSidebar = (open: boolean) => {
+                if (sidebar && sidebar.classList.contains("open") !== open) {
+                    wheelAngle -= 90;
+                    sidebar.style.setProperty(
+                        "--wheel-angle",
+                        `${wheelAngle}deg`,
+                    );
+                }
+                if (sidebarContent) {
+                    sidebarContent.inert = !open;
+                    sidebarContent.setAttribute("aria-hidden", String(!open));
+                }
+                sidebar?.classList.toggle("open", open);
+                backdrop?.classList.toggle("visible", open);
+                toggle?.setAttribute("aria-expanded", String(open));
+                toggle?.setAttribute(
+                    "aria-label",
+                    open ? "Close navigation" : "Open navigation",
+                );
+                links.forEach((link) => (link.tabIndex = open ? 0 : -1));
+            };
+            toggle?.addEventListener("click", () =>
+                setSidebar(!sidebar?.classList.contains("open")),
+            );
+            sidebar?.addEventListener("click", (event) => {
+                const target = event.target;
+                if (
+                    !(target instanceof Element) ||
+                    target.closest(
+                        'a, button, input, select, textarea, label, summary, [role="button"], [role="link"]',
+                    )
+                )
+                    return;
+                setSidebar(!sidebar.classList.contains("open"));
+            });
+            backdrop?.addEventListener("click", () => setSidebar(false));
+            const searchOpen = () => {
+                // Preserve early requests until the search island has hydrated.
+                document.documentElement.dataset.pendingSiteSearch = "true";
+                document.dispatchEvent(new Event("open-site-search"));
+            };
+            document
+                .querySelectorAll("[data-search-open]")
+                .forEach((button) =>
+                    button.addEventListener("click", searchOpen),
+                );
+            const shortcuts = document.querySelector<HTMLDialogElement>(
+                "[data-shortcuts-dialog]",
+            );
+            document
+                .querySelector("[data-shortcuts-open]")
+                ?.addEventListener("click", () => shortcuts?.showModal());
+            document
+                .querySelector("[data-shortcuts-close]")
+                ?.addEventListener("click", () => shortcuts?.close());
+            shortcuts?.addEventListener("click", (event) => {
+                if (event.target === shortcuts) shortcuts.close();
+            });
+            document.addEventListener("keydown", (event) => {
+                const target = event.target;
+                const typing =
+                    target instanceof HTMLElement &&
+                    (target.isContentEditable ||
+                        ["INPUT", "TEXTAREA", "SELECT"].includes(
+                            target.tagName,
+                        ));
+                if (event.key === "Escape") setSidebar(false);
+                if (typing) return;
+                if ((event.metaKey || event.ctrlKey) && event.key === "/") {
+                    event.preventDefault();
+                    searchOpen();
+                    return;
+                }
+                if (event.shiftKey && event.key === "<") setSidebar(false);
+                if (event.shiftKey && event.key === ">") setSidebar(true);
+                if (event.shiftKey && event.key === "?") {
+                    if (shortcuts?.open) shortcuts.close();
+                    else shortcuts?.showModal();
+                }
+            });
+        </script>
+        <SearchIsland client:load />
+    </body>
+</html>

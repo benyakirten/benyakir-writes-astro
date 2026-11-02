@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from "astro:content";
+import type { ContentKind } from "../config";
+import LatestCard from "./LatestCard.astro";
+import ProjectCard from "./ProjectCard.astro";
+import AuthorCard from "./AuthorCard.astro";
+
+type Props = {
+    [Kind in ContentKind]: { kind: Kind; items: CollectionEntry<Kind>[] };
+}[ContentKind];
+const props = Astro.props as Props;
+---
+
+<ul class="latest-grid">
+    {props.kind === "posts" &&
+        props.items.map((entry) => <LatestCard entry={entry} />)}
+    {props.kind === "projects" &&
+        props.items.map((entry) => <ProjectCard entry={entry} />)}
+    {props.kind === "books" &&
+        props.items.map((entry) => <AuthorCard entry={entry} kind="books" />)}
+    {props.kind === "stories" &&
+        props.items.map((entry) => <AuthorCard entry={entry} kind="stories" />)}
+</ul>

@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import ContentCards from "../components/ContentCards.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
+const projects = (
+    await getCollection("projects", ({ data }) => !data.draft)
+).sort((a, b) => b.data.firstReleased.localeCompare(a.data.firstReleased));
+---
+
+<SiteLayout
+    title="Projects"
+    description="A view of all of my completed projects with various details from when I first started to learn programming. You can filter by date, host, technology and keyword."
+>
+    <h1 class="lead-heading">Projects</h1>
+    <section class="latest-group" aria-label="Projects">
+        {projects.length ? (
+            <ContentCards items={projects} kind="projects" />
+        ) : (
+            <p>No projects found.</p>
+        )}
+    </section>
+</SiteLayout>
