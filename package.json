@@ -11,7 +11,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro check && astro build",
-    "preview": "astro preview",
+    "preview": "pnpm --filter benyakir-writes-astro... run build && wrangler dev",
     "check": "astro check",
     "test": "vitest",
     "test:unit": "vitest run",
@@ -20,9 +20,12 @@
     "format:check": "oxfmt --check astro.config.mjs scripts tests src/lib src/workers",
     "lint": "oxlint astro.config.mjs scripts tests src/lib src/workers",
     "prebuild": "node scripts/build-data.mjs",
-    "precheck": "node scripts/build-data.mjs"
+    "precheck": "node scripts/build-data.mjs",
+    "generate-types": "wrangler types",
+    "deploy": "pnpm --filter benyakir-writes-astro... run build && wrangler deploy"
   },
   "dependencies": {
+    "@astrojs/cloudflare": "^14.4.3",
     "@astrojs/mdx": "^8.1.1",
     "@astrojs/react": "^7.1.1",
     "@astrojs/rss": "^4.0.19",
@@ -49,6 +52,7 @@
     "oxfmt": "^0.74.0",
     "oxlint": "^1.89.0",
     "typescript": "^5.9.0",
-    "vitest": "^3.2.0"
+    "vitest": "^3.2.0",
+    "wrangler": "^4.156.1"
   }
 }

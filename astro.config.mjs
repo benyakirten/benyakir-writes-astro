@@ -3,12 +3,15 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
+import cloudflare from "@astrojs/cloudflare";
+
 export default defineConfig({
   site: "https://www.benyakir-writes.com",
   output: "static",
   trailingSlash: "always",
   redirects: { "/blog/": "/" },
   integrations: [react(), mdx(), sitemap()],
+
   markdown: {
     shikiConfig: {
       themes: {
@@ -17,4 +20,6 @@ export default defineConfig({
       },
     },
   },
+
+  adapter: cloudflare(),
 });
