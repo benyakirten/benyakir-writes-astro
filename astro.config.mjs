@@ -3,8 +3,6 @@ import react from "@astrojs/react";
 import sitemap from "@astrojs/sitemap";
 import { defineConfig } from "astro/config";
 
-import cloudflare from "@astrojs/cloudflare";
-
 export default defineConfig({
   site: "https://www.benyakir-writes.com",
   output: "static",
@@ -20,6 +18,4 @@ export default defineConfig({
       },
     },
   },
-
-  adapter: cloudflare(),
 });

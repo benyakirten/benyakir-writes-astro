@@ -25,7 +25,6 @@
     "deploy": "pnpm --filter benyakir-writes-astro... run build && wrangler deploy"
   },
   "dependencies": {
-    "@astrojs/cloudflare": "^14.4.3",
     "@astrojs/mdx": "^8.1.1",
     "@astrojs/react": "^7.1.1",
     "@astrojs/rss": "^4.0.19",
