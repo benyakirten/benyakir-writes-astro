@@ -414,9 +414,6 @@ ul {
     background: rgb(0 0 0 / 20%);
     backdrop-filter: blur(4px);
 }
-.search-panel {
-    padding: 0 0 0.8rem;
-}
 .search-row {
     display: flex;
     height: 4rem;
@@ -508,7 +505,11 @@ ul {
     border-top: 2px solid var(--modal-text);
 }
 .search-group-toggle:focus-visible {
+    outline: none;
+}
+.search-group-toggle:focus-visible .search-group-eye {
     outline: 2px solid var(--modal-text);
+    outline-offset: 2px;
 }
 .search-group-label {
     position: absolute;

@@ -36,6 +36,35 @@ test("source SVG icons have explicit 24px dimensions in the sidebar and search",
   }
 });
 
+test("keyboard section toggle highlights only the eye button and still expands and collapses", async ({
+  page,
+}, testInfo) => {
+  await page.goto("/");
+  await page.keyboard.press("ControlOrMeta+/");
+  const dialog = page.getByRole("dialog", { name: "Site search" });
+  const input = dialog.getByRole("searchbox", { name: "Search this site" });
+  await input.fill("javascript");
+  const toggle = dialog.locator(".search-group-toggle").first();
+  await expect(toggle).toBeVisible();
+  await input.press("Tab");
+  await expect(dialog.getByRole("button", { name: "Close search", exact: true })).toBeFocused();
+  await page.keyboard.press("Tab");
+  await expect(toggle).toBeFocused();
+  await expect(toggle).toHaveCSS("outline-style", "none");
+  const eye = toggle.locator(".search-group-eye");
+  await expect(eye).toHaveCSS("outline-style", "solid");
+  await expect(eye).toHaveCSS("outline-width", "2px");
+  const panel = dialog.locator(".search-group-items").first();
+  await toggle.press("Enter");
+  await expect(toggle).toHaveAttribute("aria-expanded", "false");
+  await expect(panel).toBeHidden();
+  await expect(toggle).toBeFocused();
+  await toggle.press("Space");
+  await expect(toggle).toHaveAttribute("aria-expanded", "true");
+  await expect(panel).toBeVisible();
+  await dialog.screenshot({ path: testInfo.outputPath("section-focus.png") });
+});
+
 test("an early search shortcut is queued until the island hydrates", async ({ page }) => {
   let release!: () => void;
   const hydration = new Promise<void>((resolve) => {
