@@ -2,10 +2,6 @@
 title: The backend is done; back to the front!
 slug: the-backend-is-done-back-to-the-front
 published: "2023-10-07"
-legacy:
-  wpId: 1239
-  postType: post
-  sourceOrder: 147
 categories:
   - Ben's Thoughts
   - Ben's Blogs
@@ -22,14 +18,16 @@ tags:
 ## Table of Contents
 
 1.  [What Have You Done](#what-have-you-done)
-2.  [Wha](#whats-next)[t's Next](#what's-next)
+2.  [What's Next](#whats-next)
 3.  [Today's Topic](#todays-topic)
-4.  [The Schemas](http://the-schemas)
-5.  [The Schemaless Schema](#the-schemaless-schema)
+4.  [The Schemas](#the-schemas)
+5.  [The Schemaless Schema](#the-schema-less-schema)
 
 ## What have you done?
 
 I completed what I thought I would never get done for one reason or other - I completed the backend for my chat app. I always thought that Elixir was too complicated, too different from what I knew, or that something would come up which would stop me from working on it. But I have to tell you one thing: it was a real, complete pleasure to work with Elixir and Phoenix. I cannot recommend them highly enough. Well, I had a few problems with Ecto, but more on that later. I have decided that over the coming weeks, I'm going to talk about the problems I ran into for which I couldn't find good solutions online and how I solved each of them.
+
+<span id="what's-next"></span>
 
 ## What's Next
 
@@ -52,6 +50,8 @@ The schemas are a representation of how the data will be used in your applicatio
 Then a function that uses the schema will be like the following:
 
 That looks like SQL DML, kinda, which is fine. It also has syntax highlighting and autocomplete, which is nice. The `Conversation` of that block refers to the schema defined above. This is all kinda banal and not that hard to follow along with if you have some experience with using ORMs. Now is the part that had me up the wall trying to figure out what was going on and what I was doing wrong
+
+<span id="the-schemaless-schema"></span>
 
 ## The Schema-less Schema
 

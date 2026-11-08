@@ -2,10 +2,6 @@
 title: shortnr
 slug: shortnr
 published: "2021-12-07"
-legacy:
-  wpId: 1012
-  postType: project
-  sourceOrder: 110
 firstReleased: "2021-12-07"
 technologies:
   - ts

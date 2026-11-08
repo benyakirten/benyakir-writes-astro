@@ -2,10 +2,6 @@
 title: Madame Bovary - Gustave Flaubert
 slug: madame-bovary
 published: "2020-06-23"
-legacy:
-  wpId: 610
-  postType: post
-  sourceOrder: 100
 categories:
   - Reviews
 tags:

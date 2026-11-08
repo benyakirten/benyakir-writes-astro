@@ -2,10 +2,6 @@
 title: Showcase
 slug: showcase
 published: "2021-07-19"
-legacy:
-  wpId: 914
-  postType: project
-  sourceOrder: 2
 firstReleased: "2021-07-19"
 technologies:
   - ts

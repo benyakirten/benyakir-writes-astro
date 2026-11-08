@@ -2,10 +2,6 @@
 title: The Dreamers - Karen Thompson Walker
 slug: dreamers
 published: "2019-12-16"
-legacy:
-  wpId: 242
-  postType: post
-  sourceOrder: 40
 categories:
   - Reviews
 tags:

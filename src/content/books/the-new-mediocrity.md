@@ -2,10 +2,6 @@
 title: The New Mediocrity
 slug: the-new-mediocrity
 published: "2023-02-09"
-legacy:
-  wpId: 1168
-  postType: book
-  sourceOrder: 141
 purchaseLinks:
   - name: Amazon
     url: https://www.amazon.com/New-Mediocrity-Benyakir-Horowitz-ebook/dp/B0BVD2XYLH

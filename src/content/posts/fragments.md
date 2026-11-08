@@ -2,10 +2,6 @@
 title: Fragments - Jessica Victoria Fisette
 slug: fragments
 published: "2018-03-05"
-legacy:
-  wpId: 275
-  postType: post
-  sourceOrder: 50
 categories:
   - Reviews
 tags:

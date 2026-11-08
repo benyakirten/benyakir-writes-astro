@@ -2,10 +2,6 @@
 title: The Ministry of Utmost Happiness - Arundhati Roy
 slug: the-ministry-of-utmost-happiness
 published: "2019-04-11"
-legacy:
-  wpId: 292
-  postType: post
-  sourceOrder: 56
 categories:
   - Reviews
 tags:

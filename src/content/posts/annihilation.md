@@ -2,10 +2,6 @@
 title: Annihilation - Jeff VanderMeer
 slug: annihilation
 published: "2018-09-11"
-legacy:
-  wpId: 210
-  postType: post
-  sourceOrder: 30
 categories:
   - Reviews
 tags:

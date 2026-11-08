@@ -2,10 +2,6 @@
 title: TypeScript
 slug: typescript
 published: "2021-04-19"
-legacy:
-  wpId: 837
-  postType: post
-  sourceOrder: 124
 categories:
   - Ben's Thoughts
 tags:

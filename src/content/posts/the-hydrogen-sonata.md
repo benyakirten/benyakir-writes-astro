@@ -2,10 +2,6 @@
 title: The Hydrogen Sonata - Iain M. Banks
 slug: the-hydrogen-sonata
 published: "2018-09-20"
-legacy:
-  wpId: 290
-  postType: post
-  sourceOrder: 55
 categories:
   - Reviews
 tags:

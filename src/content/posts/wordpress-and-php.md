@@ -3,10 +3,6 @@ title: WordPress and PHP
 slug: wordpress-and-php
 published: "2021-03-15"
 description: I express my joys and sadnesses about WordPress (mostly joy) and PHP (mostly sadness)
-legacy:
-  wpId: 820
-  postType: post
-  sourceOrder: 123
 categories:
   - Ben's Thoughts
 tags:

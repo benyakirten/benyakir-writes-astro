@@ -2,10 +2,6 @@
 title: How the García Girls Lost Their Accents - Julia Alvarez
 slug: the-garcia-girls
 published: "2019-06-17"
-legacy:
-  wpId: 229
-  postType: post
-  sourceOrder: 35
 categories:
   - Reviews
 tags:

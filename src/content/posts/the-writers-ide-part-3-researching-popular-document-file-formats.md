@@ -2,10 +2,6 @@
 title: "The Writer's IDE, part 3: Researching popular document file formats"
 slug: the-writers-ide-part-3-researching-popular-document-file-formats
 published: "2024-09-10"
-legacy:
-  wpId: 1409
-  postType: post
-  sourceOrder: 158
 categories:
   - Ben's Blogs
   - Ben's Thoughts
@@ -31,15 +27,15 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#introduction)
--   [Word](#word)
--   [Pages](#pages)
--   [PDF](#pdf)
--   [Open Document](#open-document)
--   [LaTeX](#latex)
--   [ePub](#epub)
--   [Partial Formats](#partial-formats)
--   [Where I'm Going](http://where-im-going)
+- [Introduction](#introduction)
+- [Word](#word)
+- [Pages](#pages)
+- [PDF](#pdf)
+- [Open Document](#opendocument)
+- [LaTeX](#latex)
+- [ePub](#epub)
+- [Partial Formats](#partial-formats)
+- [Where I'm Going](#where-im-going)
 
 ## Introduction
 
@@ -75,6 +71,8 @@ Like a Word file, it's a zip archive. Just do it, run `unzip /path/to/file.pages
 
 It's many things, but easy isn't one of them. PDFs have the advantage of being write-only (kinda... mostly). It was proprietary to Adobe until 2008, then it was open. The format is a [mess](https://en.wikipedia.org/wiki/PDF), and it even has its own programming language. It's has to be interpreted. It's so complicated I don't want to deal with it. However, since it's mostly used an output/final format, all I would want to do is be able to export a file as a PDF. And, thankfully, browsers/operating systems can do that for you fairly easily. So I will continue to never learn PDFs.
 
+<span id="open-document"></span>
+
 ## OpenDocument
 
 I just learned about LibreOffice and the [Open Document Format](https://opendocumentformat.org). It looks to be complicated, but it's essentially like Word. It is essentially a bunch of XML data in. zip archive. I can't tell you much, but I can tell you this: it's an [open format](https://en.wikipedia.org/wiki/OpenDocument). It clearly spells out the specification, unlike pages at least. It will take me awhile to write a parser for it, but it will happen... eventually.
@@ -99,21 +97,21 @@ Rich Text is probably the simplest feature-complete format. It is relatively leg
 {\\colortbl;\\red255\\green255\\blue255;}  
 {\\\*\\expandedcolortbl;;}  
 \\margl1440\\margr1440\\vieww22380\\viewh11540\\viewkind0  
-\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\partightenfactor0  
-  
+\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\partightenfactor0
+
 \\f0\\fs24 \\cf0 Text Align\\  
 \\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\qc\\partightenfactor0  
 \\cf0 Text Align\\  
-\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\qr\\partightenfactor0  
-  
+\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\qr\\partightenfactor0
+
 \\f1\\b \\cf0 Text Align\\  
 \\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\partightenfactor0  
 \\cf0 Hello  
 \\f2\\i Hello \\ul Hello  
 \\f0\\i0\\b0 \\ulnone Hello\\  
 \\  
-\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\partightenfactor0  
-  
+\\pard\\tx720\\tx1440\\tx2160\\tx2880\\tx3600\\tx4320\\tx5040\\tx5760\\tx6480\\tx7200\\tx7920\\tx8640\\pardirnatural\\partightenfactor0
+
 \\f3 \\cf0 New Font}
 
 RTF doesn't allow plugins like other formats do, which is good.

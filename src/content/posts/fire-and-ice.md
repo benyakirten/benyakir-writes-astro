@@ -2,10 +2,6 @@
 title: Fire and Ice - Jessica Victoria Fisette
 slug: fire-and-ice
 published: "2018-04-02"
-legacy:
-  wpId: 300
-  postType: post
-  sourceOrder: 59
 categories:
   - Reviews
 tags:

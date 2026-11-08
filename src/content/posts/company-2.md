@@ -2,10 +2,6 @@
 title: "Episode 71-72: Company"
 slug: company-2
 published: "2019-07-09"
-legacy:
-  wpId: 339
-  postType: post
-  sourceOrder: 73
 categories:
   - Down South Boulder Road
 tags:

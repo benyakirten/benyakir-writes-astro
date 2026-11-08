@@ -2,10 +2,6 @@
 title: A Visit From the Goon Squad - Jennifer Egan
 slug: goon-squad
 published: "2020-02-10"
-legacy:
-  wpId: 522
-  postType: post
-  sourceOrder: 81
 categories:
   - Reviews
 tags:

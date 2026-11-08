@@ -2,10 +2,6 @@
 title: Why Star Trek is Great
 slug: why-star-trek-is-great
 published: "2019-07-15"
-legacy:
-  wpId: 154
-  postType: post
-  sourceOrder: 14
 categories:
   - Ben's Thoughts
 tags:

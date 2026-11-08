@@ -2,10 +2,6 @@
 title: Dragon's Teeth - Upton Sinclair
 slug: dragons-teeth
 published: "2020-05-15"
-legacy:
-  wpId: 595
-  postType: post
-  sourceOrder: 89
 categories:
   - Reviews
 tags:

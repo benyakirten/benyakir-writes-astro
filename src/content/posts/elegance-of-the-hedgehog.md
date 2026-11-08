@@ -2,10 +2,6 @@
 title: The Elegance of the Hedgehog - Muriel Barbary
 slug: elegance-of-the-hedgehog
 published: "2018-08-09"
-legacy:
-  wpId: 234
-  postType: post
-  sourceOrder: 37
 categories:
   - Reviews
 tags:

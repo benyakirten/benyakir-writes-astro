@@ -2,10 +2,6 @@
 title: "Episode 69-70: Nothing Lasts Forever"
 slug: nothing-lasts-forever-2
 published: "2019-06-25"
-legacy:
-  wpId: 342
-  postType: post
-  sourceOrder: 74
 categories:
   - Down South Boulder Road
 tags:

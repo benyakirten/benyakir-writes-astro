@@ -2,10 +2,6 @@
 title: Episodes 111-112 - The Brief Wondrous Life of Oscar Wao
 slug: oscar-wao
 published: "2020-04-14"
-legacy:
-  wpId: 574
-  postType: post
-  sourceOrder: 98
 categories:
   - Down South Boulder Road
 tags:

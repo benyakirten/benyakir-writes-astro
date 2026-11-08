@@ -2,10 +2,6 @@
 title: The Friar's Lantern - Greg Hickey
 slug: the-friars-lantern
 published: "2020-07-20"
-legacy:
-  wpId: 630
-  postType: post
-  sourceOrder: 106
 categories:
   - Reviews
 tags:

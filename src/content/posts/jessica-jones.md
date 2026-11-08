@@ -2,10 +2,6 @@
 title: "Episode 79-80: Jessica Jones, season 3"
 slug: jessica-jones
 published: "2019-08-27"
-legacy:
-  wpId: 329
-  postType: post
-  sourceOrder: 69
 categories:
   - Down South Boulder Road
 tags:

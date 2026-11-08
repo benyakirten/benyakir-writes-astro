@@ -2,10 +2,6 @@
 title: "Episode 81-82: Lexicon"
 slug: lexicon-2
 published: "2019-09-19"
-legacy:
-  wpId: 326
-  postType: post
-  sourceOrder: 68
 categories:
   - Down South Boulder Road
 tags:

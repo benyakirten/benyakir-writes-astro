@@ -2,10 +2,6 @@
 title: "Star Trek: The Original Series"
 slug: the-original-series
 published: "2019-07-25"
-legacy:
-  wpId: 157
-  postType: post
-  sourceOrder: 15
 categories:
   - Ben's Thoughts
 tags:

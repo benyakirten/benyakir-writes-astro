@@ -2,10 +2,6 @@
 title: The Cockroach - Ian McEwan
 slug: the-cockroach
 published: "2020-01-27"
-legacy:
-  wpId: 509
-  postType: post
-  sourceOrder: 87
 categories:
   - Reviews
 tags:

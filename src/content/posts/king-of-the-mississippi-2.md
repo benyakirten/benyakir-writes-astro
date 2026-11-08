@@ -2,10 +2,6 @@
 title: "Episode 83-84: King of the Mississippi"
 slug: king-of-the-mississippi-2
 published: "2019-10-03"
-legacy:
-  wpId: 323
-  postType: post
-  sourceOrder: 67
 categories:
   - Down South Boulder Road
 tags:

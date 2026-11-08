@@ -2,10 +2,6 @@
 title: Recursion - Blake Crouch
 slug: recursion
 published: "2019-12-06"
-legacy:
-  wpId: 239
-  postType: post
-  sourceOrder: 39
 categories:
   - Reviews
 tags:

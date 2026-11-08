@@ -2,10 +2,6 @@
 title: Company - Max Barry
 slug: company
 published: "2019-05-20"
-legacy:
-  wpId: 215
-  postType: post
-  sourceOrder: 31
 categories:
   - Reviews
 tags:

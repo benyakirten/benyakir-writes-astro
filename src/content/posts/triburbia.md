@@ -2,10 +2,6 @@
 title: "Episode 63-64: Triburbia"
 slug: triburbia
 published: "2019-05-15"
-legacy:
-  wpId: 351
-  postType: post
-  sourceOrder: 77
 categories:
   - Down South Boulder Road
 tags:

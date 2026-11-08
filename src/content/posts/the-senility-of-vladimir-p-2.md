@@ -2,10 +2,6 @@
 title: "Episode 87-88: The Senility of Vladimir P."
 slug: the-senility-of-vladimir-p-2
 published: "2019-10-29"
-legacy:
-  wpId: 319
-  postType: post
-  sourceOrder: 65
 categories:
   - Down South Boulder Road
 tags:

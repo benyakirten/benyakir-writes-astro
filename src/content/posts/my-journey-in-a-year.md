@@ -2,10 +2,6 @@
 title: My Journey in a Year
 slug: my-journey-in-a-year
 published: "2021-08-03"
-legacy:
-  wpId: 919
-  postType: post
-  sourceOrder: 130
 categories:
   - Ben's Thoughts
 tags:

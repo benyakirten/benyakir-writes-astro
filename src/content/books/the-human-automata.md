@@ -2,10 +2,6 @@
 title: The Human Automata
 slug: the-human-automata
 published: "2020-09-20"
-legacy:
-  wpId: 778
-  postType: book
-  sourceOrder: 116
 purchaseLinks:
   - name: Amazon
     url: https://www.amazon.com/dp/B08G3KSNT7/

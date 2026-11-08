@@ -2,10 +2,6 @@
 title: The Brief Wondrous Life of Oscar Wao - Junot Diaz
 slug: the-brief-life
 published: "2020-02-20"
-legacy:
-  wpId: 535
-  postType: post
-  sourceOrder: 86
 categories:
   - Reviews
 tags:

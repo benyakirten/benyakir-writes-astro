@@ -2,10 +2,6 @@
 title: Nothing Lasts Forever - Roderick Thorp
 slug: nothing-lasts-forever
 published: "2019-05-27"
-legacy:
-  wpId: 256
-  postType: post
-  sourceOrder: 45
 categories:
   - Reviews
 tags:

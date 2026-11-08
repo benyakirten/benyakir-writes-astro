@@ -2,10 +2,6 @@
 title: Chat API
 slug: chat-api
 published: "2023-10-06"
-legacy:
-  wpId: 1237
-  postType: project
-  sourceOrder: 146
 firstReleased: "2023-10-06"
 technologies:
   - ex

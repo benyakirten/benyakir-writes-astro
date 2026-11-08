@@ -2,10 +2,6 @@
 title: Benyakir Edits
 slug: benyakir-edits
 published: "2021-03-13"
-legacy:
-  wpId: 816
-  postType: project
-  sourceOrder: 115
 firstReleased: "2021-03-13"
 latestUpdate: "2021-03-13"
 technologies:

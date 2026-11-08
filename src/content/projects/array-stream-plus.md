@@ -2,10 +2,6 @@
 title: Array Stream Plus
 slug: array-stream-plus
 published: "2024-10-07"
-legacy:
-  wpId: 1438
-  postType: project
-  sourceOrder: 160
 firstReleased: "2024-10-07"
 technologies:
   - js

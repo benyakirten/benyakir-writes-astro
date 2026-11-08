@@ -2,10 +2,6 @@
 title: Solomon the Accountant - Edward M. Knauss
 slug: solomon-the-accountant
 published: "2018-11-05"
-legacy:
-  wpId: 199
-  postType: post
-  sourceOrder: 28
 categories:
   - Reviews
 tags:

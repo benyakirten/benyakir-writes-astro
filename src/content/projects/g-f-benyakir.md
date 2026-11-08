@@ -2,10 +2,6 @@
 title: g-f-benyakir
 slug: g-f-benyakir
 published: "2020-11-28"
-legacy:
-  wpId: 782
-  postType: project
-  sourceOrder: 122
 firstReleased: "2020-11-28"
 latestUpdate: "2021-02-27"
 technologies:

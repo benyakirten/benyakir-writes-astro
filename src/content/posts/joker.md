@@ -2,10 +2,6 @@
 title: "Episode 89-90: Joker"
 slug: joker
 published: "2019-11-13"
-legacy:
-  wpId: 317
-  postType: post
-  sourceOrder: 64
 categories:
   - Down South Boulder Road
 tags:

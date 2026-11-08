@@ -2,10 +2,6 @@
 title: Winesburg, Ohio - Sherwood Anderson
 slug: winesburg-ohio
 published: "2020-01-09"
-legacy:
-  wpId: 470
-  postType: post
-  sourceOrder: 82
 categories:
   - Reviews
 tags:

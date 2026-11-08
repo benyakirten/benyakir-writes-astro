@@ -2,10 +2,6 @@
 title: Sudoku! That's fun, right?
 slug: sudoku
 published: "2020-01-15"
-legacy:
-  wpId: 491
-  postType: post
-  sourceOrder: 12
 categories:
   - Ben's Thoughts
 tags: []

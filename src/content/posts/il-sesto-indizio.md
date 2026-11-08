@@ -2,10 +2,6 @@
 title: Il Sesto Indizio - Giovanni Sechi
 slug: il-sesto-indizio
 published: "2018-09-06"
-legacy:
-  wpId: 249
-  postType: post
-  sourceOrder: 43
 categories:
   - Reviews
 tags:

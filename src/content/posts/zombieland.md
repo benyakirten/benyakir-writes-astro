@@ -2,10 +2,6 @@
 title: "Episode 91-92: Zombieland"
 slug: zombieland
 published: "2019-11-23"
-legacy:
-  wpId: 314
-  postType: post
-  sourceOrder: 63
 categories:
   - Down South Boulder Road
 tags:

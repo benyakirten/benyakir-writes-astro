@@ -2,10 +2,6 @@
 title: Episode 115-116 - The Alice Network
 slug: the-alice-network-2
 published: "2020-05-13"
-legacy:
-  wpId: 593
-  postType: post
-  sourceOrder: 99
 categories:
   - Down South Boulder Road
 tags:

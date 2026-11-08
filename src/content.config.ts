@@ -16,13 +16,6 @@ const shared = z.object({
   description: z.string().optional(),
   excerpt: z.string().optional(),
   draft: z.boolean().default(false),
-  legacy: z
-    .object({
-      wpId: z.number().int().positive().optional(),
-      postType: z.string().optional(),
-      sourceOrder: z.number().int().nonnegative().optional(),
-    })
-    .optional(),
 });
 
 const posts = defineCollection({
@@ -46,9 +39,7 @@ const books = defineCollection({
         links: z.array(link).default([]),
       })
       .optional(),
-    relatedProject: z
-      .object({ slug: z.string(), description: z.string().optional() })
-      .optional(),
+    relatedProject: z.object({ slug: z.string(), description: z.string().optional() }).optional(),
     relatedStories: z.array(z.string()).default([]),
   }),
 });
@@ -57,9 +48,7 @@ const stories = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/stories" }),
   schema: shared.extend({
     alternateLinks: z.array(link).default([]),
-    relatedBook: z
-      .object({ slug: z.string(), relationship: z.string().optional() })
-      .optional(),
+    relatedBook: z.object({ slug: z.string(), relationship: z.string().optional() }).optional(),
   }),
 });
 

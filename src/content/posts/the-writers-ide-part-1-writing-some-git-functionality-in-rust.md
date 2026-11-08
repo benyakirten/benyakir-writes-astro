@@ -2,10 +2,6 @@
 title: "The Writer's IDE, Part 1: Writing some Git functionality in Rust."
 slug: the-writers-ide-part-1-writing-some-git-functionality-in-rust
 published: "2024-04-01"
-legacy:
-  wpId: 1308
-  postType: post
-  sourceOrder: 149
 categories:
   - Ben's Blogs
   - Ben's Thoughts

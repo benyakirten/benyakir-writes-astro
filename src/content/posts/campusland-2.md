@@ -2,10 +2,6 @@
 title: "Episode 93-95: Campusland"
 slug: campusland-2
 published: "2019-12-18"
-legacy:
-  wpId: 115
-  postType: post
-  sourceOrder: 10
 categories:
   - Down South Boulder Road
 tags:

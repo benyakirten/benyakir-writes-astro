@@ -2,10 +2,6 @@
 title: Best American Science Fiction and Fantasy
 slug: best-scifi-and-fantasy-2018
 published: "2020-08-24"
-legacy:
-  wpId: 696
-  postType: post
-  sourceOrder: 107
 categories:
   - Reviews
 tags:

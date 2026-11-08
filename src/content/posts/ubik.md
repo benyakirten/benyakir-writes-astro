@@ -2,10 +2,6 @@
 title: Ubik - Philip K. Dick
 slug: ubik
 published: "2018-10-15"
-legacy:
-  wpId: 222
-  postType: post
-  sourceOrder: 33
 categories:
   - Reviews
 tags:

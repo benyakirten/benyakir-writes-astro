@@ -2,10 +2,6 @@
 title: Driving Past the Cows was Just Awful
 slug: the-cows
 published: "2018-08-23"
-legacy:
-  wpId: 173
-  postType: post
-  sourceOrder: 21
 categories:
   - Ben's Thoughts
 tags:

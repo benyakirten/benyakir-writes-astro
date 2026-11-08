@@ -2,10 +2,6 @@
 title: Memoirs of a Geisha - Arthur Golden
 slug: memoirs-of-a-geisha
 published: "2020-07-17"
-legacy:
-  wpId: 624
-  postType: post
-  sourceOrder: 102
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: JavaScript
 slug: javascript
 published: "2021-03-05"
-legacy:
-  wpId: 743
-  postType: post
-  sourceOrder: 118
 categories:
   - Ben's Thoughts
 tags:

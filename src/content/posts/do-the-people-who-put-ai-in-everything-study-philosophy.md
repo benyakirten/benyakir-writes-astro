@@ -2,10 +2,6 @@
 title: Do the People Who Put AI in Everything Study Philosophy?
 slug: do-the-people-who-put-ai-in-everything-study-philosophy
 published: "2024-10-14"
-legacy:
-  wpId: 1450
-  postType: post
-  sourceOrder: 156
 categories:
   - Ben's Thoughts
   - Ben's Blogs
@@ -21,9 +17,11 @@ tags:
 
 ## Table of Contents
 
-1.  [Introduction](#intro)
+1.  [Introduction](#introduction)
 2.  [The Good](#the-good)
 3.  [The Bad](#the-bad)
+
+<span id="intro"></span>
 
 ## Introduction
 
@@ -35,7 +33,7 @@ I've been working on my NPM library, and I was going to write about it. But then
 It worries me and doesn't at the same time. Whoever came up with the idea doesn't really understand the human condition. They understand things through the lens of consumption and production, which, I guess, isn't hard to understand. There's that famous Upton Sinclair quote:
 
 > [“It is difficult to get a man to understand something, when his salary depends on his not understanding it.”](https://www.goodreads.com/quotes/21810-it-is-difficult-to-get-a-man-to-understand-something)
-> 
+>
 > People who make money do not think of problems in the same terms that normal people think of them, they think of economics, costs and income. It is one of the first things when you get into the real world as a programmer: what is the business cost, what is the business need, what is the value it brings to a business, etc. On your resumé, you're supposed to use numbers such as: `optimize the database and decrease query time by 30%`. There is something that agrees with this view of programming when people want to replace programming with AI. And you know the but is coming because of how I phrased it. Here's it is: there's another side to programming, just like there's another side to how humans exist.
 
 ## The Good
@@ -60,7 +58,7 @@ All the tools to create this website and blog you're reading? They're free tools
 
 I didn't write this just to crap on AI. After all, it is a tool in a... toolbox. One day it may be able to wield the entire toolbox, but I don't think that's going to happen with the current technology. And if it does, it will be a one-off solution that requires so much computing power to compile that it will take years and be an incredible drain on resources. And like all things of such a grand scale, like the Manhattan project, it should be undertaken by the government as a public tool, not as the tool of private enterprise in seek of profit.
 
-Why I wrote this article is to think about the philosophy of our use of AI. In my life, I keep going back to when we studied Walter Benjamin in college. I had never taken philosophy, but that one class I took, the one I had to take in order to graduate with honors (*summa cum laude* by the way), was one of the best I took in my entire time in college. Benjamin wrote about the mass reproduction of art in society. It was an era where you were going from a stage play to a film of Hamlet. You no longer had to care about the individual actors in the individual production, how they transformed the material from words and concepts to reality. Or how an actor needs to only create an individual shot instead of acting out the whole scene and then whole act. The whole concept of doing things in post is anathema to the individual touch that an actor adds. As an aside, what would be his take on ADR?
+Why I wrote this article is to think about the philosophy of our use of AI. In my life, I keep going back to when we studied Walter Benjamin in college. I had never taken philosophy, but that one class I took, the one I had to take in order to graduate with honors (_summa cum laude_ by the way), was one of the best I took in my entire time in college. Benjamin wrote about the mass reproduction of art in society. It was an era where you were going from a stage play to a film of Hamlet. You no longer had to care about the individual actors in the individual production, how they transformed the material from words and concepts to reality. Or how an actor needs to only create an individual shot instead of acting out the whole scene and then whole act. The whole concept of doing things in post is anathema to the individual touch that an actor adds. As an aside, what would be his take on ADR?
 
 Once you created a means to mass reproduce the creation, it no longer had the individual touch of humanity it once had. After all, when you look at a jpeg of The Birth of Venus, you're no longer considering the hard work and toil the artist put into the canvas. And if you're reading an ebook rather than a medieval manuscript inked by monks, you're no longer considering the scribe who drew some ridiculous design in the corner because they were bored.
 

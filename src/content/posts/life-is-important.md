@@ -2,10 +2,6 @@
 title: Life is the most important thing
 slug: life-is-important
 published: "2020-05-31"
-legacy:
-  wpId: 599
-  postType: post
-  sourceOrder: 95
 categories:
   - Ben's Thoughts
 tags:

@@ -2,10 +2,6 @@
 title: "The Silence: Or how it's going to keep going on for awhile. But not forever."
 slug: the-silence-or-how-its-going-to-keep-going-on-for-awhile-but-not-forever
 published: "2021-01-03"
-legacy:
-  wpId: 718
-  postType: post
-  sourceOrder: 108
 categories:
   - Ben's Thoughts
 tags:

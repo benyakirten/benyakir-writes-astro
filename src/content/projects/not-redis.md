@@ -2,10 +2,6 @@
 title: not-redis
 slug: not-redis
 published: "2024-06-06"
-legacy:
-  wpId: 1402
-  postType: project
-  sourceOrder: 155
 firstReleased: "2024-06-06"
 technologies:
   - rs

@@ -2,10 +2,6 @@
 title: My Next Project - Scope Change
 slug: my-next-project-scope-change
 published: "2022-01-29"
-legacy:
-  wpId: 1056
-  postType: post
-  sourceOrder: 139
 categories:
   - Ben's Thoughts
 tags:
@@ -19,11 +15,13 @@ tags:
 
 ## Table Of Contents
 
--   [Introduction](#intro)
--   [The Stack](#the-stack)
--   [The Endpoint](#the-endpoint)
--   [The Details](#the-details)
--   [Bad Stuff](#bad-stuff)
+- [Introduction](#introduction)
+- [The Stack](#the-stack)
+- [The Endpoint](#the-endpoint)
+- [The Details](#the-details)
+- [Bad Stuff](#bad-stuff)
+
+<span id="intro"></span>
 
 ## Introduction
 
@@ -65,19 +63,19 @@ The website will be pretty simple, to be honest. I am foreseeing it roughly on t
 
 Currently, my plans are:
 
--   This will be open source.
--   Anyone can visit the website and look at any of the resources or conversations without signing up
--   The navbar (the bar at the top) will be pretty simple. You can look for a topic, search, or sign up/login.
--   If you sign up, you can create your own resources and/or participate in the conversations
--   Public chatrooms for discussing subjects or DMs with e2e encryption.
+- This will be open source.
+- Anyone can visit the website and look at any of the resources or conversations without signing up
+- The navbar (the bar at the top) will be pretty simple. You can look for a topic, search, or sign up/login.
+- If you sign up, you can create your own resources and/or participate in the conversations
+- Public chatrooms for discussing subjects or DMs with e2e encryption.
 
 Here are things that I'm discussing:
 
--   If resources should be stored on the internal Ecto database or as pages that can be edited on GitHub. I like the idea of the latter since it gives me finer grain control, but GitHub and making Pull Requests is not for the faint of heart.
--   How many chatrooms there are. for example, will be there one on the home page? Probably, but maybe not. Will there be a chatroom for every resource or just for categories (like one for JavaScript, one for Python)? I'm leaning toward the former.
--   I may add a query API. So in any conversation on a resource you can do something like "QUERY: what is Angular used for?", and it could ask Google or something. The main reason this is up for discussion is that query APIs are really, stupidly expensive. Like, I looked into it just recently, and holy poop. I would definitely need to get people to sponsor this.
--   Internationalization. This is something that I will add no matter what, but what levels should I plan on to begin with? Phoenix ships with it out of the box, so why not?
--   I may use OAuth 2 with google/Facebook/etc. providers instead of providing my own authentication. To be honest, I'm not interested in integrating with social networks, but these features can be very convenient.
+- If resources should be stored on the internal Ecto database or as pages that can be edited on GitHub. I like the idea of the latter since it gives me finer grain control, but GitHub and making Pull Requests is not for the faint of heart.
+- How many chatrooms there are. for example, will be there one on the home page? Probably, but maybe not. Will there be a chatroom for every resource or just for categories (like one for JavaScript, one for Python)? I'm leaning toward the former.
+- I may add a query API. So in any conversation on a resource you can do something like "QUERY: what is Angular used for?", and it could ask Google or something. The main reason this is up for discussion is that query APIs are really, stupidly expensive. Like, I looked into it just recently, and holy poop. I would definitely need to get people to sponsor this.
+- Internationalization. This is something that I will add no matter what, but what levels should I plan on to begin with? Phoenix ships with it out of the box, so why not?
+- I may use OAuth 2 with google/Facebook/etc. providers instead of providing my own authentication. To be honest, I'm not interested in integrating with social networks, but these features can be very convenient.
 
 Fundamentally, I want the platform to be easy to use and a good place just to look something up and learn. I think I have a good start with that. But what will the title of the project be? Maybe "too online". I like self-parody/deprecation. Maybe it's something wrong with me.
 
@@ -85,9 +83,9 @@ Fundamentally, I want the platform to be easy to use and a good place just to lo
 
 I've learned is that one of the first things that must always be considered are bad actors and edge cases. Here are the first ones that I can think of:
 
--   If I allow people to write lessons and anyone can sign up, how are they going to do that? Is it going to be all text with no organization? That proves to be a horrible reading experience, so there needs to be some sort of text editor. How will my text editor prevent bad actors such as people either implanting a virus in the lesson or a link to one?
--   How will I stop plagiarism? Although I believe that all knowledge should be shared, I am not stupid enough to think everyone is on the same page, whether they need money to get by, they feel (rightfully) that they should get compensated for their time or whatever Eason. People who want to keep some of their ideas to themselves or only sell their knowledge for money need to be able to do so, and so I need to keep an eye out on plagiarism. A solution might be a ML model that monitors the website for plagiarism. Also there would need to be a way for someone to issue a take-down request. That said, people should also be able to copy their lessons over from a blog post. This is something that I will consider.
--   How will the website be accessible? Most importantly to those who have disabilities, but also will it be accessible to those without a computer? To those who have strict data limits? To those who have different points of view and ways of expressing themselves? To be honest, I think a library fills a lot of these niches, and I will do my best to complement libraries and support them.
--   What sort of lessons will there be? Just video and text? Audio? Will there be a need for an audio player? How will annotations/conversations be had about that? Will I need to worry about media compression/etc.? Will I need to make my own video/audio player?
+- If I allow people to write lessons and anyone can sign up, how are they going to do that? Is it going to be all text with no organization? That proves to be a horrible reading experience, so there needs to be some sort of text editor. How will my text editor prevent bad actors such as people either implanting a virus in the lesson or a link to one?
+- How will I stop plagiarism? Although I believe that all knowledge should be shared, I am not stupid enough to think everyone is on the same page, whether they need money to get by, they feel (rightfully) that they should get compensated for their time or whatever Eason. People who want to keep some of their ideas to themselves or only sell their knowledge for money need to be able to do so, and so I need to keep an eye out on plagiarism. A solution might be a ML model that monitors the website for plagiarism. Also there would need to be a way for someone to issue a take-down request. That said, people should also be able to copy their lessons over from a blog post. This is something that I will consider.
+- How will the website be accessible? Most importantly to those who have disabilities, but also will it be accessible to those without a computer? To those who have strict data limits? To those who have different points of view and ways of expressing themselves? To be honest, I think a library fills a lot of these niches, and I will do my best to complement libraries and support them.
+- What sort of lessons will there be? Just video and text? Audio? Will there be a need for an audio player? How will annotations/conversations be had about that? Will I need to worry about media compression/etc.? Will I need to make my own video/audio player?
 
 These are just the ones that come off the top of my head.

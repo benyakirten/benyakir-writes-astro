@@ -2,10 +2,6 @@
 title: Tiger Balm Garden Twilight - Gloria T. August
 slug: tiger-balm-garden-twilight
 published: "2019-12-20"
-legacy:
-  wpId: 309
-  postType: post
-  sourceOrder: 62
 categories:
   - Reviews
 tags:

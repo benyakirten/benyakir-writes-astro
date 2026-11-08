@@ -2,10 +2,6 @@
 title: Delusions of Form
 slug: delusions-of-form
 published: "2021-09-25"
-legacy:
-  wpId: 910
-  postType: book
-  sourceOrder: 132
 purchaseLinks:
   - name: Amazon
     url: https://www.amazon.com/dp/B099RNC65L

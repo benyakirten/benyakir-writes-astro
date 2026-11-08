@@ -2,10 +2,6 @@
 title: way
 slug: way
 published: "2022-01-15"
-legacy:
-  wpId: 1031
-  postType: project
-  sourceOrder: 111
 firstReleased: "2022-01-15"
 technologies:
   - go

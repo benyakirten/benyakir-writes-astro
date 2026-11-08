@@ -2,10 +2,6 @@
 title: A Week's Worth - Backend with GraphQL and Django
 slug: a-weeks-worth-backend-with-graphql-and-django
 published: "2021-07-15"
-legacy:
-  wpId: 905
-  postType: post
-  sourceOrder: 129
 categories:
   - Ben's Thoughts
 tags:

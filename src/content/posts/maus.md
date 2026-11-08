@@ -2,10 +2,6 @@
 title: Maus - Art Spiegelman
 slug: maus
 published: "2020-03-13"
-legacy:
-  wpId: 558
-  postType: post
-  sourceOrder: 94
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: "Episode 73-74: Attack of the Clones"
 slug: attack-of-the-clones-2
 published: "2019-07-23"
-legacy:
-  wpId: 336
-  postType: post
-  sourceOrder: 72
 categories:
   - Down South Boulder Road
 tags:

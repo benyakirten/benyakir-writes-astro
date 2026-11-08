@@ -2,10 +2,6 @@
 title: Attack of the Clones - R.A. Salvatore
 slug: attack-of-the-clones
 published: "2019-06-13"
-legacy:
-  wpId: 298
-  postType: post
-  sourceOrder: 58
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: My Next Project - Layout and Planning
 slug: my-next-project-layout-and-planning
 published: "2022-02-06"
-legacy:
-  wpId: 1071
-  postType: post
-  sourceOrder: 140
 categories:
   - Ben's Thoughts
 tags:
@@ -17,10 +13,12 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#intro)
--   [LiveView is New](#liveview-is-new)
--   [How Do I Make That in Liveview?](#how-do-i-make-that-in-liveview)
--   [Layout](#layout)
+- [Introduction](#introduction)
+- [LiveView is New](#liveview-is-new)
+- [How Do I Make That in Liveview?](#how-do-i-make-that-in-liveview)
+- [Layout](#layout)
+
+<span id="intro"></span>
 
 ## Introduction
 

@@ -2,10 +2,6 @@
 title: Python
 slug: python
 published: "2021-03-09"
-legacy:
-  wpId: 747
-  postType: post
-  sourceOrder: 114
 categories:
   - Ben's Thoughts
 tags:

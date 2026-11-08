@@ -2,10 +2,6 @@
 title: Some Thoughts About Movies I’ve Seen on the Road
 slug: some-thoughts
 published: "2018-09-18"
-legacy:
-  wpId: 176
-  postType: post
-  sourceOrder: 22
 categories:
   - Ben's Thoughts
 tags:

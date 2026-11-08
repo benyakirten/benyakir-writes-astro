@@ -95,7 +95,10 @@
 html {
     background: var(--page-bg);
     color: var(--text);
+
+    scroll-behavior: smooth;
 }
+
 body {
     margin: 0;
     min-width: 20rem;
@@ -364,6 +367,20 @@ ul {
 }
 .article p {
     margin: 0 0 1.6rem;
+}
+.article #table-of-contents + :is(ul, ol),
+.article > ul:first-of-type:has(> li > a[href^="#"]) {
+    list-style-type: decimal;
+}
+.article a[href] {
+    color: var(--link);
+    background: linear-gradient(currentColor, currentColor) no-repeat 0 100% / 0
+        2px;
+    transition: background-size 300ms ease;
+}
+.article a[href]:hover,
+.article a[href]:focus-visible {
+    background-size: 100% 2px;
 }
 .article img {
     max-width: 100%;

@@ -2,10 +2,6 @@
 title: Voyager
 slug: voyager
 published: "2019-11-07"
-legacy:
-  wpId: 94
-  postType: post
-  sourceOrder: 9
 categories:
   - Ben's Thoughts
 tags:

@@ -2,10 +2,6 @@
 title: Less - Andrew Sean Greer
 slug: less
 published: "2019-07-20"
-legacy:
-  wpId: 225
-  postType: post
-  sourceOrder: 34
 categories:
   - Reviews
 tags:

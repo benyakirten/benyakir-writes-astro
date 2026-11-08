@@ -2,10 +2,6 @@
 title: Ribbit Hood - Edward Van Winkle
 slug: ribbit-hood
 published: "2019-11-26"
-legacy:
-  wpId: 192
-  postType: post
-  sourceOrder: 26
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: Single Page Applications
 slug: single-page-applications
 published: "2021-03-22"
-legacy:
-  wpId: 825
-  postType: post
-  sourceOrder: 83
 categories:
   - Ben's Thoughts
 tags:

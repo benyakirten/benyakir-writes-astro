@@ -2,10 +2,6 @@
 title: Inertia (The Threestone Trilogy Book 1) - A.R. Riviera
 slug: intertia
 published: "2018-10-17"
-legacy:
-  wpId: 213
-  postType: post
-  sourceOrder: 6
 categories:
   - Reviews
 tags:

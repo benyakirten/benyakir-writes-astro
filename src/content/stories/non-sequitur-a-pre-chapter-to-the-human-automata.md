@@ -3,10 +3,6 @@ title: Non-sequitur
 slug: non-sequitur-a-pre-chapter-to-the-human-automata
 published: "2020-08-20"
 description: Albert Winters is the last man in the factory, and he knows it
-legacy:
-  wpId: 780
-  postType: shortstory
-  sourceOrder: 117
 alternateLinks: []
 relatedBook:
   slug: the-human-automata

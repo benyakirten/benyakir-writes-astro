@@ -2,10 +2,6 @@
 title: Kindred - Octavia Butler
 slug: kindred
 published: "2018-03-09"
-legacy:
-  wpId: 231
-  postType: post
-  sourceOrder: 36
 categories:
   - Reviews
 tags:

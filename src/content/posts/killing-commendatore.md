@@ -2,10 +2,6 @@
 title: "Episode 67-68: Killing Commendatore"
 slug: killing-commendatore
 published: "2019-06-11"
-legacy:
-  wpId: 345
-  postType: post
-  sourceOrder: 75
 categories:
   - Down South Boulder Road
 tags:

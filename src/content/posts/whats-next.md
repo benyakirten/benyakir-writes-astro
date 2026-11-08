@@ -2,10 +2,6 @@
 title: What's next
 slug: whats-next
 published: "2023-08-07"
-legacy:
-  wpId: 1185
-  postType: post
-  sourceOrder: 138
 categories:
   - Ben's Thoughts
   - Ben's Blogs

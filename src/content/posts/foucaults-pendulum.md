@@ -2,10 +2,6 @@
 title: Foucault's Pendulum - Umberto Eco
 slug: foucaults-pendulum
 published: "2018-04-25"
-legacy:
-  wpId: 268
-  postType: post
-  sourceOrder: 48
 categories:
   - Reviews
 tags:

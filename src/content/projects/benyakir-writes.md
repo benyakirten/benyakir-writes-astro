@@ -2,10 +2,6 @@
 title: Benyakir Writes
 slug: benyakir-writes
 published: "2021-09-07"
-legacy:
-  wpId: 953
-  postType: project
-  sourceOrder: 136
 firstReleased: "2021-09-07"
 technologies:
   - ts

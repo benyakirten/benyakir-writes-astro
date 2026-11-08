@@ -2,10 +2,6 @@
 title: The Flying Cardinal Punch
 slug: flying-cardinal-punch
 published: "2018-04-17"
-legacy:
-  wpId: 170
-  postType: post
-  sourceOrder: 20
 categories:
   - Ben's Thoughts
 tags: []

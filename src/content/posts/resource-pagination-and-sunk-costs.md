@@ -2,10 +2,6 @@
 title: Resource Pagination and Sunk Costs
 slug: resource-pagination-and-sunk-costs
 published: "2023-11-26"
-legacy:
-  wpId: 1266
-  postType: post
-  sourceOrder: 148
 categories:
   - Ben's Thoughts
   - Ben's Blogs

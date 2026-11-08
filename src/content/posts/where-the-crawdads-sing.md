@@ -2,10 +2,6 @@
 title: Where the Crawdads Sing - Delia Owens
 slug: where-the-crawdads-sing
 published: "2020-08-10"
-legacy:
-  wpId: 662
-  postType: post
-  sourceOrder: 5
 categories:
   - Reviews
 tags:

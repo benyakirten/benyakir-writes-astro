@@ -2,10 +2,6 @@
 title: So, what have I been up to? Not writing. Programming.
 slug: programming-not-writing
 published: "2020-09-07"
-legacy:
-  wpId: 704
-  postType: post
-  sourceOrder: 113
 categories:
   - Ben's Thoughts
 tags:

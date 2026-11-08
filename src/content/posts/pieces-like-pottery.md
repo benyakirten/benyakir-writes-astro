@@ -2,10 +2,6 @@
 title: Pieces Like Pottery - Dan Buri
 slug: pieces-like-pottery
 published: "2019-07-25"
-legacy:
-  wpId: 287
-  postType: post
-  sourceOrder: 54
 categories:
   - Reviews
 tags:

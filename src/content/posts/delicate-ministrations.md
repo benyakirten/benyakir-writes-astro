@@ -2,10 +2,6 @@
 title: Delicate Ministrations - J.L. Forrest
 slug: delicate-ministrations
 published: "2018-03-07"
-legacy:
-  wpId: 253
-  postType: post
-  sourceOrder: 44
 categories:
   - Reviews
 tags:

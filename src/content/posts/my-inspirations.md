@@ -2,10 +2,6 @@
 title: My Inspirations
 slug: my-inspirations
 published: "2018-02-18"
-legacy:
-  wpId: 163
-  postType: post
-  sourceOrder: 17
 categories:
   - Ben's Thoughts
 tags:

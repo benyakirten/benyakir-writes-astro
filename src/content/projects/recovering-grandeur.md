@@ -2,10 +2,6 @@
 title: Recovering Grandeur
 slug: recovering-grandeur
 published: "2021-07-19"
-legacy:
-  wpId: 911
-  postType: project
-  sourceOrder: 133
 firstReleased: "2021-07-19"
 technologies:
   - sass

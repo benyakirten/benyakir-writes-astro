@@ -2,10 +2,6 @@
 title: r2api
 slug: r2api
 published: "2020-12-14"
-legacy:
-  wpId: 781
-  postType: project
-  sourceOrder: 121
 firstReleased: "2020-12-14"
 latestUpdate: "2021-02-28"
 technologies:
