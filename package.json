@@ -8,9 +8,9 @@
     "node": ">=22.12.0"
   },
   "scripts": {
-    "dev": "prebuild && astro dev",
-    "start": "prebuild && astro dev",
-    "build": "prebuild && astro check && astro build",
+    "dev": "pnpm prebuild && astro dev",
+    "start": "pnpm prebuild && astro dev",
+    "build": "pnpm prebuild && astro check && astro build",
     "preview": "pnpm --filter benyakir-writes-astro... run build && wrangler dev",
     "check": "astro check",
     "test": "vitest",
@@ -20,7 +20,6 @@
     "format:check": "oxfmt --check astro.config.mjs scripts tests src/lib src/workers",
     "lint": "oxlint astro.config.mjs scripts tests src/lib src/workers",
     "prebuild": "node scripts/build-data.mjs",
-    "precheck": "node scripts/build-data.mjs",
     "generate-types": "wrangler types",
     "deploy": "pnpm --filter benyakir-writes-astro... run build && wrangler deploy"
   },
