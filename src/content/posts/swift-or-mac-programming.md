@@ -2,10 +2,6 @@
 title: Swift, or Mac Programming
 slug: swift-or-mac-programming
 published: "2021-03-30"
-legacy:
-  wpId: 832
-  postType: post
-  sourceOrder: 126
 categories:
   - Ben's Thoughts
 tags:

@@ -2,10 +2,6 @@
 title: The Senility of Vladimir P. - Michael Hong
 slug: the-senility-of-vladimir-p
 published: "2019-09-29"
-legacy:
-  wpId: 236
-  postType: post
-  sourceOrder: 38
 categories:
   - Reviews
 tags:

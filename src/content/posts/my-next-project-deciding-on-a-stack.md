@@ -2,10 +2,6 @@
 title: My Next Project - Deciding on a stack
 slug: my-next-project-deciding-on-a-stack
 published: "2022-01-22"
-legacy:
-  wpId: 1035
-  postType: post
-  sourceOrder: 135
 categories:
   - Ben's Thoughts
 tags:

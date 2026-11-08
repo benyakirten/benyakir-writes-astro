@@ -2,10 +2,6 @@
 title: One Hundred Years of Solitude - Gabriel García Marquez
 slug: one-hundred-years-of-solitude
 published: "2018-10-10"
-legacy:
-  wpId: 278
-  postType: post
-  sourceOrder: 51
 categories:
   - Reviews
 tags:

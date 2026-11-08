@@ -2,10 +2,6 @@
 title: The Human Error
 slug: the-human-error
 published: "2021-07-19"
-legacy:
-  wpId: 909
-  postType: shortstory
-  sourceOrder: 131
 alternateLinks: []
 relatedBook:
   slug: delusions-of-form

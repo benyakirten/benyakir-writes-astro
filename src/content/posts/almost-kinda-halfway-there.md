@@ -2,10 +2,6 @@
 title: Almost... kinda... halfway there
 slug: almost-kinda-halfway-there
 published: "2023-09-12"
-legacy:
-  wpId: 1199
-  postType: post
-  sourceOrder: 145
 categories:
   - Ben's Blogs
   - Ben's Thoughts

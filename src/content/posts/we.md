@@ -2,10 +2,6 @@
 title: We - Yevgeny Zamyatin
 slug: we
 published: "2020-02-27"
-legacy:
-  wpId: 545
-  postType: post
-  sourceOrder: 90
 categories:
   - Reviews
 tags:

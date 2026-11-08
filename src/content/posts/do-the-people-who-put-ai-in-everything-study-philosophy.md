@@ -2,10 +2,6 @@
 title: Do the People Who Put AI in Everything Study Philosophy?
 slug: do-the-people-who-put-ai-in-everything-study-philosophy
 published: "2024-10-14"
-legacy:
-  wpId: 1450
-  postType: post
-  sourceOrder: 156
 categories:
   - Ben's Thoughts
   - Ben's Blogs

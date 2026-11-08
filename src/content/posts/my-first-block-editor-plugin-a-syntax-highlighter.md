@@ -2,10 +2,6 @@
 title: My first block editor plugin - a syntax highlighter
 slug: my-first-block-editor-plugin-a-syntax-highlighter
 published: "2021-07-15"
-legacy:
-  wpId: 882
-  postType: post
-  sourceOrder: 128
 categories:
   - Ben's Thoughts
 tags:

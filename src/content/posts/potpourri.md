@@ -2,10 +2,6 @@
 title: "Episode 85-86: Potpourri"
 slug: potpourri
 published: "2019-10-16"
-legacy:
-  wpId: 321
-  postType: post
-  sourceOrder: 66
 categories:
   - Down South Boulder Road
 tags:

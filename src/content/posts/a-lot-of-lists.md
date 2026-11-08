@@ -2,10 +2,6 @@
 title: A lot of lists
 slug: a-lot-of-lists
 published: "2023-09-07"
-legacy:
-  wpId: 1193
-  postType: post
-  sourceOrder: 144
 categories:
   - Ben's Thoughts
   - Ben's Blogs

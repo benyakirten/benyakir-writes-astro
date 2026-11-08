@@ -2,10 +2,6 @@
 title: The Next Generation
 slug: the-next-generation
 published: "2019-08-03"
-legacy:
-  wpId: 150
-  postType: post
-  sourceOrder: 13
 categories:
   - Ben's Thoughts
 tags:

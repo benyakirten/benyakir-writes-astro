@@ -2,10 +2,6 @@
 title: "The Writer’s IDE, part 4: Pagination and blocking the main thread."
 slug: the-writers-ide-part-4-pagination-and-blocking-the-main-thread
 published: "2025-08-02"
-legacy:
-  wpId: 1485
-  postType: post
-  sourceOrder: 157
 categories:
   - Ben's Thoughts
   - Ben's Blogs

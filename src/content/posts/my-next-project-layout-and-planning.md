@@ -2,10 +2,6 @@
 title: My Next Project - Layout and Planning
 slug: my-next-project-layout-and-planning
 published: "2022-02-06"
-legacy:
-  wpId: 1071
-  postType: post
-  sourceOrder: 140
 categories:
   - Ben's Thoughts
 tags:

@@ -2,10 +2,6 @@
 title: Bannerless - Carrie Vaughn
 slug: bannerless
 published: "2018-10-22"
-legacy:
-  wpId: 304
-  postType: post
-  sourceOrder: 60
 categories:
   - Reviews
 tags:

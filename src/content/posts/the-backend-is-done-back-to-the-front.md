@@ -2,10 +2,6 @@
 title: The backend is done; back to the front!
 slug: the-backend-is-done-back-to-the-front
 published: "2023-10-07"
-legacy:
-  wpId: 1239
-  postType: post
-  sourceOrder: 147
 categories:
   - Ben's Thoughts
   - Ben's Blogs

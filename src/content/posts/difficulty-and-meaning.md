@@ -2,10 +2,6 @@
 title: Difficulty and Meaning
 slug: difficulty-and-meaning
 published: "2020-06-25"
-legacy:
-  wpId: 612
-  postType: post
-  sourceOrder: 101
 categories:
   - Ben's Thoughts
 tags:

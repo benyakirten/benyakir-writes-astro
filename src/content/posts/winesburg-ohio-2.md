@@ -2,10 +2,6 @@
 title: Episode 99-101 - Winesburg, Ohio
 slug: winesburg-ohio-2
 published: "2020-01-14"
-legacy:
-  wpId: 483
-  postType: post
-  sourceOrder: 79
 categories:
   - Down South Boulder Road
 tags:

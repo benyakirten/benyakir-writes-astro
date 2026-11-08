@@ -2,10 +2,6 @@
 title: Just, Like Star Trek Stuff
 slug: just-like-star-trek-stuff
 published: "2020-01-10"
-legacy:
-  wpId: 473
-  postType: post
-  sourceOrder: 4
 categories:
   - Ben's Thoughts
 tags:

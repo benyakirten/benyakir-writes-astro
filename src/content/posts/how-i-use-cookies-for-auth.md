@@ -2,10 +2,6 @@
 title: How I use cookies for auth
 slug: how-i-use-cookies-for-auth
 published: "2023-10-11"
-legacy:
-  wpId: 1249
-  postType: post
-  sourceOrder: 142
 categories:
   - Ben's Blogs
   - Ben's Thoughts

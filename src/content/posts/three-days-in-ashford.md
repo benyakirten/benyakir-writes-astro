@@ -2,10 +2,6 @@
 title: Three Days in Ashford - Ty Tracey
 slug: three-days-in-ashford
 published: "2018-11-12"
-legacy:
-  wpId: 260
-  postType: post
-  sourceOrder: 46
 categories:
   - Reviews
 tags:

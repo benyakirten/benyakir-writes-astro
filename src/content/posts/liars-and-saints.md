@@ -2,10 +2,6 @@
 title: Liars and Saints - Maile Meloy
 slug: liars-and-saints
 published: "2019-06-26"
-legacy:
-  wpId: 295
-  postType: post
-  sourceOrder: 57
 categories:
   - Reviews
 tags:

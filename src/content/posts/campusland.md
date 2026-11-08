@@ -2,10 +2,6 @@
 title: "Campusland: a Novel - Scott Johnston"
 slug: campusland
 published: "2019-11-08"
-legacy:
-  wpId: 265
-  postType: post
-  sourceOrder: 47
 categories:
   - Reviews
 tags:

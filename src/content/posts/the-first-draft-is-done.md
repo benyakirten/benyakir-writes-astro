@@ -2,10 +2,6 @@
 title: The first draft is done
 slug: the-first-draft-is-done
 published: "2023-09-20"
-legacy:
-  wpId: 1220
-  postType: post
-  sourceOrder: 137
 categories:
   - Ben's Thoughts
   - Ben's Blogs

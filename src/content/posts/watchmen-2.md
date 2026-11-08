@@ -2,10 +2,6 @@
 title: Episode 106-108 - Watchmen
 slug: watchmen-2
 published: "2020-03-04"
-legacy:
-  wpId: 552
-  postType: post
-  sourceOrder: 84
 categories:
   - Down South Boulder Road
 tags:

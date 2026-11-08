@@ -2,10 +2,6 @@
 title: I have finished encryption on the chat app, and what a journey it was.
 slug: i-have-finished-encryption-on-the-chat-app-and-what-a-journey-it-was
 published: "2023-12-30"
-legacy:
-  wpId: 1289
-  postType: post
-  sourceOrder: 150
 categories:
   - Ben's Thoughts
   - Ben's Blogs

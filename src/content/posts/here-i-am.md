@@ -2,10 +2,6 @@
 title: Here I am
 slug: here-i-am
 published: "2021-02-26"
-legacy:
-  wpId: 732
-  postType: post
-  sourceOrder: 112
 categories:
   - Ben's Thoughts
 tags:

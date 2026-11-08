@@ -2,10 +2,6 @@
 title: HTML and CSS
 slug: html-and-css
 published: "2021-03-02"
-legacy:
-  wpId: 735
-  postType: post
-  sourceOrder: 109
 categories:
   - Ben's Thoughts
 tags:

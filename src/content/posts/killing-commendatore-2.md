@@ -2,10 +2,6 @@
 title: Killing Commendatore - Haruki Murakami
 slug: killing-commendatore-2
 published: "2019-04-22"
-legacy:
-  wpId: 219
-  postType: post
-  sourceOrder: 32
 categories:
   - Reviews
 tags:

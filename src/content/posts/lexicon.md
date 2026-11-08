@@ -2,10 +2,6 @@
 title: Lexicon - Max Barry
 slug: lexicon
 published: "2019-07-05"
-legacy:
-  wpId: 284
-  postType: post
-  sourceOrder: 53
 categories:
   - Reviews
 tags:

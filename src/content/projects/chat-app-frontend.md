@@ -2,10 +2,6 @@
 title: Chat App
 slug: chat-app-frontend
 published: "2023-09-20"
-legacy:
-  wpId: 1217
-  postType: project
-  sourceOrder: 143
 firstReleased: "2023-09-20"
 technologies:
   - vue

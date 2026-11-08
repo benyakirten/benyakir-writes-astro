@@ -2,10 +2,6 @@
 title: King of the Mississippi - Mike Freedman
 slug: king-of-the-mississippi
 published: "2019-08-08"
-legacy:
-  wpId: 244
-  postType: post
-  sourceOrder: 41
 categories:
   - Reviews
 tags:

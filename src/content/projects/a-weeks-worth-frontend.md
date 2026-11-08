@@ -2,10 +2,6 @@
 title: A Week's Worth Frontend
 slug: a-weeks-worth-frontend
 published: "2021-07-31"
-legacy:
-  wpId: 918
-  postType: project
-  sourceOrder: 120
 firstReleased: "2021-07-31"
 technologies:
   - sass

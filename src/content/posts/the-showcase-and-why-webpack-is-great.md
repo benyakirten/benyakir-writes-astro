@@ -2,10 +2,6 @@
 title: The showcase and why Webpack is great
 slug: the-showcase-and-why-webpack-is-great
 published: "2021-07-14"
-legacy:
-  wpId: 873
-  postType: post
-  sourceOrder: 127
 categories:
   - Ben's Thoughts
 tags:

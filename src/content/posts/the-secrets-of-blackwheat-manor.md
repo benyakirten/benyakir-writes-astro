@@ -2,10 +2,6 @@
 title: The Secrets of Blackwheat Manor by Gloria T. August
 slug: the-secrets-of-blackwheat-manor
 published: "2019-12-19"
-legacy:
-  wpId: 112
-  postType: post
-  sourceOrder: 3
 categories:
   - Reviews
 tags:

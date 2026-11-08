@@ -2,10 +2,6 @@
 title: Where I Have Been - Future changes
 slug: where-i-have-been-future-changes
 published: "2024-05-16"
-legacy:
-  wpId: 1328
-  postType: post
-  sourceOrder: 153
 categories:
   - Ben's Thoughts
   - Ben's Blogs

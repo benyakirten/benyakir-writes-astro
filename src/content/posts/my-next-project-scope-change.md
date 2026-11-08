@@ -2,10 +2,6 @@
 title: My Next Project - Scope Change
 slug: my-next-project-scope-change
 published: "2022-01-29"
-legacy:
-  wpId: 1056
-  postType: post
-  sourceOrder: 139
 categories:
   - Ben's Thoughts
 tags:

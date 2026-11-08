@@ -2,10 +2,6 @@
 title: The Water Orchids of Cocoanut Palm Island - Gloria T. August
 slug: the-water-orchids
 published: "2019-12-20"
-legacy:
-  wpId: 203
-  postType: post
-  sourceOrder: 29
 categories:
   - Reviews
 tags:

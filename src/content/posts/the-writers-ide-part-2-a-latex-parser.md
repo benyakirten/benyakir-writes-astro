@@ -2,10 +2,6 @@
 title: "The Writer's IDE, part 2: A Latex parser"
 slug: the-writers-ide-part-2-a-latex-parser
 published: "2024-07-10"
-legacy:
-  wpId: 1338
-  postType: post
-  sourceOrder: 151
 categories:
   - Ben's Thoughts
   - Ben's Blogs

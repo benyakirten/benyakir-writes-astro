@@ -2,10 +2,6 @@
 title: "Episode 65-66: The Ministry of Utmost Happiness"
 slug: utmost-happiness
 published: "2019-05-28"
-legacy:
-  wpId: 348
-  postType: post
-  sourceOrder: 76
 categories:
   - Down South Boulder Road
 tags:

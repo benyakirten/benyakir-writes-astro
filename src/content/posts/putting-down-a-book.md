@@ -2,10 +2,6 @@
 title: Putting down a book
 slug: putting-down-a-book
 published: "2020-04-01"
-legacy:
-  wpId: 567
-  postType: post
-  sourceOrder: 93
 categories:
   - Ben's Thoughts
 tags: []

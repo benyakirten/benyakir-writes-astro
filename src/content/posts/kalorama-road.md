@@ -2,10 +2,6 @@
 title: Kalorama Road - Denise Billups
 slug: kalorama-road
 published: "2018-10-03"
-legacy:
-  wpId: 206
-  postType: post
-  sourceOrder: 19
 categories:
   - Reviews
 tags:

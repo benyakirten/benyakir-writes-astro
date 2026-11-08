@@ -2,10 +2,6 @@
 title: A Little JavaScript Library I Published
 slug: a-little-javascript-library-i-published
 published: "2024-10-09"
-legacy:
-  wpId: 1440
-  postType: post
-  sourceOrder: 159
 categories:
   - Ben's Thoughts
   - Ben's Blogs

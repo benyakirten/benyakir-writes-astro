@@ -2,10 +2,6 @@
 title: A Week's Worth - Backend
 slug: a-weeks-worth-backend
 published: "2021-07-11"
-legacy:
-  wpId: 870
-  postType: project
-  sourceOrder: 119
 firstReleased: "2021-07-11"
 technologies:
   - py

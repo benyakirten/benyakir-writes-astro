@@ -2,10 +2,6 @@
 title: About Intelligences in Sci-Fi
 slug: intelligences-in-sci-fi
 published: "2018-03-19"
-legacy:
-  wpId: 165
-  postType: post
-  sourceOrder: 18
 categories:
   - Ben's Thoughts
 tags:

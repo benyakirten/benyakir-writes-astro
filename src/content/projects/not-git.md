@@ -2,10 +2,6 @@
 title: not-git
 slug: not-git
 published: "2024-06-06"
-legacy:
-  wpId: 1306
-  postType: project
-  sourceOrder: 152
 firstReleased: "2024-06-06"
 technologies:
   - rs

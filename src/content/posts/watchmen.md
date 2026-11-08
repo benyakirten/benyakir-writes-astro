@@ -2,10 +2,6 @@
 title: Watchmen - Alan Moore, Dave Gibbons
 slug: watchmen
 published: "2020-02-06"
-legacy:
-  wpId: 520
-  postType: post
-  sourceOrder: 8
 categories:
   - Reviews
 tags:

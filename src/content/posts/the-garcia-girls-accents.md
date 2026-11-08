@@ -2,10 +2,6 @@
 title: "Episode 77-78: How the García Girls Lost Their Accents"
 slug: the-garcia-girls-accents
 published: "2019-08-20"
-legacy:
-  wpId: 331
-  postType: post
-  sourceOrder: 70
 categories:
   - Down South Boulder Road
 tags:

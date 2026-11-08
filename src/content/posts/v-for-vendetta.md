@@ -2,10 +2,6 @@
 title: V for Vendetta - Alan Moore, David Lloyd
 slug: v-for-vendetta
 published: "2020-03-02"
-legacy:
-  wpId: 547
-  postType: post
-  sourceOrder: 85
 categories:
   - Reviews
 tags:

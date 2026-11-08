@@ -2,10 +2,6 @@
 title: Both Ways Is the Only Way I Want It - Maile Meloy
 slug: both-ways
 published: "2019-06-02"
-legacy:
-  wpId: 187
-  postType: post
-  sourceOrder: 25
 categories:
   - Reviews
 tags:

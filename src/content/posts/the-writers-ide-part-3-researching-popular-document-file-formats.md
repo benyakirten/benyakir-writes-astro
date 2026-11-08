@@ -2,10 +2,6 @@
 title: "The Writer's IDE, part 3: Researching popular document file formats"
 slug: the-writers-ide-part-3-researching-popular-document-file-formats
 published: "2024-09-10"
-legacy:
-  wpId: 1409
-  postType: post
-  sourceOrder: 158
 categories:
   - Ben's Blogs
   - Ben's Thoughts

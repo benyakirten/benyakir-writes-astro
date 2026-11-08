@@ -2,10 +2,6 @@
 title: Is the act of writing a statement?
 slug: writing-a-statement
 published: "2018-12-27"
-legacy:
-  wpId: 183
-  postType: post
-  sourceOrder: 24
 categories:
   - Ben's Thoughts
 tags:

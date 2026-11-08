@@ -2,10 +2,6 @@
 title: egt-press
 slug: egt-press
 published: "2021-08-18"
-legacy:
-  wpId: 939
-  postType: project
-  sourceOrder: 134
 firstReleased: "2021-08-18"
 technologies:
   - sass

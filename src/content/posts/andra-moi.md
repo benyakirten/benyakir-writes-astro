@@ -2,10 +2,6 @@
 title: ἄνδρα μοι ἔννεπε, μοῦσα - The Rest of the Dream's cover
 slug: andra-moi
 published: "2018-12-10"
-legacy:
-  wpId: 179
-  postType: post
-  sourceOrder: 23
 categories:
   - Ben's Thoughts
 tags:

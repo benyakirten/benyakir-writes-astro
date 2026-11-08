@@ -2,10 +2,6 @@
 title: "Episode 75-76: Both Ways Is the Only Way I Want It"
 slug: both-ways-2
 published: "2019-08-07"
-legacy:
-  wpId: 333
-  postType: post
-  sourceOrder: 71
 categories:
   - Down South Boulder Road
 tags:

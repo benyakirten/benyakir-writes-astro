@@ -2,10 +2,6 @@
 title: Stoner - John Williams
 slug: stoner
 published: "2020-01-22"
-legacy:
-  wpId: 498
-  postType: post
-  sourceOrder: 80
 categories:
   - Reviews
 tags:

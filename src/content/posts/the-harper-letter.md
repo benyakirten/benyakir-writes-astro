@@ -2,10 +2,6 @@
 title: The Harper letter, or why you shouldn't be forced to listen to anyone.
 slug: the-harper-letter
 published: "2020-07-15"
-legacy:
-  wpId: 622
-  postType: post
-  sourceOrder: 103
 categories:
   - Ben's Thoughts
 tags: []

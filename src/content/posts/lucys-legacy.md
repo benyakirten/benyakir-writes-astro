@@ -2,10 +2,6 @@
 title: Lucy's Legacy - Tia Day
 slug: lucys-legacy
 published: "2019-01-07"
-legacy:
-  wpId: 306
-  postType: post
-  sourceOrder: 61
 categories:
   - Reviews
 tags:

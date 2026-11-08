@@ -2,10 +2,6 @@
 title: Episode 113-114 - V for Vendetta
 slug: v-for-vendetta-2
 published: "2020-04-23"
-legacy:
-  wpId: 580
-  postType: post
-  sourceOrder: 88
 categories:
   - Down South Boulder Road
 tags:

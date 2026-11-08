@@ -2,10 +2,6 @@
 title: The Alice Network - Kate Quinn
 slug: the-alice-network
 published: "2020-04-27"
-legacy:
-  wpId: 584
-  postType: post
-  sourceOrder: 97
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: "Author Interview #1 - The Secret Gold of Blackwheat Manor by Gloria T. August"
 slug: blackwheat-manor
 published: "2020-04-24"
-legacy:
-  wpId: 582
-  postType: post
-  sourceOrder: 96
 categories:
   - Down South Boulder Road
 tags:

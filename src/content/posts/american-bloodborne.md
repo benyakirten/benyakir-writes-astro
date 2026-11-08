@@ -2,10 +2,6 @@
 title: American Bloodborne
 slug: american-bloodborne
 published: "2020-06-03"
-legacy:
-  wpId: 607
-  postType: post
-  sourceOrder: 104
 categories:
   - Ben's Thoughts
 tags: []

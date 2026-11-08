@@ -2,10 +2,6 @@
 title: C# and Type Systems
 slug: c-and-type-systems
 published: "2021-03-26"
-legacy:
-  wpId: 830
-  postType: post
-  sourceOrder: 125
 categories:
   - Ben's Thoughts
 tags:

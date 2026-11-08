@@ -2,10 +2,6 @@
 title: Episode 102-103 - Stoner
 slug: stoner-2
 published: "2020-02-04"
-legacy:
-  wpId: 517
-  postType: post
-  sourceOrder: 11
 categories:
   - Down South Boulder Road
 tags:

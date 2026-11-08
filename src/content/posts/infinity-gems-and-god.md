@@ -2,10 +2,6 @@
 title: The Infinity Gems Implies a Definite Proof of God
 slug: infinity-gems-and-god
 published: "2019-02-27"
-legacy:
-  wpId: 160
-  postType: post
-  sourceOrder: 16
 categories:
   - Ben's Thoughts
 tags:

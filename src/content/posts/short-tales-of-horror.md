@@ -2,10 +2,6 @@
 title: Short Tales of Horror - Regina Puckett
 slug: short-tales-of-horror
 published: "2018-10-31"
-legacy:
-  wpId: 273
-  postType: post
-  sourceOrder: 49
 categories:
   - Reviews
 tags:

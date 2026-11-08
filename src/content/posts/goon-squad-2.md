@@ -2,10 +2,6 @@
 title: Episode 109-110 - A Visit From the Goon Squad
 slug: goon-squad-2
 published: "2020-03-31"
-legacy:
-  wpId: 563
-  postType: post
-  sourceOrder: 92
 categories:
   - Down South Boulder Road
 tags:

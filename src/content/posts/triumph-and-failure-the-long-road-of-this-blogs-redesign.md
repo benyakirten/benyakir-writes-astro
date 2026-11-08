@@ -2,10 +2,6 @@
 title: "Triumph and failure: the long road of this blog's redesign"
 slug: triumph-and-failure-the-long-road-of-this-blogs-redesign
 published: "2024-09-03"
-legacy:
-  wpId: 1356
-  postType: post
-  sourceOrder: 154
 categories:
   - Ben's Thoughts
   - Ben's Blogs

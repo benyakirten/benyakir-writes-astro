@@ -2,10 +2,6 @@
 title: The Stranger - Albert Camus
 slug: the-stranger
 published: "2019-12-27"
-legacy:
-  wpId: 397
-  postType: post
-  sourceOrder: 0
 categories:
   - Reviews
 tags:

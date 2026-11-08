@@ -2,10 +2,6 @@
 title: China Dream - Ma Jian
 slug: china-dream
 published: "2019-11-25"
-legacy:
-  wpId: 281
-  postType: post
-  sourceOrder: 52
 categories:
   - Reviews
 tags:

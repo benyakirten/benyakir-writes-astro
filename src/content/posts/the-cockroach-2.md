@@ -2,10 +2,6 @@
 title: Episode 104-105 - The Cockroach
 slug: the-cockroach-2
 published: "2020-02-18"
-legacy:
-  wpId: 532
-  postType: post
-  sourceOrder: 91
 categories:
   - Down South Boulder Road
 tags:

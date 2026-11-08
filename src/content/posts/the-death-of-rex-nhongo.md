@@ -2,10 +2,6 @@
 title: The Death of Rex Nhongo - C.B. George
 slug: the-death-of-rex-nhongo
 published: "2018-11-19"
-legacy:
-  wpId: 194
-  postType: post
-  sourceOrder: 27
 categories:
   - Reviews
 tags:

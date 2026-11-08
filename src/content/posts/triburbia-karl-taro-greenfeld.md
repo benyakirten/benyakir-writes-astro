@@ -2,10 +2,6 @@
 title: Triburbia - Karl Taro Greenfeld
 slug: triburbia-karl-taro-greenfeld
 published: "2019-04-06"
-legacy:
-  wpId: 246
-  postType: post
-  sourceOrder: 42
 categories:
   - Reviews
 tags:

@@ -2,10 +2,6 @@
 title: Deep Space 9
 slug: deep-space-9
 published: "2019-10-28"
-legacy:
-  wpId: 147
-  postType: post
-  sourceOrder: 7
 categories:
   - Ben's Thoughts
 tags:

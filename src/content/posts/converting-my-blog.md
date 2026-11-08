@@ -30,7 +30,6 @@ tags:
 ## Table of Contents
 
 - [What's Changed?](#whats-changed)
-- [What I Needed to do](#what-i-needed-to-do)
 - [But You Hate AI](#but-you-hate-ai)
 - [How I Used AI](#how-i-used-ai)
 - [My Opinion of AI](#my-opinion-of-ai)
