@@ -18,15 +18,15 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#intro)
--   [Where I Start](#start)
--   [The Problem to Tackle](#problem-to-tackle)
--   [The Tech Stack](#tech-stack)
--   [Nuxt](#nuxt)
--   [Golang](#golang)
--   [Erlang](#erlang)
--   [Elixir](#elixir)
--   [Conclusion](#conclusion)
+- [Introduction](#intro)
+- [Where I Start](#the-start)
+- [The Problem to Tackle](#the-problem-to-tackle)
+- [The Tech Stack](#the-tech-stack)
+- [Nuxt](#nuxt)
+- [Golang](#golang)
+- [Erlang](#erlang)
+- [Elixir](#elixir)
+- [Conclusion](#conclusion)
 
 ## Intro
 
@@ -38,12 +38,16 @@ I want this series to be both for beginners to see what making a project is like
 
 On a previous project, I worked on how exactly to write tests for Django Graphene with the django-graphene-auth package, which wasn't incredibly obvious, especially since there isn't a very large community for it. One thing I was thinking is I may stumble on similar niche problems and tackle them too. And then if you have those same questions, you can read about it here, and, moreover, how I got there in the first place.
 
+<span id="start"></span>
+
 ## The Start
 
 Someone more responsible would think in terms of outlines, flowcharts, or maybe what the book I'm making a website for is about, but not me. I have two things on my mind, my requirements for this project:
 
 1.  A general concept of what problem I want to tackle
 2.  A technology (or group of technologies) I haven't used
+
+<span id="problem-to-tackle"></span>
 
 ## The Problem to Tackle
 
@@ -55,28 +59,30 @@ There are several solutions, and I'm not going to talk about them for the sake o
 
 Why do I want to work with WebSockets? They're powerful, and I've never used them on my own project before.
 
+<span id="tech-stack"></span>
+
 ## The Tech Stack
 
 What are some technologies I haven't used before? Here's the complete list of what I've used:
 
--   Vue (JavaScript)
--   React (JavaScript/TypeScript)
--   Gatsby (React)
--   Angular (TypeScript)
--   Svelte (JavaScript/TypeScript)
--   Sveltekit (Svelte, obviously)
--   Python
--   GraphQL
+- Vue (JavaScript)
+- React (JavaScript/TypeScript)
+- Gatsby (React)
+- Angular (TypeScript)
+- Svelte (JavaScript/TypeScript)
+- Sveltekit (Svelte, obviously)
+- Python
+- GraphQL
 
 Here are some technologies that I want to use:
 
--   Next (React)
--   Remix (React)
--   Nuxt (Vue)
--   Golang
--   Swift
--   Flutter
--   C#/.net
+- Next (React)
+- Remix (React)
+- Nuxt (Vue)
+- Golang
+- Swift
+- Flutter
+- C#/.net
 
 So, if you're in the know, React/Next/Nuxt are JAMStack frameworks. Basically, they take a frontend JavaScript framework and add a server and SSR/Static generation to really make the framework run much better. These are all technologies I want to use somewhat, but now I'm going to explain why I don't want to use any of them.
 

@@ -17,10 +17,12 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#intro)
--   [LiveView is New](#liveview-is-new)
--   [How Do I Make That in Liveview?](#how-do-i-make-that-in-liveview)
--   [Layout](#layout)
+- [Introduction](#introduction)
+- [LiveView is New](#liveview-is-new)
+- [How Do I Make That in Liveview?](#how-do-i-make-that-in-liveview)
+- [Layout](#layout)
+
+<span id="intro"></span>
 
 ## Introduction
 

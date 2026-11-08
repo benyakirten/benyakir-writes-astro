@@ -18,11 +18,11 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#introduction)
--   [Authentication](#authentication)
--   [Login/Register](#login-register)
--   [Refreshing the Token](#refresh-the-token)
--   [Silent Login](#silent-login)
+- [Introduction](#introduction)
+- [Authentication](#authentication)
+- [Login/Register](#loginregister)
+- [Refreshing the Token](#refreshing-the-token)
+- [Silent Login](#silent-login)
 
 ## Introduction
 
@@ -38,6 +38,8 @@ So instead they need to be exchanged pretty often with refresh tokens, and those
 
 So how do we make sure the refresh token cannot be stolen? We use our old friend I mentioned above: `httpOnly` cookies. This means that the browser's JavaScript cannot access it through `document.cookies` (though they're usually still accessible from the browser, so they can be compromised).
 
+<span id="login-register"></span>
+
 ## Login/Register
 
 Nuxt lets you set up API routes from your server. So my client can send a request to the Nuxt backend, which sends a request to the Phoenix backend. Let's look at some actual code, starting from the login route (note that the code blocks are all simplified):
@@ -47,6 +49,8 @@ Just to state something: you're not seeing all of the details, but I'm using Zod
 The important thing are the final few lines in this function: the `setRefreshCookie` and `setAuthToke`n. First off, I want to say I'm using axios in the server code because making requests from node is terrible. Its newly added fetch API has different parameters, namely you have to use a blob or a stream. And it's just much easier to use axios that handles those details for you.
 
 I cribbed the sign and serialize functions from [https://github.com/damien-hl/nuxt3-auth-example](https://github.com/damien-hl/nuxt3-auth-example). I need serialize because I'm not just storing the refresh token but also the `rememberMe` value. It's used to indicate whether the user checked the "remember me" box on login. I will talk later about storing the remember me value with a longer expiration time versus just setting the expiration time to a shorter amount, once I've talked about how this cookie is used.
+
+<span id="refresh-the-token"></span>
 
 ## Refreshing the Token
 

@@ -28,13 +28,13 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#introduction)
--   [Building the app](#building-the-app)
--   [Architecting Persistence](#architecting-persistance)
--   [Encrypting Messages](#encrypting-messages)
--   [Reading Messages Later](#reading-messages-later)
--   [Storing Data Securely](#storing-data-securely)
--   [What's Next](#whats-next)
+- [Introduction](#introduction)
+- [Building the app](#building-the-app)
+- [Architecting Persistence](#architecting-persistence)
+- [Encrypting Messages](#encrypting-messages)
+- [Reading Messages Later](#reading-messages-later)
+- [Storing Data Securely](#storing-data-securely)
+- [What's Next](#whats-next)
 
 ## Introduction
 
@@ -51,6 +51,8 @@ As I knew from the beginning the difficult part was going to be the e2e encrypti
 When I discovered that browsers could handle most of the cryptography, I knew that there was a path forward. Just like authentication and its frequent use of password hashing, I didn't have a clue about these complicated things. My study was in Italian, history and linguistics, not something like web security or cryptographic algorithms, but that's the nice thing about programming: someone has probably solved your problem and made a version of it that abstracts away the part beyond your comprehension. TensorFlow and SciKit Learn do that with ML and statistics, and the WebCrypto Web API does that for encryption.
 
 If you've ever used TensorFlow or SciKitLearn, you know that if you don't know what you're doing, it quickly gets out of hand. The WebCrypto Web API has so many tools, but I just used what I could easily understand: I needed an algorithm to generate a public and private key so I could encrypt and decrypt text. For an MVP, I just wanted to be able to do the basics of e2e encryption in a one on one chat, and that didn't seem so hard.
+
+<span id="architecting-persistance"></span>
 
 ## Architecting Persistence
 

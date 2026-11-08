@@ -27,12 +27,12 @@ I’m getting back to writing. I have three more books pretty much ready but the
 ## If you're curious, here are all the technologies I learned:
 
 1.  Pretty Well
-    -   Python
-    -   JavaScript
+    - Python
+    - JavaScript
 2.  Well:
-    -   React
-    -   HTML
-    -   CSS/SASS
+    - React
+    - HTML
+    - CSS/SASS
 3.  Good:
     1.  Angular
     2.  Vue (only good, but it's probably one of my favorite technologies!)
@@ -66,7 +66,7 @@ I’m pretty much at the end unless something changes dramatically in the future
 
 So let this be a lesson to you: to learn how to program a bunch of things within 8 months, all you need is: 1. The cessation of any sort of personal life or going out, made easier due to a worldwide pandemic, 2. The willingness and ability to do literally nothing except the necessities and work/study, 3. A wife and a mom who support you and help you (besides bearing the brunt of your discontent and/or frustration), 4. Be able to write a ludicrous amount of stuff off as business expenses.
 
-So, if you actually want to know what programming means, I’ll tell you. Just to warn you, I’m going to write a bunch of stuff, and there’s going to be asterisks. Don’t read the [asterisks](#asterisky) unless you really want to.
+So, if you actually want to know what programming means, I’ll tell you. Just to warn you, I’m going to write a bunch of stuff, and there’s going to be asterisks. Don’t read the [asterisks](#the-asterisky-part) unless you really want to.
 
 Programming is writing some instructions for your computer. Each programming “language”[\*](#one-star) is a different way to write the instructions and a different way that they’ll be carried out… kinda[\*\*](#two-star). Some of what I mentioned above is done by your computer, and some of it is done by your web browser… which is done by your computer.
 
@@ -76,14 +76,16 @@ Now, one last note before you get to the asterisky material: I want to take abou
 
 Consequently, during my years of college, I learned two things about myself: 1. once something is in my long term memory, it will never go away, but getting there is hard because of 2. I am great at what I call ‘medium term memory’, which is this: I will remember something precisely and accurately for 6 months to a year then forget it almost completely — which is almost explicitly what happened to me with Ancient Greek. It’s actually a big concern right now that I might forget everything on the good or lower portion of the technologies. That’s why I’m going to be working so hard to create projects with everything that I’ve learned. I’ve already started on some, which I’ll talk about in each of the sections.
 
+<span id="asterisky"></span>
+
 ## The Asterisky Part
 
-\*How I despise the ways that we compare computers to the human mind. Humans are way more complicated and advanced than computer. It will be that way for as long as me or anyone reading this will be alive. This isn’t to say that computers won’t advance, just that we’re so far beyond them.
+<span id="one-star"></span>\*How I despise the ways that we compare computers to the human mind. Humans are way more complicated and advanced than computer. It will be that way for as long as me or anyone reading this will be alive. This isn’t to say that computers won’t advance, just that we’re so far beyond them.
 
-\*\*Every languages I learned is written (read: created) on the back of another. Multiple languages are written on the back of a few. Notably, C. Which I briefly tried to learn. No way that’s happening. Never. Ever. There is no more emphasis I can put on the fact that I don’t want to learn C.
+<span id="two-star"></span>\*\*Every languages I learned is written (read: created) on the back of another. Multiple languages are written on the back of a few. Notably, C. Which I briefly tried to learn. No way that’s happening. Never. Ever. There is no more emphasis I can put on the fact that I don’t want to learn C.
 
-\*\*\*The basics of a website is HTM, which is a markup language. What it means is that it doesn’t do any heavy lifting. You basically give mostly superficial commands to another system: “put a box here, some text there”. Then there’s something called CSS, and it can be a bit more complicated.
+<span id="three-star"></span>\*\*\*The basics of a website is HTM, which is a markup language. What it means is that it doesn’t do any heavy lifting. You basically give mostly superficial commands to another system: “put a box here, some text there”. Then there’s something called CSS, and it can be a bit more complicated.
 
-\*\*\*\*Complexity is really about being able to implement logic in programming. HTML and CSS don’t have much of it, but you get a free interface with them. In other programming languages (Swift being the major exception), you need to program it in. There are some things like kivy that kinda allow it in Python, but eh. Web is really the best place to see it.
+<span id="four-star"></span>\*\*\*\*Complexity is really about being able to implement logic in programming. HTML and CSS don’t have much of it, but you get a free interface with them. In other programming languages (Swift being the major exception), you need to program it in. There are some things like kivy that kinda allow it in Python, but eh. Web is really the best place to see it.
 
-\*\*\*\*\*Okay, so if you really want to know, universality is kinda weird these days. Back in the day, if you used a Mac, you couldn’t use C++ or something like Visual Basic. And these days, Swift can’t be used if you have a PC, and some things can’t be done on a Mac still like WPF. It feels incredibly petty and like it’s a way of building brand loyalty. Who has brand loyalty these days? Besides that, some things like Java (let’s agree to never talk about it), C or Python are universal.
+<span id="five-star"></span>\*\*\*\*\*Okay, so if you really want to know, universality is kinda weird these days. Back in the day, if you used a Mac, you couldn’t use C++ or something like Visual Basic. And these days, Swift can’t be used if you have a PC, and some things can’t be done on a Mac still like WPF. It feels incredibly petty and like it’s a way of building brand loyalty. Who has brand loyalty these days? Besides that, some things like Java (let’s agree to never talk about it), C or Python are universal.

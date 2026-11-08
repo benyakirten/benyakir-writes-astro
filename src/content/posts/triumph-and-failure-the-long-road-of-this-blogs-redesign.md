@@ -24,14 +24,14 @@ tags:
 
 ## Table of Contents
 
--   [Introduction](#introduction)
--   [Updating Dependencies](#updating-dependencies)
--   [Removing the Unnecessary](#removing-the-unnecessary)
--   [Revamping Search](#revamping-search)
--   [Changing Cards and Filters](#changing-cards-and-filters)
--   [Getting Fonts to Load](#getting-fonts-to-load)
--   [Modernizing Theming](#moderning-theming)
--   [Fixing Block Identification](#fixing-block-identification)
+- [Introduction](#introduction)
+- [Updating Dependencies](#updating-dependencies)
+- [Removing the Unnecessary](#removing-the-unnecessary)
+- [Revamping Search](#revamping-search)
+- [Changing Cards and Filters](#changing-cards-and-filters)
+- [Getting Fonts to Load](#getting-fonts-to-load)
+- [Modernizing Theming](#modernizing-theming)
+- [Fixing Block Identification](#fixing-the-block-identification-system)
 
 ## Introduction
 
@@ -119,6 +119,8 @@ I blame every other SPA framework because, frankly, that's how they would do som
 
 I discovered at a certain point that my fonts weren't loading. I had previously had a system where all the necessary tags in the HTML head were loaded in the [Layout component](https://github.com/benyakirten/benyakir-writes/blob/d93179881a9f5713d17ad53bc557523e4af2fc9b/src/components/Layout/Layout.component.tsx#L19), which surrounded all pages you visited. However, I noticed now that none of my fonts were loading correctly. So what did I have to do? That's right, I had to make every page have the script tags in them, using a [base component](https://github.com/benyakirten/benyakir-writes/blob/main/src/components/SEO/HeadBase.component.tsx). But I have to say, it looks much better with my custom fonts. Fixing this was the tipping point to realizing I could make my blog look good.
 
+<span id="moderning-theming"></span>
+
 ## Modernizing Theming
 
 My original idea was that, as a final step, I would redo the day and night theme then wash my hands of it. But I looked at the theme customization page and realized it had some cool ideas that needed just a little bit of work to get right.
@@ -146,6 +148,8 @@ Beside that, I did a bunch of technical changes. You no longer have a preferred 
 As for the actual colors, I changed from a RGB system to HSL. HSL allows you to stay within one color but moderately change properties like how rich the color is and how bright. The one complication with this, however, is that color pickers (seen in the Modify Theme section above) only work with RGB hexes. So what happens is that the value for a color is converted from HSL to RGB for those inputs. And whenever the inputs change, the value is recalculated to HSL.
 
 I really like HSL. I'm sure there are better systems out there. If you're a frontend dev, I highly suggest you try it out instead of RGB.
+
+<span id="fixing-block-identification"></span>
 
 ## Fixing the Block Identification System
 

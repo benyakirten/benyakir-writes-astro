@@ -24,8 +24,10 @@ tags:
 
 ## Table of Contents
 
--   [Why Would I Do This?](#why)
--   [So It's Really Efficient, Right?](#efficient)
+- [Why Would I Do This?](#why-would-i-do-this)
+- [So It's Really Efficient, Right?](#so-its-really-efficient-right)
+
+<span id="why"></span>
 
 ## Why Would I Do This?
 
@@ -36,6 +38,8 @@ So what did I do to fix this? I created a [package](https://www.npmjs.com/packag
 So what does the package look like in JavaScript?
 
 It works on anything that is iterable so not just generators but also arrays or something like `Map.key`.
+
+<span id="efficient"></span>
 
 ## So It's Really Efficient, Right?
 

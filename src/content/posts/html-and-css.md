@@ -19,7 +19,7 @@ I’ve been doing mostly web development, so I’ll start there. Web development
 
 The frontend is three things: HTML, CSS and JavaScript, so I’ll talk about the first two today. They’re also on the ‘lighter’ side of things so it’s a better introduction. For examples, I’m going to talk about a website I set up. Over the course of the next few posts, I’ll talk about how it works. I’ll get into the specifics as we go, but if you want to see the website immediately, go here: [g-f-benyakir.herokuapp.com](http://g-f-benyakir.herokuapp.com)
 
-For the first of many asides: I’m a big believer in open source, which means that I try to put up everything I do for anyone to look up and copy:  [https://github.com/benyakirten/translation-website](https://github.com/benyakirten/translation-website) — if none of this makes sense to you, wait until I talk about it. I’ll talk about this in the [asterisky](#asterisky) section of this post. So if you want to, skip down to the bottom if you don’t know what a GitHub repo is under [\*](#one-star).
+For the first of many asides: I’m a big believer in open source, which means that I try to put up everything I do for anyone to look up and copy:  [https://github.com/benyakirten/translation-website](https://github.com/benyakirten/translation-website) — if none of this makes sense to you, wait until I talk about it. I’ll talk about this in the [asterisky](#asterisky-section) section of this post. So if you want to, skip down to the bottom if you don’t know what a GitHub repo is under [\*](#one-star).
 
 So I covered most of what HTML is in the last post, but here it is again: It describes the form of what a webpage is and fundamentally how it will be laid out. Now, it gets more complicated, but most of that complexity won’t come up in 99% of situations. I’m not going to get into them because if you’re reading this, you either know them already or don’t care.
 
@@ -55,16 +55,18 @@ For a demonstration of animations, I’m going to highlight the CSS I used: [htt
 
 This blog post ended up being way longer than I intended it to be, but I laid out what CSS means to me and how I intend to use it. Now, you can stop reading here and save yourself from even more boredom. Nothing beyond here is any better than what came before. Only read it if you’re curious.
 
+<span id="asterisky"></span>
+
 ## Asterisky Section:
 
-\*For my source code:
+<span id="one-star"></span>\*For my source code:
 
 1.  This is Github repository. Just click on one of the .html files to see it.
 2.  I suggest you start with index.html
 3.  This is written in Jinja2. You don’t need to worry about what it means, but just ignore the lines that start with {% and end with %} — basically just go down the lines where <main> starts
 4.  The long and short of it is that Flask uses template files that can combine with each other. base.html wraps around every other file. It doesn’t matter, really.
 
-\*\*No, I did not write all 700+ lines of CSS into one file. I wrote the styling in SASS (or more specifically SCSS) then transpiled it into one file. If you’re wondering, SASS and SCSS are just different ways of writing the same thing. SCSS uses open and closing curly brackets like JavaScript/CSS to denote when things belong together. SASS uses indentation like Python.
+<span id="two-stars"></span>\*\*No, I did not write all 700+ lines of CSS into one file. I wrote the styling in SASS (or more specifically SCSS) then transpiled it into one file. If you’re wondering, SASS and SCSS are just different ways of writing the same thing. SCSS uses open and closing curly brackets like JavaScript/CSS to denote when things belong together. SASS uses indentation like Python.
 
 Okay, but what is SASS?  I recommend you just visit the website at: [https://sass-lang.com](https://sass-lang.com) — But if you want my explanation, it’s just a templating language built ON TOP OF another language, which takes what you write and rewrites it into CSS[\*\*\*](#three-stars). In the end, it just makes writing some things in CSS easier. The main reason I use it is something called BEM notation. What does that mean? It just means using unique sass-friendly notation.
 
@@ -94,11 +96,11 @@ MIGRATION\_CODE\_BLOCK\_4
 
 That is almost the biggest advantage of sass, but there are a few other things. Before CSS kept track of variables (no, I won’t talk about it), sass did it. Then you can make functions or mixins that let you do certain things while keeping repetition at a minimum or make something clearer. No, I won’t explain. You can read the documentation if you’re interested. Or send me an email or something.
 
-\*\*\*That’s what transpiling is, taking one thing from one language and writing it into different language that has the same degree of complexity. What do I mean by complexity in this context? Not human complexity, at least directly! Most people just call it a higher vs a lower level of programming language. Long story short, some things interact more directly with your computer. No, I won’t explain any more.
+<span id="three-stars"></span>\*\*\*That’s what transpiling is, taking one thing from one language and writing it into different language that has the same degree of complexity. What do I mean by complexity in this context? Not human complexity, at least directly! Most people just call it a higher vs a lower level of programming language. Long story short, some things interact more directly with your computer. No, I won’t explain any more.
 
-\*\*\*\*I used to think it was alright to be unique. But follow conventions as much as possible and makes sense. This is the equivalent of following grammatical rules like capitalizing at the beginning of a sentence. WrItInG lIkE this is fine, but it’s easier to read and interact with when it’s regular grammar. It’s more universal. There are times to deviate, and it’s to make a point, just like using incorrect grammar, but it shouldn’t be the norm in your programming or no one will ever want to work with you, and you’ll forget what you were doing when you come back to your code in a month or a year.
+<span id="four-stars"></span>\*\*\*\*I used to think it was alright to be unique. But follow conventions as much as possible and makes sense. This is the equivalent of following grammatical rules like capitalizing at the beginning of a sentence. WrItInG lIkE this is fine, but it’s easier to read and interact with when it’s regular grammar. It’s more universal. There are times to deviate, and it’s to make a point, just like using incorrect grammar, but it shouldn’t be the norm in your programming or no one will ever want to work with you, and you’ll forget what you were doing when you come back to your code in a month or a year.
 
-\*\*\*\*\*If you’re naming something in every programming languages (I don’t know any exceptions), you never use a space. Languages use one of four conventions to designate items:
+<span id="five-stars"></span>\*\*\*\*\*If you’re naming something in every programming languages (I don’t know any exceptions), you never use a space. Languages use one of four conventions to designate items:
 
 1.  kebab-case (CSS)
 2.  PascalCase (almost every programming language but only in certain cases)

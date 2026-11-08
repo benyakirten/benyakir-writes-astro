@@ -22,9 +22,9 @@ tags:
   - latex
 ---
 
--   [What I've been up to](#what-ive-been-up-to)
--   [What is a WSIWYG editor?](#wysiwyg)
--   [The LaTeX Parser](#latex-parser)
+- [What I've been up to](#what-ive-been-up-to)
+- [What is a WSIWYG editor?](#what-is-a-wysiwyg-editor)
+- [The LaTeX Parser](#the-latex-parser)
 
 ## What I've been up to
 
@@ -35,6 +35,8 @@ If you've been following my blog closely like I know you have, it's been quite a
 3.  Going from Latex to a WYSIWYG editor to being able to output PDFs and eBooks
 
 The first two are their own topic and nothing to do with the writer's IDE. So I won't talk about them in this post (I will talk about the UI/UX updates at some point, maybe not the Rust stuff). But I do want to talk about the Latex parser I've been working on.
+
+<span id="wysiwyg"></span>
 
 ## What is a WYSIWYG editor?
 
@@ -59,6 +61,8 @@ Raw Data -> Intermediate Processed Data -> Rope -> Representation
 Modifying data would take the input and then modify the raw data, which can be used to generate a new representation given this pipeline. It's very much like functional programming, to make the representation based on some sort of state with intermediate steps only going in one direction.
 
 If we use HTML/CSS, we effectively change consolidate the raw data to processed data section, but it doesn't actually really change anything. The one thing it does change is consolidating font families and styling, plugins and macros... but that's a problem for future me. The one really big attraction to me is that what I'm envisioning doesn't exist yet. It's a mountain no one has climbed, and there's always something appealing about it.
+
+<span id="latex-parser"></span>
 
 ## The LaTeX Parser
 
