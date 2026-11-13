@@ -13,6 +13,34 @@ test("home contains only the twelve newest blog posts", async ({ page }) => {
   expect(dates).toEqual([...dates].sort().reverse());
 });
 
+test("series posts are labeled on desktop and mobile without changing card navigation", async ({
+  page,
+}) => {
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 900 });
+    await page.goto("/");
+    const card = page.locator(
+      '.latest-card-link[href="/post/the-writers-ide-part-4-pagination-and-blocking-the-main-thread/"]',
+    );
+    const label = card.locator(".latest-series");
+    await expect(label).toBeVisible();
+    await expect(label).toHaveText("Series: The Writer's IDE · Part 4 of 4");
+    const bounds = await label.boundingBox();
+    expect(bounds).not.toBeNull();
+    expect(bounds!.x).toBeGreaterThanOrEqual(0);
+    expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(width);
+    await expect(
+      page.locator(
+        '.latest-card-link[href="/post/a-little-javascript-library-i-published/"] .latest-series',
+      ),
+    ).toHaveCount(0);
+    await label.click();
+    await expect(page).toHaveURL(
+      "/post/the-writers-ide-part-4-pagination-and-blocking-the-main-thread/",
+    );
+  }
+});
+
 test("cards use Gatsby's full-width grid and animate the shadow and arrow", async ({
   page,
 }, testInfo) => {

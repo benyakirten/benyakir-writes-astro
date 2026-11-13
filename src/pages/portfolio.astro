@@ -50,7 +50,7 @@ const history = [
         ],
     },
     {
-        title: "UX Designer",
+        title: "UX Designer (Contingent Worker)",
         company: "Reddit",
         start: "2025-11-20",
         end: "2026-08-03",
@@ -404,141 +404,176 @@ const resume =
 </SiteLayout>
 
 <script>
-    const portfolio = document.querySelector<HTMLElement>("[data-portfolio]");
-    const tabList = portfolio?.querySelector<HTMLElement>(
-        "[data-portfolio-tabs]",
-    );
-    const buttons = Array.from(
-        tabList?.querySelectorAll<HTMLButtonElement>("[role=tab]") ?? [],
-    );
-    const panels = Array.from(
-        portfolio?.querySelectorAll<HTMLElement>("[role=tabpanel]") ?? [],
-    );
-    const indicator = tabList?.querySelector<HTMLElement>("[data-indicator]");
+    document.addEventListener("astro:page-load", () => {
+        const portfolio =
+            document.querySelector<HTMLElement>("[data-portfolio]");
+        if (!portfolio) return;
 
-    function selectSection(
-        id: string | null,
-        updateQuery = false,
-        focus = false,
-    ) {
-        const selected =
-            buttons.find((button) => button.dataset.section === id) ??
-            buttons.find((button) => button.dataset.section === "bio");
-        if (!selected || !tabList) return;
-        buttons.forEach((button) => {
-            const active = button === selected;
-            button.setAttribute("aria-selected", String(active));
-            button.tabIndex = active ? 0 : -1;
-        });
-        panels.forEach((panel) => {
-            panel.hidden = panel.id !== selected.getAttribute("aria-controls");
-        });
-        if (indicator) {
-            indicator.style.left = `${selected.offsetLeft}px`;
-            indicator.style.top = `${selected.offsetTop}px`;
-            indicator.style.width = `${selected.offsetWidth}px`;
-            indicator.style.height = `${selected.offsetHeight}px`;
-        }
-        if (updateQuery) {
-            const url = new URL(window.location.href);
-            url.searchParams.set("section", selected.dataset.section!);
-            window.history.replaceState(window.history.state, "", url);
-        }
-        if (focus) selected.focus();
-    }
+        const controller = new AbortController();
+        const { signal } = controller;
+        document.addEventListener(
+            "astro:before-swap",
+            () => controller.abort(),
+            {
+                once: true,
+                signal,
+            },
+        );
+        const tabList = portfolio?.querySelector<HTMLElement>(
+            "[data-portfolio-tabs]",
+        );
+        const buttons = Array.from(
+            tabList?.querySelectorAll<HTMLButtonElement>("[role=tab]") ?? [],
+        );
+        const panels = Array.from(
+            portfolio?.querySelectorAll<HTMLElement>("[role=tabpanel]") ?? [],
+        );
+        const indicator =
+            tabList?.querySelector<HTMLElement>("[data-indicator]");
 
-    const readSection = () =>
-        selectSection(
-            new URLSearchParams(window.location.search).get("section"),
-        );
-    buttons.forEach((button) => {
-        button.addEventListener("click", () =>
-            selectSection(button.dataset.section!, true),
-        );
-        button.addEventListener("keydown", (event) => {
-            let index = buttons.indexOf(button);
-            switch (event.key) {
-                case "ArrowLeft":
-                case "ArrowUp":
-                    index = (index + buttons.length - 1) % buttons.length;
-                    break;
-                case "ArrowRight":
-                case "ArrowDown":
-                    index = (index + 1) % buttons.length;
-                    break;
-                case "Home":
-                    index = 0;
-                    break;
-                case "End":
-                    index = buttons.length - 1;
-                    break;
-                default:
-                    return;
+        function selectSection(
+            id: string | null,
+            updateQuery = false,
+            focus = false,
+        ) {
+            const selected =
+                buttons.find((button) => button.dataset.section === id) ??
+                buttons.find((button) => button.dataset.section === "bio");
+            if (!selected || !tabList) return;
+            buttons.forEach((button) => {
+                const active = button === selected;
+                button.setAttribute("aria-selected", String(active));
+                button.tabIndex = active ? 0 : -1;
+            });
+            panels.forEach((panel) => {
+                panel.hidden =
+                    panel.id !== selected.getAttribute("aria-controls");
+            });
+            if (indicator) {
+                indicator.style.left = `${selected.offsetLeft}px`;
+                indicator.style.top = `${selected.offsetTop}px`;
+                indicator.style.width = `${selected.offsetWidth}px`;
+                indicator.style.height = `${selected.offsetHeight}px`;
             }
-            event.preventDefault();
-            selectSection(buttons[index].dataset.section!, true, true);
-        });
-    });
-    readSection();
-    window.addEventListener("popstate", readSection);
-    if (tabList) new ResizeObserver(readSection).observe(tabList);
-    document.fonts.ready.then(readSection);
+            if (updateQuery) {
+                const url = new URL(window.location.href);
+                url.searchParams.set("section", selected.dataset.section!);
+                window.history.replaceState(window.history.state, "", url);
+            }
+            if (focus) selected.focus();
+        }
 
-    // Reproduce the source's sparse 100px grid of drifting decorative SVGs.
-    const shapes = portfolio?.querySelector<HTMLElement>(
-        "[data-portfolio-shapes]",
-    );
-    const templates = Array.from(
-        portfolio?.querySelectorAll<HTMLTemplateElement>(
-            "[data-portfolio-shape]",
-        ) ?? [],
-    );
-    if (portfolio && shapes && templates.length) {
-        const columns = Math.floor(portfolio.clientWidth / 100);
-        const rows = Math.floor(portfolio.clientHeight / 100);
-        for (let row = 0; row < rows; row++) {
-            const count = Math.ceil(
-                Math.min(Math.floor(Math.random() * columns), columns * 0.2),
+        const readSection = () => {
+            if (signal.aborted) return;
+            selectSection(
+                new URLSearchParams(window.location.search).get("section"),
             );
-            const occupied = new Set<number>();
-            while (occupied.size < count)
-                occupied.add(Math.floor(Math.random() * columns));
-            for (const column of occupied) {
-                const template =
-                    templates[Math.floor(Math.random() * templates.length)];
-                const shape = template.content.firstElementChild!.cloneNode(
-                    true,
-                ) as SVGSVGElement;
-                shape.style.left = `${column * 100 + 50}px`;
-                shape.style.top = `${row * 100 + 50}px`;
-                shape.style.setProperty(
-                    "--drift-x",
-                    `${Math.floor(Math.random() * 10) - 5}rem`,
+        };
+        buttons.forEach((button) => {
+            button.addEventListener(
+                "click",
+                () => selectSection(button.dataset.section!, true),
+                { signal },
+            );
+            button.addEventListener(
+                "keydown",
+                (event) => {
+                    let index = buttons.indexOf(button);
+                    switch (event.key) {
+                        case "ArrowLeft":
+                        case "ArrowUp":
+                            index =
+                                (index + buttons.length - 1) % buttons.length;
+                            break;
+                        case "ArrowRight":
+                        case "ArrowDown":
+                            index = (index + 1) % buttons.length;
+                            break;
+                        case "Home":
+                            index = 0;
+                            break;
+                        case "End":
+                            index = buttons.length - 1;
+                            break;
+                        default:
+                            return;
+                    }
+                    event.preventDefault();
+                    selectSection(buttons[index].dataset.section!, true, true);
+                },
+                { signal },
+            );
+        });
+        readSection();
+        window.addEventListener("popstate", readSection, { signal });
+        if (tabList) {
+            const observer = new ResizeObserver(readSection);
+            observer.observe(tabList);
+            signal.addEventListener("abort", () => observer.disconnect(), {
+                once: true,
+            });
+        }
+        document.fonts.ready.then(readSection);
+
+        // Reproduce the source's sparse 100px grid of drifting decorative SVGs.
+        const shapes = portfolio?.querySelector<HTMLElement>(
+            "[data-portfolio-shapes]",
+        );
+        const templates = Array.from(
+            portfolio?.querySelectorAll<HTMLTemplateElement>(
+                "[data-portfolio-shape]",
+            ) ?? [],
+        );
+        if (portfolio && shapes && templates.length) {
+            const columns = Math.floor(portfolio.clientWidth / 100);
+            const rows = Math.floor(portfolio.clientHeight / 100);
+            for (let row = 0; row < rows; row++) {
+                const count = Math.ceil(
+                    Math.min(
+                        Math.floor(Math.random() * columns),
+                        columns * 0.2,
+                    ),
                 );
-                shape.style.setProperty(
-                    "--drift-y",
-                    `${Math.floor(Math.random() * 10) - 5}rem`,
-                );
-                if (shape.classList.contains("line-shape")) {
+                const occupied = new Set<number>();
+                while (occupied.size < count)
+                    occupied.add(Math.floor(Math.random() * columns));
+                for (const column of occupied) {
+                    const template =
+                        templates[Math.floor(Math.random() * templates.length)];
+                    const shape = template.content.firstElementChild!.cloneNode(
+                        true,
+                    ) as SVGSVGElement;
+                    shape.style.left = `${column * 100 + 50}px`;
+                    shape.style.top = `${row * 100 + 50}px`;
                     shape.style.setProperty(
-                        "--rotation",
-                        `${(Math.floor(Math.random() * 3) + 3) * -60}deg`,
+                        "--drift-x",
+                        `${Math.floor(Math.random() * 10) - 5}rem`,
                     );
+                    shape.style.setProperty(
+                        "--drift-y",
+                        `${Math.floor(Math.random() * 10) - 5}rem`,
+                    );
+                    if (shape.classList.contains("line-shape")) {
+                        shape.style.setProperty(
+                            "--rotation",
+                            `${(Math.floor(Math.random() * 3) + 3) * -60}deg`,
+                        );
+                    }
+                    const polygon = shape.querySelector("polygon");
+                    if (polygon)
+                        polygon.setAttribute(
+                            "points",
+                            Array.from(
+                                { length: Math.floor(Math.random() * 6) + 6 },
+                                () =>
+                                    `${Math.floor(Math.random() * 100)},${Math.floor(Math.random() * 100)}`,
+                            ).join(" "),
+                        );
+                    shapes.append(shape);
                 }
-                const polygon = shape.querySelector("polygon");
-                if (polygon)
-                    polygon.setAttribute(
-                        "points",
-                        Array.from(
-                            { length: Math.floor(Math.random() * 6) + 6 },
-                            () =>
-                                `${Math.floor(Math.random() * 100)},${Math.floor(Math.random() * 100)}`,
-                        ).join(" "),
-                    );
-                shapes.append(shape);
             }
         }
-    }
+    });
 </script>
 
 <style>

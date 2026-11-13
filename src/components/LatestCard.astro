@@ -1,8 +1,13 @@
 ---
 import type { CollectionEntry } from "astro:content";
 import { contentPath } from "../config";
+import type { PostSeries } from "../lib/series";
 
-const { entry } = Astro.props as { entry: CollectionEntry<"posts"> };
+interface Props {
+    entry: CollectionEntry<"posts">;
+    series?: PostSeries;
+}
+const { entry, series } = Astro.props;
 const { data } = entry;
 const tags = [...data.tags].sort((a, b) => a.localeCompare(b));
 const categories = data.categories.filter(
@@ -63,6 +68,15 @@ const published = new Date(`${data.published}T12:00:00Z`).toLocaleDateString(
                 )}
             </div>
             <h3 class="latest-title">{data.title}</h3>
+            {series && (
+                <p class="latest-series">
+                    <strong>Series: {series.title}</strong>
+                    <span>
+                        {" "}
+                        · Part {series.position} of {series.posts.length}
+                    </span>
+                </p>
+            )}
             <div class="latest-excerpt">{excerpt}</div>
             <div class="latest-card-dates">
                 <svg

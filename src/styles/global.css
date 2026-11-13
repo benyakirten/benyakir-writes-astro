@@ -806,6 +806,18 @@ ul {
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.latest-series {
+    grid-column: span 2;
+    justify-self: start;
+    margin: 0;
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--border);
+    border-radius: 0.4rem;
+    color: var(--pill-text);
+    background: var(--pill-bg);
+    font: 0.875rem/1.5 var(--font-ui);
+    overflow-wrap: anywhere;
+}
 .latest-excerpt {
     grid-column: span 2;
     margin: 0;

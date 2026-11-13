@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, reference } from "astro:content";
 import { glob } from "astro/loaders";
 import { z } from "zod";
 
@@ -19,7 +19,11 @@ const shared = z.object({
 });
 
 const posts = defineCollection({
-  loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/posts" }),
+  loader: glob({
+    pattern: "**/*.{md,mdx}",
+    base: "./src/content/posts",
+    generateId: ({ data }) => z.string().min(1).parse(data.slug),
+  }),
   schema: shared.extend({
     categories: z.array(z.string()).default([]),
     tags: z.array(z.string()).default([]),
@@ -39,7 +43,9 @@ const books = defineCollection({
         links: z.array(link).default([]),
       })
       .optional(),
-    relatedProject: z.object({ slug: z.string(), description: z.string().optional() }).optional(),
+    relatedProject: z
+      .object({ slug: z.string(), description: z.string().optional() })
+      .optional(),
     relatedStories: z.array(z.string()).default([]),
   }),
 });
@@ -48,7 +54,9 @@ const stories = defineCollection({
   loader: glob({ pattern: "**/*.{md,mdx}", base: "./src/content/stories" }),
   schema: shared.extend({
     alternateLinks: z.array(link).default([]),
-    relatedBook: z.object({ slug: z.string(), relationship: z.string().optional() }).optional(),
+    relatedBook: z
+      .object({ slug: z.string(), relationship: z.string().optional() })
+      .optional(),
   }),
 });
 
@@ -66,4 +74,12 @@ const projects = defineCollection({
   }),
 });
 
-export const collections = { posts, books, stories, projects };
+const series = defineCollection({
+  loader: glob({ pattern: "**/*.yaml", base: "./src/content/series" }),
+  schema: z.object({
+    title: z.string().min(1),
+    posts: z.array(reference("posts")).min(1),
+  }),
+});
+
+export const collections = { posts, books, stories, projects, series };

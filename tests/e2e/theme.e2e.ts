@@ -72,6 +72,26 @@ test("system preference updates cards, gradients, badges, and icons live without
   await expect(page.locator("html")).toHaveAttribute("data-theme-test-marker", "preserved");
 });
 
+test("author publication dates and calendar icons follow the page text color in both themes", async ({
+  page,
+}) => {
+  await page.emulateMedia({ colorScheme: "dark" });
+  await page.goto("/author/");
+  const dates = page.locator(".author-date");
+  expect(await dates.count()).toBeGreaterThan(0);
+  for (const colorScheme of ["dark", "light", "dark"] as const) {
+    await page.emulateMedia({ colorScheme });
+    const textColor = await page
+      .locator("html")
+      .evaluate((element) => getComputedStyle(element).color);
+    for (const date of await dates.all()) {
+      await expect(date).toHaveCSS("color", textColor);
+      await expect(date.locator("time")).toHaveCSS("color", textColor);
+      await expect(date.locator("svg")).toHaveCSS("stroke", textColor);
+    }
+  }
+});
+
 test("portfolio tab colors follow live system preference changes", async ({ page }) => {
   await page.emulateMedia({ colorScheme: "light" });
   await page.goto("/portfolio/");
