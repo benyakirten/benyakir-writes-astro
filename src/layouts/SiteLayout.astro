@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import { ClientRouter, fade } from "astro:transitions";
 import SearchIsland from "../components/SearchIsland";
 import { SearchIcon, ShortcutsIcon, CloseIcon } from "../components/Icons";
 import faustinaRegular from "@fontsource/faustina/files/faustina-latin-400-normal.woff2?url";
@@ -28,9 +29,10 @@ const navLinks = [
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="none">
     <head>
         <meta charset="utf-8" />
+        <ClientRouter />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content={SITE.author} />
         <meta name="description" content={description} />
@@ -145,7 +147,11 @@ const navLinks = [
                     <img src="/images/logo.svg" alt="Benyakir Writes Logo" />
                 </a>
             </nav>
-            <main class="site-main">
+            <main
+                class="site-main"
+                transition:name="page-content"
+                transition:animate={fade({ duration: "0.3s" })}
+            >
                 <div class="page-content">
                     <slot />
                 </div>
@@ -188,99 +194,124 @@ const navLinks = [
             </div>
         </dialog>
         <script>
-            const sidebar =
-                document.querySelector<HTMLElement>("[data-sidebar]");
-            const toggle = document.querySelector<HTMLButtonElement>(
-                "[data-sidebar-toggle]",
-            );
-            const links =
-                document.querySelectorAll<HTMLAnchorElement>(".sidebar-link");
-            const backdrop = document.querySelector<HTMLElement>(
-                "[data-sidebar-backdrop]",
-            );
-            const sidebarContent = document.querySelector<HTMLElement>(
-                "[data-sidebar-content]",
-            );
-            let wheelAngle = 0;
-            const setSidebar = (open: boolean) => {
-                if (sidebar && sidebar.classList.contains("open") !== open) {
-                    wheelAngle -= 90;
-                    sidebar.style.setProperty(
-                        "--wheel-angle",
-                        `${wheelAngle}deg`,
+            document.addEventListener("astro:page-load", () => {
+                const controller = new AbortController();
+                document.addEventListener(
+                    "astro:before-swap",
+                    () => controller.abort(),
+                    { once: true },
+                );
+                const sidebar =
+                    document.querySelector<HTMLElement>("[data-sidebar]");
+                const toggle = document.querySelector<HTMLButtonElement>(
+                    "[data-sidebar-toggle]",
+                );
+                const links =
+                    document.querySelectorAll<HTMLAnchorElement>(
+                        ".sidebar-link",
                     );
-                }
-                if (sidebarContent) {
-                    sidebarContent.inert = !open;
-                    sidebarContent.setAttribute("aria-hidden", String(!open));
-                }
-                sidebar?.classList.toggle("open", open);
-                backdrop?.classList.toggle("visible", open);
-                toggle?.setAttribute("aria-expanded", String(open));
-                toggle?.setAttribute(
-                    "aria-label",
-                    open ? "Close navigation" : "Open navigation",
+                const backdrop = document.querySelector<HTMLElement>(
+                    "[data-sidebar-backdrop]",
                 );
-                links.forEach((link) => (link.tabIndex = open ? 0 : -1));
-            };
-            toggle?.addEventListener("click", () =>
-                setSidebar(!sidebar?.classList.contains("open")),
-            );
-            sidebar?.addEventListener("click", (event) => {
-                const target = event.target;
-                if (
-                    !(target instanceof Element) ||
-                    target.closest(
-                        'a, button, input, select, textarea, label, summary, [role="button"], [role="link"]',
+                const sidebarContent = document.querySelector<HTMLElement>(
+                    "[data-sidebar-content]",
+                );
+                let wheelAngle = 0;
+                const setSidebar = (open: boolean) => {
+                    if (
+                        sidebar &&
+                        sidebar.classList.contains("open") !== open
+                    ) {
+                        wheelAngle -= 90;
+                        sidebar.style.setProperty(
+                            "--wheel-angle",
+                            `${wheelAngle}deg`,
+                        );
+                    }
+                    if (sidebarContent) {
+                        sidebarContent.inert = !open;
+                        sidebarContent.setAttribute(
+                            "aria-hidden",
+                            String(!open),
+                        );
+                    }
+                    sidebar?.classList.toggle("open", open);
+                    backdrop?.classList.toggle("visible", open);
+                    toggle?.setAttribute("aria-expanded", String(open));
+                    toggle?.setAttribute(
+                        "aria-label",
+                        open ? "Close navigation" : "Open navigation",
+                    );
+                    links.forEach((link) => (link.tabIndex = open ? 0 : -1));
+                };
+                toggle?.addEventListener("click", () =>
+                    setSidebar(!sidebar?.classList.contains("open")),
+                );
+                sidebar?.addEventListener("click", (event) => {
+                    const target = event.target;
+                    if (
+                        !(target instanceof Element) ||
+                        target.closest(
+                            'a, button, input, select, textarea, label, summary, [role="button"], [role="link"]',
+                        )
                     )
-                )
-                    return;
-                setSidebar(!sidebar.classList.contains("open"));
-            });
-            backdrop?.addEventListener("click", () => setSidebar(false));
-            const searchOpen = () => {
-                // Preserve early requests until the search island has hydrated.
-                document.documentElement.dataset.pendingSiteSearch = "true";
-                document.dispatchEvent(new Event("open-site-search"));
-            };
-            document
-                .querySelectorAll("[data-search-open]")
-                .forEach((button) =>
-                    button.addEventListener("click", searchOpen),
+                        return;
+                    setSidebar(!sidebar.classList.contains("open"));
+                });
+                backdrop?.addEventListener("click", () => setSidebar(false));
+                const searchOpen = () => {
+                    // Preserve early requests until the search island has hydrated.
+                    document.documentElement.dataset.pendingSiteSearch = "true";
+                    document.dispatchEvent(new Event("open-site-search"));
+                };
+                document
+                    .querySelectorAll("[data-search-open]")
+                    .forEach((button) =>
+                        button.addEventListener("click", searchOpen),
+                    );
+                const shortcuts = document.querySelector<HTMLDialogElement>(
+                    "[data-shortcuts-dialog]",
                 );
-            const shortcuts = document.querySelector<HTMLDialogElement>(
-                "[data-shortcuts-dialog]",
-            );
-            document
-                .querySelector("[data-shortcuts-open]")
-                ?.addEventListener("click", () => shortcuts?.showModal());
-            document
-                .querySelector("[data-shortcuts-close]")
-                ?.addEventListener("click", () => shortcuts?.close());
-            shortcuts?.addEventListener("click", (event) => {
-                if (event.target === shortcuts) shortcuts.close();
-            });
-            document.addEventListener("keydown", (event) => {
-                const target = event.target;
-                const typing =
-                    target instanceof HTMLElement &&
-                    (target.isContentEditable ||
-                        ["INPUT", "TEXTAREA", "SELECT"].includes(
-                            target.tagName,
-                        ));
-                if (event.key === "Escape") setSidebar(false);
-                if (typing) return;
-                if ((event.metaKey || event.ctrlKey) && event.key === "/") {
-                    event.preventDefault();
-                    searchOpen();
-                    return;
-                }
-                if (event.shiftKey && event.key === "<") setSidebar(false);
-                if (event.shiftKey && event.key === ">") setSidebar(true);
-                if (event.shiftKey && event.key === "?") {
-                    if (shortcuts?.open) shortcuts.close();
-                    else shortcuts?.showModal();
-                }
+                document
+                    .querySelector("[data-shortcuts-open]")
+                    ?.addEventListener("click", () => shortcuts?.showModal());
+                document
+                    .querySelector("[data-shortcuts-close]")
+                    ?.addEventListener("click", () => shortcuts?.close());
+                shortcuts?.addEventListener("click", (event) => {
+                    if (event.target === shortcuts) shortcuts.close();
+                });
+                document.addEventListener(
+                    "keydown",
+                    (event) => {
+                        const target = event.target;
+                        const typing =
+                            target instanceof HTMLElement &&
+                            (target.isContentEditable ||
+                                ["INPUT", "TEXTAREA", "SELECT"].includes(
+                                    target.tagName,
+                                ));
+                        if (event.key === "Escape") setSidebar(false);
+                        if (typing) return;
+                        if (
+                            (event.metaKey || event.ctrlKey) &&
+                            event.key === "/"
+                        ) {
+                            event.preventDefault();
+                            searchOpen();
+                            return;
+                        }
+                        if (event.shiftKey && event.key === "<")
+                            setSidebar(false);
+                        if (event.shiftKey && event.key === ">")
+                            setSidebar(true);
+                        if (event.shiftKey && event.key === "?") {
+                            if (shortcuts?.open) shortcuts.close();
+                            else shortcuts?.showModal();
+                        }
+                    },
+                    { signal: controller.signal },
+                );
             });
         </script>
         <SearchIsland client:load />
