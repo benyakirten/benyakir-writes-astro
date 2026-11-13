@@ -1,0 +1,96 @@
+---
+import type { PostSeries } from "../lib/series";
+
+interface Props {
+    series: PostSeries;
+    variant: "overview" | "adjacent";
+}
+const { series, variant } = Astro.props;
+---
+
+{variant === "overview" ? (
+    <nav class="series-navigation" aria-label="Post series">
+        <p class="series-title">
+            <strong>{series.title}</strong> — Part {series.position} of {series.posts.length}
+        </p>
+        <details>
+            <summary>All posts in this series</summary>
+            <ol>
+                {series.posts.map((post) => (
+                    <li>
+                        <a href={post.url} aria-current={post.id === series.currentId ? "page" : undefined}>
+                            {post.title}
+                        </a>
+                    </li>
+                ))}
+            </ol>
+        </details>
+    </nav>
+) : (series.previous || series.next) && (
+    <nav class="series-navigation series-adjacent" aria-label="Series previous and next">
+        {series.previous && (
+            <a href={series.previous.url} rel="prev">
+                <span class="direction">← Previous in series</span>
+                {series.previous.title}
+            </a>
+        )}
+        {series.next && (
+            <a class="next" href={series.next.url} rel="next">
+                <span class="direction">Next in series →</span>
+                {series.next.title}
+            </a>
+        )}
+    </nav>
+)}
+
+<style>
+    .series-navigation {
+        margin-block: 1.6rem;
+        padding: 1rem 1.2rem;
+        border: 1px solid var(--border);
+        border-radius: 0.4rem;
+        background: var(--surface);
+        overflow-wrap: anywhere;
+    }
+    .series-navigation .series-title {
+        margin: 0 0 0.75rem;
+    }
+    summary {
+        cursor: pointer;
+    }
+    ol {
+        list-style: decimal;
+        padding-inline-start: 1.5rem;
+        margin-block: 0.75rem 0;
+    }
+    li + li {
+        margin-top: 0.5rem;
+    }
+    a[aria-current="page"] {
+        font-weight: bold;
+    }
+    .series-adjacent {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+    }
+    .direction {
+        display: block;
+        font-family: var(--font-ui);
+        font-size: 0.85rem;
+        color: var(--muted);
+    }
+    .next {
+        grid-column: 2;
+        text-align: right;
+    }
+    @media (max-width: 576px) {
+        .series-adjacent {
+            grid-template-columns: minmax(0, 1fr);
+        }
+        .next {
+            grid-column: 1;
+            text-align: left;
+        }
+    }
+</style>

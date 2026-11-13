@@ -1,15 +1,20 @@
 ---
 import { getCollection, render } from "astro:content";
 import SiteLayout from "../../layouts/SiteLayout.astro";
+import SeriesNavigation from "../../components/SeriesNavigation.astro";
+import { buildSeriesLookup } from "../../lib/series";
 
 export async function getStaticPaths() {
-    const entries = await getCollection("posts", ({ data }) => !data.draft);
-    return entries.map((entry) => ({
-        params: { slug: entry.data.slug },
-        props: { entry },
-    }));
+    const entries = await getCollection("posts");
+    const series = buildSeriesLookup(await getCollection("series"), entries);
+    return entries
+        .filter(({ data }) => !data.draft)
+        .map((entry) => ({
+            params: { slug: entry.data.slug },
+            props: { entry, series: series.get(entry.id) },
+        }));
 }
-const { entry } = Astro.props;
+const { entry, series } = Astro.props;
 const { Content } = await render(entry);
 ---
 
@@ -29,6 +34,8 @@ const { Content } = await render(entry);
             <p>Categories: {entry.data.categories.join(", ")}</p>
         )}
         {entry.data.tags?.length && <p>Tags: {entry.data.tags.join(", ")}</p>}
+        {series && <SeriesNavigation series={series} variant="overview" />}
         <Content />
+        {series && <SeriesNavigation series={series} variant="adjacent" />}
     </article>
 </SiteLayout>

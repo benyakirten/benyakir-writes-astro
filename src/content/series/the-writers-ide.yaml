@@ -1,0 +1,6 @@
+title: "The Writer's IDE"
+posts:
+  - the-writers-ide-part-1-writing-some-git-functionality-in-rust
+  - the-writers-ide-part-2-a-latex-parser
+  - the-writers-ide-part-3-researching-popular-document-file-formats
+  - the-writers-ide-part-4-pagination-and-blocking-the-main-thread
