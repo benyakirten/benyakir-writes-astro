@@ -2,8 +2,12 @@
 import { getCollection } from "astro:content";
 import ContentCards from "../components/ContentCards.astro";
 import SiteLayout from "../layouts/SiteLayout.astro";
+import { buildSeriesLookup } from "../lib/series";
 
-const latest = (await getCollection("posts", ({ data }) => !data.draft))
+const posts = await getCollection("posts");
+const seriesByPost = buildSeriesLookup(await getCollection("series"), posts);
+const latest = posts
+    .filter(({ data }) => !data.draft)
     .sort((a, b) => b.data.published.localeCompare(a.data.published))
     .slice(0, 12);
 ---
@@ -15,7 +19,11 @@ const latest = (await getCollection("posts", ({ data }) => !data.draft))
     <div class="home-content">
         <h1 class="lead-heading">Latest Posts</h1>
         <section class="latest-group" aria-label="Latest blog posts">
-            <ContentCards items={latest} kind="posts" />
+            <ContentCards
+                items={latest}
+                kind="posts"
+                seriesByPost={seriesByPost}
+            />
         </section>
     </div>
 </SiteLayout>
