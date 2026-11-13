@@ -11,14 +11,22 @@ const { series, variant } = Astro.props;
 {variant === "overview" ? (
     <nav class="series-navigation" aria-label="Post series">
         <p class="series-title">
-            <strong>{series.title}</strong> — Part {series.position} of {series.posts.length}
+            <strong>{series.title}</strong> — Part {series.position} of{" "}
+            {series.posts.length}
         </p>
         <details>
             <summary>All posts in this series</summary>
             <ol>
                 {series.posts.map((post) => (
                     <li>
-                        <a href={post.url} aria-current={post.id === series.currentId ? "page" : undefined}>
+                        <a
+                            href={post.url}
+                            aria-current={
+                                post.id === series.currentId
+                                    ? "page"
+                                    : undefined
+                            }
+                        >
                             {post.title}
                         </a>
                     </li>
@@ -26,21 +34,26 @@ const { series, variant } = Astro.props;
             </ol>
         </details>
     </nav>
-) : (series.previous || series.next) && (
-    <nav class="series-navigation series-adjacent" aria-label="Series previous and next">
-        {series.previous && (
-            <a href={series.previous.url} rel="prev">
-                <span class="direction">← Previous in series</span>
-                {series.previous.title}
-            </a>
-        )}
-        {series.next && (
-            <a class="next" href={series.next.url} rel="next">
-                <span class="direction">Next in series →</span>
-                {series.next.title}
-            </a>
-        )}
-    </nav>
+) : (
+    (series.previous || series.next) && (
+        <nav
+            class="series-navigation series-adjacent"
+            aria-label="Series previous and next"
+        >
+            {series.previous && (
+                <a href={series.previous.url} rel="prev">
+                    <span class="direction">← Previous in series</span>
+                    {series.previous.title}
+                </a>
+            )}
+            {series.next && (
+                <a class="next" href={series.next.url} rel="next">
+                    <span class="direction">Next in series →</span>
+                    {series.next.title}
+                </a>
+            )}
+        </nav>
+    )
 )}
 
 <style>
@@ -57,6 +70,27 @@ const { series, variant } = Astro.props;
     }
     summary {
         cursor: pointer;
+    }
+    @supports (interpolate-size: allow-keywords) and
+        (transition-behavior: allow-discrete) and
+        selector(details::details-content) {
+        @media (prefers-reduced-motion: no-preference) {
+            details {
+                interpolate-size: allow-keywords;
+            }
+            details::details-content {
+                block-size: 0;
+                overflow: clip;
+                content-visibility: hidden;
+                transition:
+                    block-size 300ms ease,
+                    content-visibility 300ms allow-discrete;
+            }
+            details[open]::details-content {
+                block-size: auto;
+                content-visibility: visible;
+            }
+        }
     }
     ol {
         list-style: decimal;
